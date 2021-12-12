@@ -18,7 +18,7 @@ namespace ClinicApp.BLL
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"spAddKets";
-                cmd.Parameters.AddWithValue("@addKets",quantity);
+                cmd.Parameters.AddWithValue("@addKets", quantity);
                 cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -29,7 +29,7 @@ namespace ClinicApp.BLL
 
             }
         }
-        public DataTable GetKetsData()
+        public String GetKetsData()
 
         {
             DataTable table = new DataTable();
@@ -49,11 +49,27 @@ namespace ClinicApp.BLL
 
                 table = dataSet.Tables[0];
                 CloseConnection();
-
+                int sum=0;
                 if (table.Rows.Count == 0 || table == null)
+                {
                     table = null;
+                    return "0";
+                }
+                else
+                {
+                    for (int row = 0; row < table.Rows.Count; row++)
+                    {
 
-                return table;
+
+                        DataRow dataRow = table.Rows[row];
+                        sum += Convert.ToInt32(dataRow["ketsQuantity"]);
+
+                    }
+                 
+
+                }
+
+              return sum.ToString();    
             }
             catch (Exception)
             {

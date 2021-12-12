@@ -86,7 +86,7 @@ namespace ClinicApp.Forms
             p.pDob = DateTime.Now;
             p.pEmail = txtPatientEmail.Text;
             p.pEmergencyContact = txtPatientEmergencyContatact.Text;
-            p.pGender = cmbPatientMerital.Text;
+            p.pGender = cmbPatientGender.Text;
             p.pMaritalStatus = cmbPatientMerital.Text;
             p.pModiefiedDate = DateTime.Now;
             p.pCountry = txtPatientCountry.Text;

@@ -49,7 +49,7 @@ namespace ClinicApp.Forms
                 dgExpenseList.Rows[row].Cells["ExpenseAmount"].Value = Convert.ToString(dataRow["ExpenseAmount"]);
                 dgExpenseList.Rows[row].Cells["ExpenseCategory"].Value = Convert.ToString(dataRow["ExpenseCategory"]);
                 dgExpenseList.Rows[row].Cells["ExpenseDescription"].Value = Convert.ToString(dataRow["ExpenseDescription"]);
-                dgExpenseList.Rows[row].Cells["ExpenseDate"].Value = DateTime.Now;
+                dgExpenseList.Rows[row].Cells["ExpenseDate"].Value = Convert.ToString(dataRow["ExpenseDate"]);
                 //dgDonationList.Rows[row].Cells["DDate"].Value = Convert.ToString(dataRow["DataModified"]);
             }
 

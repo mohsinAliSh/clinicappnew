@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicApp.BLL;
 using ClinicApp.Forms;
 
 namespace ClinicApp
@@ -19,12 +20,16 @@ namespace ClinicApp
        public static frmDonation formDonation;
        public static frmExpense formExpense;
         public static KetForm ketform;
+        public static KetForm kf;
 
         #endregion
         public Form1()
         {
             InitializeComponent();
+            
          }
+
+        DBAccess db = new DBAccess();
 
         
         
@@ -40,7 +45,7 @@ namespace ClinicApp
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -75,8 +80,12 @@ namespace ClinicApp
             ketform.BringToFront();
 
         }
-        
- 
+
+       void totalkits(object sender, EventArgs e)
+        {
+            totalKitsNumberDisplayLabel.Text = db.GetKetsData();
+        }
+
     }
     
 }

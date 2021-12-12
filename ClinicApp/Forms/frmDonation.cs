@@ -42,9 +42,9 @@ namespace ClinicApp.Forms
                 DataRow dataRow = dt.Rows[row];
                 dgDonationList.Rows[row].Cells["donatorId"].Value = Convert.ToString(dataRow["ID"]);
                 dgDonationList.Rows[row].Cells["DName"].Value = Convert.ToString(dataRow["DonatorName"]);
-                dgDonationList.Rows[row].Cells["DNic"].Value = Convert.ToString(dataRow["DonatorNIc"]);
+                dgDonationList.Rows[row].Cells["DNic"].Value = Convert.ToString(dataRow["DonatorNic"]);
                 dgDonationList.Rows[row].Cells["DAddress"].Value = Convert.ToString(dataRow["DonatorAddress"]);
-                dgDonationList.Rows[row].Cells["DDate"].Value = DateTime.Now;
+                dgDonationList.Rows[row].Cells["DDate"].Value = Convert.ToString(dataRow["DateModified"]);
             }
 
         }

@@ -24,29 +24,18 @@ namespace ClinicApp.Forms
         }
         DBAccess dBAccess = new DBAccess();
         int sum = 0;
+       
+
         public void LoadKetsQuantity(object sender, EventArgs e)
         {
             sum = 0;
-            DataTable dt = dBAccess.GetKetsData();
-
-            if (dt == null || dt.Rows.Count == 0)
-                return;
-
-
-
-            for (int row = 0; row < dt.Rows.Count; row++)
-            {
-
-                
-                DataRow dataRow = dt.Rows[row];
-                sum += Convert.ToInt32(dataRow["NewKits"]);
-               
-            }
-            totalKetsLabel.Text=sum.ToString();
-            Form1 f1 = new Form1();
-            
-
+            string TotalKetsAvailible = dBAccess.GetKetsData();
+              
+                totalKetsLabel.Text = TotalKetsAvailible;
+           
+          
         }
+    
 
         private void KetsAddButton_Click(object sender, EventArgs e)
         {

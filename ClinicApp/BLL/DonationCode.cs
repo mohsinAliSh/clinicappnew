@@ -22,10 +22,10 @@ namespace ClinicApp.BLL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"sp_AddDonation";
                 //    cmd.Parameters.AddWithValue("@dID",donation.);
-                cmd.Parameters.AddWithValue("@dNic", donation.DonatorCnic);
-                cmd.Parameters.AddWithValue("@dName", donation.DonatorName);
-                cmd.Parameters.AddWithValue("@dAddress", donation.DonatorAddress);
-                cmd.Parameters.AddWithValue("@dDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("@DonatorNic", donation.DonatorCnic);
+                cmd.Parameters.AddWithValue("@DonatorName", donation.DonatorName);
+                cmd.Parameters.AddWithValue("@DonatorAddress", donation.DonatorAddress);
+                cmd.Parameters.AddWithValue("DonatorDate", DateTime.Now);
                 cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -44,7 +44,7 @@ namespace ClinicApp.BLL
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"spGetKets";
+                cmd.CommandText = @"spGetDonatorInfo";
                 //cmd.Parameters.AddWithValue("@month", month);
                 cmd.Connection = connection;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);

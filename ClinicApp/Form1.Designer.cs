@@ -692,6 +692,7 @@ namespace ClinicApp
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.totalkits);
 
         }
 
