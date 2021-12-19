@@ -21,10 +21,18 @@ namespace ClinicApp.Forms
         DBAccess db = new DBAccess();
         private void btnSave_Click(object sender, EventArgs e)
         {
+            DonatorEntryModel donator = new DonatorEntryModel();
+            donator.DonatorName = txtDonator.Text;
+            donator.DonatorAddress = rtDonatorAddress.Text;
+            donator.DonatorCnic = txtDonatorNic.Text;
+            db.AddDonator(donator);
+
             DonationEntryModel donation = new DonationEntryModel();
-            donation.DonatorName = txtDonator.Text;
-            donation.DonatorAddress = rtDonatorAddress.Text;
-            donation.DonatorCnic = txtDonatorNic.Text;
+            donation.DonatorType = cmbDonatorType.Text;
+            donation.DonationAmount =Convert.ToInt32(txtDonationAmount.Text);
+            donation.DonationRemarks = rtDonationRemark.Text;
+            donation.DonationDate =Convert.ToDateTime(dtDonationDate.Text);
+            //    donation.DonationID=Convert.ToInt32(lblDonatorID.Text);
             db.AddDonation(donation);
 
 
@@ -40,11 +48,10 @@ namespace ClinicApp.Forms
             {
                 dgDonationList.Rows.Add();
                 DataRow dataRow = dt.Rows[row];
-                dgDonationList.Rows[row].Cells["donatorId"].Value = Convert.ToString(dataRow["ID"]);
                 dgDonationList.Rows[row].Cells["DName"].Value = Convert.ToString(dataRow["DonatorName"]);
-                dgDonationList.Rows[row].Cells["DNic"].Value = Convert.ToString(dataRow["DonatorNic"]);
-                dgDonationList.Rows[row].Cells["DAddress"].Value = Convert.ToString(dataRow["DonatorAddress"]);
-                dgDonationList.Rows[row].Cells["DDate"].Value = Convert.ToString(dataRow["DateModified"]);
+                dgDonationList.Rows[row].Cells["DAmount"].Value = Convert.ToString(dataRow["DonationAmount"]);
+                dgDonationList.Rows[row].Cells["DRemarks"].Value = Convert.ToString(dataRow["Remarks"]);
+                dgDonationList.Rows[row].Cells["DDate"].Value = Convert.ToString(dataRow["DonaitonDate"]);
             }
 
         }

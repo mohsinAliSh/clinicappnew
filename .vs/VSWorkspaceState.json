@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ClinicApp",
+    "\\ClinicApp\\BLL",
+    "\\ClinicApp\\Forms"
   ],
-  "SelectedNode": "\\ClinicApp.sln",
+  "SelectedNode": "\\ClinicApp\\Forms\\frmPatient.cs",
   "PreviewInSolutionExplorer": false
 }

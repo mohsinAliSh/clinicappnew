@@ -28,7 +28,7 @@ namespace ClinicApp.BLL
                 return connection.State == System.Data.ConnectionState.Open ? true : false;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

@@ -53,6 +53,7 @@
     <Compile Include="BLL\ExpenseCode.cs" />
     <Compile Include="BLL\KetsCode.cs" />
     <Compile Include="BLL\PatientCode.cs" />
+    <Compile Include="BLL\Zakat.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +78,12 @@
     <Compile Include="Forms\frmPatient.Designer.cs">
       <DependentUpon>frmPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmZakat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmZakat.Designer.cs">
+      <DependentUpon>frmZakat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\KetForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,9 +91,11 @@
       <DependentUpon>KetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\DonationEntryModel.cs" />
+    <Compile Include="Model\DonatorEntryModel.cs" />
     <Compile Include="Model\ExpenseEntryModel.cs" />
     <Compile Include="Model\FeeEntryModel.cs" />
     <Compile Include="Model\PatientModel.cs" />
+    <Compile Include="Model\ZakatModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -100,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPatient.resx">
       <DependentUpon>frmPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmZakat.resx">
+      <DependentUpon>frmZakat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\KetForm.resx">
       <DependentUpon>KetForm.cs</DependentUpon>

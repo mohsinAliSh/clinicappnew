@@ -29,15 +29,15 @@ namespace ClinicApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.totalKitsNumberDisplayLabel = new System.Windows.Forms.Label();
@@ -80,6 +80,7 @@ namespace ClinicApp
             this.KetsButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.Zakat = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -322,19 +323,19 @@ namespace ClinicApp
             // dashExpenseChart
             // 
             this.dashExpenseChart.BackColor = System.Drawing.Color.Gainsboro;
-            chartArea4.Name = "ChartArea1";
-            this.dashExpenseChart.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.dashExpenseChart.ChartAreas.Add(chartArea1);
             this.dashExpenseChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.dashExpenseChart.Legends.Add(legend4);
+            legend1.Name = "Legend1";
+            this.dashExpenseChart.Legends.Add(legend1);
             this.dashExpenseChart.Location = new System.Drawing.Point(276, 0);
             this.dashExpenseChart.Margin = new System.Windows.Forms.Padding(0);
             this.dashExpenseChart.Name = "dashExpenseChart";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.dashExpenseChart.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.dashExpenseChart.Series.Add(series1);
             this.dashExpenseChart.Size = new System.Drawing.Size(276, 174);
             this.dashExpenseChart.TabIndex = 1;
             this.dashExpenseChart.Text = "chart2";
@@ -342,19 +343,19 @@ namespace ClinicApp
             // dashDonationChart
             // 
             this.dashDonationChart.BackColor = System.Drawing.Color.Gainsboro;
-            chartArea5.Name = "ChartArea1";
-            this.dashDonationChart.ChartAreas.Add(chartArea5);
+            chartArea2.Name = "ChartArea1";
+            this.dashDonationChart.ChartAreas.Add(chartArea2);
             this.dashDonationChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend5.Name = "Legend1";
-            this.dashDonationChart.Legends.Add(legend5);
+            legend2.Name = "Legend1";
+            this.dashDonationChart.Legends.Add(legend2);
             this.dashDonationChart.Location = new System.Drawing.Point(0, 0);
             this.dashDonationChart.Margin = new System.Windows.Forms.Padding(0);
             this.dashDonationChart.Name = "dashDonationChart";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.dashDonationChart.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.dashDonationChart.Series.Add(series2);
             this.dashDonationChart.Size = new System.Drawing.Size(276, 174);
             this.dashDonationChart.TabIndex = 0;
             this.dashDonationChart.Text = "chart2";
@@ -381,24 +382,24 @@ namespace ClinicApp
             // dashChartPatient
             // 
             this.dashChartPatient.BackColor = System.Drawing.Color.Gainsboro;
-            chartArea6.Name = "ChartArea1";
-            this.dashChartPatient.ChartAreas.Add(chartArea6);
+            chartArea3.Name = "ChartArea1";
+            this.dashChartPatient.ChartAreas.Add(chartArea3);
             this.dashChartPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend6.Name = "Legend1";
-            this.dashChartPatient.Legends.Add(legend6);
+            legend3.Name = "Legend1";
+            this.dashChartPatient.Legends.Add(legend3);
             this.dashChartPatient.Location = new System.Drawing.Point(0, 0);
             this.dashChartPatient.Margin = new System.Windows.Forms.Padding(0);
             this.dashChartPatient.Name = "dashChartPatient";
-            series6.BackImageTransparentColor = System.Drawing.Color.Gainsboro;
-            series6.BackSecondaryColor = System.Drawing.Color.Gainsboro;
-            series6.BorderColor = System.Drawing.Color.Gainsboro;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series6.LabelBorderWidth = 5;
-            series6.LabelToolTip = "Patient Chart";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.dashChartPatient.Series.Add(series6);
+            series3.BackImageTransparentColor = System.Drawing.Color.Gainsboro;
+            series3.BackSecondaryColor = System.Drawing.Color.Gainsboro;
+            series3.BorderColor = System.Drawing.Color.Gainsboro;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.LabelBorderWidth = 5;
+            series3.LabelToolTip = "Patient Chart";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.dashChartPatient.Series.Add(series3);
             this.dashChartPatient.Size = new System.Drawing.Size(828, 266);
             this.dashChartPatient.TabIndex = 0;
             this.dashChartPatient.Text = "chart1";
@@ -483,9 +484,9 @@ namespace ClinicApp
             // 
             this.panel2.Controls.Add(this.btnDashboardView);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 64);
+            this.panel2.Location = new System.Drawing.Point(3, 58);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 55);
+            this.panel2.Size = new System.Drawing.Size(182, 49);
             this.panel2.TabIndex = 4;
             // 
             // btnDashboardView
@@ -498,7 +499,7 @@ namespace ClinicApp
             this.btnDashboardView.ForeColor = System.Drawing.Color.Silver;
             this.btnDashboardView.Location = new System.Drawing.Point(0, 0);
             this.btnDashboardView.Name = "btnDashboardView";
-            this.btnDashboardView.Size = new System.Drawing.Size(182, 55);
+            this.btnDashboardView.Size = new System.Drawing.Size(182, 49);
             this.btnDashboardView.TabIndex = 0;
             this.btnDashboardView.Text = "Dashboard";
             this.btnDashboardView.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -508,9 +509,9 @@ namespace ClinicApp
             // 
             this.panel3.Controls.Add(this.btnPatientView);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 125);
+            this.panel3.Location = new System.Drawing.Point(3, 113);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 55);
+            this.panel3.Size = new System.Drawing.Size(182, 49);
             this.panel3.TabIndex = 5;
             // 
             // btnPatientView
@@ -523,7 +524,7 @@ namespace ClinicApp
             this.btnPatientView.ForeColor = System.Drawing.Color.Silver;
             this.btnPatientView.Location = new System.Drawing.Point(0, 0);
             this.btnPatientView.Name = "btnPatientView";
-            this.btnPatientView.Size = new System.Drawing.Size(182, 55);
+            this.btnPatientView.Size = new System.Drawing.Size(182, 49);
             this.btnPatientView.TabIndex = 1;
             this.btnPatientView.Text = "Patients";
             this.btnPatientView.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -534,9 +535,9 @@ namespace ClinicApp
             // 
             this.panel4.Controls.Add(this.button3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 186);
+            this.panel4.Location = new System.Drawing.Point(3, 168);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(182, 55);
+            this.panel4.Size = new System.Drawing.Size(182, 49);
             this.panel4.TabIndex = 6;
             // 
             // button3
@@ -549,7 +550,7 @@ namespace ClinicApp
             this.button3.ForeColor = System.Drawing.Color.Silver;
             this.button3.Location = new System.Drawing.Point(0, 0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(182, 55);
+            this.button3.Size = new System.Drawing.Size(182, 49);
             this.button3.TabIndex = 1;
             this.button3.Text = "Donation";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -560,9 +561,9 @@ namespace ClinicApp
             // 
             this.panel5.Controls.Add(this.button4);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 247);
+            this.panel5.Location = new System.Drawing.Point(3, 223);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(182, 55);
+            this.panel5.Size = new System.Drawing.Size(182, 49);
             this.panel5.TabIndex = 7;
             // 
             // button4
@@ -575,7 +576,7 @@ namespace ClinicApp
             this.button4.ForeColor = System.Drawing.Color.Silver;
             this.button4.Location = new System.Drawing.Point(0, 0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(182, 55);
+            this.button4.Size = new System.Drawing.Size(182, 49);
             this.button4.TabIndex = 1;
             this.button4.Text = "Expense";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -587,6 +588,7 @@ namespace ClinicApp
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.Zakat, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.KetsButton, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 3);
@@ -596,14 +598,15 @@ namespace ClinicApp
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.85199F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.85307F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.85307F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.85307F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.85307F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.85307F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 34.88265F));
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.79003F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.791006F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.791006F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.791006F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.791006F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.791005F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.788236F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.4667F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(188, 567);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -615,9 +618,9 @@ namespace ClinicApp
             this.KetsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.KetsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KetsButton.ForeColor = System.Drawing.Color.Silver;
-            this.KetsButton.Location = new System.Drawing.Point(3, 308);
+            this.KetsButton.Location = new System.Drawing.Point(3, 278);
             this.KetsButton.Name = "KetsButton";
-            this.KetsButton.Size = new System.Drawing.Size(182, 55);
+            this.KetsButton.Size = new System.Drawing.Size(182, 49);
             this.KetsButton.TabIndex = 8;
             this.KetsButton.Text = "Kits";
             this.KetsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -630,7 +633,7 @@ namespace ClinicApp
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(182, 55);
+            this.panel1.Size = new System.Drawing.Size(182, 49);
             this.panel1.TabIndex = 3;
             // 
             // label1
@@ -647,6 +650,23 @@ namespace ClinicApp
             this.label1.TabIndex = 0;
             this.label1.Text = "Clinical System";
             // 
+            // Zakat
+            // 
+            this.Zakat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Zakat.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.Zakat.FlatAppearance.BorderSize = 0;
+            this.Zakat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Zakat.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Zakat.ForeColor = System.Drawing.Color.Silver;
+            this.Zakat.Location = new System.Drawing.Point(3, 333);
+            this.Zakat.Name = "Zakat";
+            this.Zakat.Size = new System.Drawing.Size(182, 49);
+            this.Zakat.TabIndex = 9;
+            this.Zakat.Text = "Zakat";
+            this.Zakat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Zakat.UseVisualStyleBackColor = true;
+            this.Zakat.Click += new System.EventHandler(this.Zakat_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -661,7 +681,7 @@ namespace ClinicApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.totalkits);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
@@ -692,7 +712,6 @@ namespace ClinicApp
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.Load += new System.EventHandler(this.totalkits);
 
         }
 
@@ -739,6 +758,7 @@ namespace ClinicApp
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label totalKitsNumberDisplayLabel;
         private System.Windows.Forms.Label kitsDisplayLabel;
+        private System.Windows.Forms.Button Zakat;
     }
 }
 

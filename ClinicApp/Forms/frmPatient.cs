@@ -57,7 +57,7 @@ namespace ClinicApp.Forms
 
             lblTotalPatients.Text = "Total : " + data.Rows.Count;
         }
-
+        
         private void txtDoctorFee_KeyPress(object sender, KeyPressEventArgs e)
         {
             test(sender, e);
@@ -76,25 +76,63 @@ namespace ClinicApp.Forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             PatientModel p = new PatientModel();
-            p.pName = txtPatientName.Text;// "new Patient";
+            //p.pName = txtPatientName.Text;// "new Patient";
+            //p.pCreatedDate = DateTime.Now;
+            //p.pActive = "1";
+            //p.pAddress = rtPatientAddress.Text;
+            //p.pCity = txtPatientCity.Text;
+            //p.pCnic = txtPatientNic.Text;
+            //p.pContact = txtPatientContact.Text;
+            //p.pDob = DateTime.Now;
+            //p.pEmail = txtPatientEmail.Text;
+            //p.pEmergencyContact = txtPatientEmergencyContatact.Text;
+            //p.pGender = cmbPatientGender.Text;
+            //p.pMaritalStatus = cmbPatientMerital.Text;
+            //p.pModiefiedDate = DateTime.Now;
+            //p.pCountry = txtPatientCountry.Text;
+            p.patientId = 1001;
+            p.pName = "";// "new Patient";
             p.pCreatedDate = DateTime.Now;
             p.pActive = "1";
-            p.pAddress = rtPatientAddress.Text;
-            p.pCity = txtPatientCity.Text;
-            p.pCnic = txtPatientNic.Text;
-            p.pContact = txtPatientContact.Text;
+            p.pAddress = "";
+            p.pCity = "";
+            p.pCnic = "";
+            p.pContact = "";
             p.pDob = DateTime.Now;
-            p.pEmail = txtPatientEmail.Text;
-            p.pEmergencyContact = txtPatientEmergencyContatact.Text;
-            p.pGender = cmbPatientGender.Text;
-            p.pMaritalStatus = cmbPatientMerital.Text;
+            p.pEmail = "";
+            p.pEmergencyContact = "";
+            p.pGender = "";
+            p.pMaritalStatus = "";
             p.pModiefiedDate = DateTime.Now;
-            p.pCountry = txtPatientCountry.Text;
+            p.pCountry = "";
+
+            int feetype = 0;
+            int kettype = 0;
+            if (cmbPaymentType.Text == "Self") feetype = 1;
+            else if (cmbPaymentType.Text == "Zakat") feetype = 2;
+            else if (cmbPaymentType.Text == "Self+Zakt") feetype = 3;
+            if (cmbKet.Text == "Self") kettype = 1;
+            else if (cmbKet.Text == "Clinic") kettype = 2;
+            else if (cmbKet.Text == "Zakat") kettype = 3;
+
+            FeeEntryModel feeEntryModel = new FeeEntryModel();
+
+            feeEntryModel.ClinicFee = Convert.ToDouble(txtClinicFee.Text);
+            feeEntryModel.FeeType = feetype;
+            feeEntryModel.KetAmount = Convert.ToDouble(txtKetAmount.Text);
+            feeEntryModel.ZakatAmount = Convert.ToDouble(txtZakatAmount.Text);
+            feeEntryModel.Date = Convert.ToDateTime(dtFeeDate.Text);
+            feeEntryModel.Total = Convert.ToDouble(txtTotalAmount.Text);
+            feeEntryModel.KetType = kettype;
 
 
-            dBAccess.AddPatientData(p);
+            dBAccess.AddPatientData(p,feeEntryModel);
+
+            
+        //    dBAccess.AddFeeEntry(feeEntryModel);
+
         }
-
+        
         private void txtPatientName_TextChanged(object sender, EventArgs e)
         {
 

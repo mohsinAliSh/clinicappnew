@@ -8,10 +8,11 @@ namespace ClinicApp.Model
 {
     public class DonationEntryModel
     {
-        public int DonatorID { get; set; }
-        public string DonatorName { get; set; }
-        public string DonatorCnic { get; set; }
-        public string DonatorAddress { get; set; }
-        public DateTime DonatorDate { get; set; }
+       // public int DonationID { get; set; }
+        public string DonatorType { get; set; }
+        public int DonationAmount { get; set; }
+        public string DonationRemarks { get; set; }
+        public DateTime DonationDate { get; set; }
+
     }
 }

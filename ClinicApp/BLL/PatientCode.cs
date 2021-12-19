@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using ClinicApp.Model;
 
 namespace ClinicApp.BLL
 {
@@ -39,7 +40,7 @@ namespace ClinicApp.BLL
         }
 
 
-        public void AddPatientData(Model.PatientModel patient)
+        public void AddPatientData(PatientModel patient,FeeEntryModel feeEntryModel)
         {
             try
             {
@@ -64,14 +65,38 @@ namespace ClinicApp.BLL
                 cmd.Parameters.AddWithValue("@pActive", patient.pActive);
                 cmd.Parameters.AddWithValue("@pDateCreated", patient.pCreatedDate);
                 cmd.Parameters.AddWithValue("@pModifiedDate", patient.pModiefiedDate);
+              //  cmd.Parameters.AddWithValue("@EntryDate", feeEntryModel.Date);
+                cmd.Parameters.AddWithValue("@ClinicalFee", feeEntryModel.ClinicFee);
+                cmd.Parameters.AddWithValue("@KetAmount", feeEntryModel.KetAmount);
+                cmd.Parameters.AddWithValue("@DonationAmount", feeEntryModel.ZakatAmount);
+                cmd.Parameters.AddWithValue("@NetFee", feeEntryModel.Total);
+                cmd.Parameters.AddWithValue("@KetType", feeEntryModel.KetType);
+                cmd.Parameters.AddWithValue("@PaymentType", feeEntryModel.FeeType);
                 cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+              Console.WriteLine(ex.Message);
+                    }
 
         }
+        //public void AddFeeEntry(FeeEntryModel feeEntryModel) {
+        //    try {
+        //        if (!CreateConnection())
+        //            return;
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.CommandText = @"spAddPatientFee";
+
+        //        cmd.Connection = connection;
+        //        int result = cmd.ExecuteNonQuery();
+        //        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+
+        //    }
+        //    catch(Exception ex) { }
+        //}
 
     }
 }

@@ -72,7 +72,7 @@ namespace ClinicApp.Forms
             this.ZakatAmountLabel = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.txtClinicFee = new System.Windows.Forms.TextBox();
-            this.txtDonationAmount = new System.Windows.Forms.TextBox();
+            this.txtZakatAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtPatientName = new System.Windows.Forms.TextBox();
@@ -401,7 +401,7 @@ namespace ClinicApp.Forms
             this.groupBox2.Controls.Add(this.ZakatAmountLabel);
             this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.txtClinicFee);
-            this.groupBox2.Controls.Add(this.txtDonationAmount);
+            this.groupBox2.Controls.Add(this.txtZakatAmount);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -542,14 +542,14 @@ namespace ClinicApp.Forms
             this.txtClinicFee.TabIndex = 31;
             this.txtClinicFee.Text = "0";
             // 
-            // txtDonationAmount
+            // txtZakatAmount
             // 
-            this.txtDonationAmount.Location = new System.Drawing.Point(138, 62);
-            this.txtDonationAmount.Name = "txtDonationAmount";
-            this.txtDonationAmount.Size = new System.Drawing.Size(107, 23);
-            this.txtDonationAmount.TabIndex = 29;
-            this.txtDonationAmount.Text = "0";
-            this.txtDonationAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonationAmount_KeyPress);
+            this.txtZakatAmount.Location = new System.Drawing.Point(138, 62);
+            this.txtZakatAmount.Name = "txtZakatAmount";
+            this.txtZakatAmount.Size = new System.Drawing.Size(107, 23);
+            this.txtZakatAmount.TabIndex = 29;
+            this.txtZakatAmount.Text = "0";
+            this.txtZakatAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonationAmount_KeyPress);
             // 
             // groupBox1
             // 
@@ -992,7 +992,7 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.Label ZakatAmountLabel;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtClinicFee;
-        private System.Windows.Forms.TextBox txtDonationAmount;
+        private System.Windows.Forms.TextBox txtZakatAmount;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox rtPatientAddress;
         private System.Windows.Forms.Label lblPatientID;

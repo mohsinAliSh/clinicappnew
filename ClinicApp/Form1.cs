@@ -21,6 +21,7 @@ namespace ClinicApp
        public static frmExpense formExpense;
         public static KetForm ketform;
         public static KetForm kf;
+        public static frmZakat formZakat;
 
         #endregion
         public Form1()
@@ -85,7 +86,17 @@ namespace ClinicApp
         {
             totalKitsNumberDisplayLabel.Text = db.GetKetsData();
         }
+        private void Zakat_Click(object sender, EventArgs e)
+        {
+            if(formZakat==null|| formZakat.IsDisposed)
+            {
+                formZakat=new frmZakat();
+                formZakat.Show();
 
+            }
+            formZakat.BringToFront();
+
+        }
     }
     
 }

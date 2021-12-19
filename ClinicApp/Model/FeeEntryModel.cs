@@ -9,10 +9,11 @@ namespace ClinicApp.Model
 {
     public class FeeEntryModel
     {
-        public string FeeType { get; set; }
+
+        public int FeeType { get; set; }
         public double ZakatAmount { get; set; }
         public DateTime Date { get; set; }
-        public string Ket { get; set; }
+        public int KetType { get; set; }
         public double ClinicFee { get; set; }
         public double KetAmount { get; set; }
         public double Total { get; set; }
