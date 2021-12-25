@@ -29,6 +29,7 @@ namespace ClinicApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDonation));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPatientList = new System.Windows.Forms.TabPage();
@@ -41,6 +42,10 @@ namespace ClinicApp.Forms
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgDonationList = new System.Windows.Forms.DataGridView();
+            this.DName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.tabAddDonation = new System.Windows.Forms.TabPage();
@@ -55,9 +60,7 @@ namespace ClinicApp.Forms
             this.label26 = new System.Windows.Forms.Label();
             this.txtDonationAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtDonator = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rtDonatorAddress = new System.Windows.Forms.RichTextBox();
             this.lblDonatorID = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -81,10 +84,9 @@ namespace ClinicApp.Forms
             this.PatientCNIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDonatorSearch = new System.Windows.Forms.TextBox();
+            this.btnDonatorFetch = new System.Windows.Forms.Button();
+            this.errorProviderDonation = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPatientList.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -94,11 +96,10 @@ namespace ClinicApp.Forms
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.toolStrip2.SuspendLayout();
             this.panelPatient.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDonation)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -229,6 +230,30 @@ namespace ClinicApp.Forms
             this.dgDonationList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgDonationList.Size = new System.Drawing.Size(632, 338);
             this.dgDonationList.TabIndex = 4;
+            // 
+            // DName
+            // 
+            this.DName.HeaderText = "Name";
+            this.DName.Name = "DName";
+            this.DName.ReadOnly = true;
+            // 
+            // DAmount
+            // 
+            this.DAmount.HeaderText = "Donation Amount";
+            this.DAmount.Name = "DAmount";
+            this.DAmount.ReadOnly = true;
+            // 
+            // DRemarks
+            // 
+            this.DRemarks.HeaderText = "Remarks";
+            this.DRemarks.Name = "DRemarks";
+            this.DRemarks.ReadOnly = true;
+            // 
+            // DDate
+            // 
+            this.DDate.HeaderText = "Donation Date";
+            this.DDate.Name = "DDate";
+            this.DDate.ReadOnly = true;
             // 
             // panel12
             // 
@@ -375,7 +400,9 @@ namespace ClinicApp.Forms
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Controls.Add(this.btnDonatorFetch);
+            this.groupBox1.Controls.Add(this.txtDonatorSearch);
+            this.groupBox1.Controls.Add(this.txtDonator);
             this.groupBox1.Controls.Add(this.rtDonatorAddress);
             this.groupBox1.Controls.Add(this.lblDonatorID);
             this.groupBox1.Controls.Add(this.label15);
@@ -394,38 +421,13 @@ namespace ClinicApp.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Donator Personal Information";
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.25806F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.74194F));
-            this.tableLayoutPanel1.Controls.Add(this.txtDonator, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(129, 41);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(217, 27);
-            this.tableLayoutPanel1.TabIndex = 27;
-            // 
             // txtDonator
             // 
-            this.txtDonator.Location = new System.Drawing.Point(3, 3);
+            this.txtDonator.Location = new System.Drawing.Point(129, 44);
             this.txtDonator.MaxLength = 99;
             this.txtDonator.Name = "txtDonator";
             this.txtDonator.Size = new System.Drawing.Size(172, 23);
             this.txtDonator.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::ClinicApp.Properties.Resources.serachPatient;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(181, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(33, 21);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // rtDonatorAddress
             // 
@@ -547,6 +549,7 @@ namespace ClinicApp.Forms
             this.tsbClear.Name = "tsbClear";
             this.tsbClear.Size = new System.Drawing.Size(43, 60);
             this.tsbClear.Text = "Clear";
+            this.tsbClear.Click += new System.EventHandler(this.tsbClear_Click);
             // 
             // tsbRefresh
             // 
@@ -641,29 +644,31 @@ namespace ClinicApp.Forms
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             // 
-            // DName
+            // txtDonatorSearch
             // 
-            this.DName.HeaderText = "Name";
-            this.DName.Name = "DName";
-            this.DName.ReadOnly = true;
+            this.txtDonatorSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtDonatorSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtDonatorSearch.Location = new System.Drawing.Point(198, 0);
+            this.txtDonatorSearch.MaxLength = 99;
+            this.txtDonatorSearch.Name = "txtDonatorSearch";
+            this.txtDonatorSearch.Size = new System.Drawing.Size(172, 23);
+            this.txtDonatorSearch.TabIndex = 28;
+            this.txtDonatorSearch.TextChanged += new System.EventHandler(this.txtDonatorSearch_TextChanged);
             // 
-            // DAmount
+            // btnDonatorFetch
             // 
-            this.DAmount.HeaderText = "Donation Amount";
-            this.DAmount.Name = "DAmount";
-            this.DAmount.ReadOnly = true;
+            this.btnDonatorFetch.Location = new System.Drawing.Point(398, 0);
+            this.btnDonatorFetch.Name = "btnDonatorFetch";
+            this.btnDonatorFetch.Size = new System.Drawing.Size(75, 23);
+            this.btnDonatorFetch.TabIndex = 29;
+            this.btnDonatorFetch.Text = "Fetch";
+            this.btnDonatorFetch.UseVisualStyleBackColor = true;
+            this.btnDonatorFetch.Click += new System.EventHandler(this.btnDonatorFetch_Click);
             // 
-            // DRemarks
+            // errorProviderDonation
             // 
-            this.DRemarks.HeaderText = "Remarks";
-            this.DRemarks.Name = "DRemarks";
-            this.DRemarks.ReadOnly = true;
-            // 
-            // DDate
-            // 
-            this.DDate.HeaderText = "Donation Date";
-            this.DDate.Name = "DDate";
-            this.DDate.ReadOnly = true;
+            this.errorProviderDonation.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderDonation.ContainerControl = this;
             // 
             // frmDonation
             // 
@@ -689,14 +694,12 @@ namespace ClinicApp.Forms
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.panelPatient.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDonation)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -728,9 +731,7 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtDonationAmount;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtDonator;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox rtDonatorAddress;
         private System.Windows.Forms.Label lblDonatorID;
         private System.Windows.Forms.Label label15;
@@ -758,5 +759,8 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn DAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn DRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn DDate;
+        private System.Windows.Forms.Button btnDonatorFetch;
+        private System.Windows.Forms.TextBox txtDonatorSearch;
+        private System.Windows.Forms.ErrorProvider errorProviderDonation;
     }
 }

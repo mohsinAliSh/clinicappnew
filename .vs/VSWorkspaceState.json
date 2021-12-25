@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\ClinicApp",
-    "\\ClinicApp\\BLL",
-    "\\ClinicApp\\Forms"
+    "\\ClinicApp\\BLL"
   ],
-  "SelectedNode": "\\ClinicApp\\Forms\\frmPatient.cs",
+  "SelectedNode": "\\ClinicApp\\BLL\\DonationCode.cs",
   "PreviewInSolutionExplorer": false
 }

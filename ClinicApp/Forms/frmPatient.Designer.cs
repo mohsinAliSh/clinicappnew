@@ -29,6 +29,7 @@ namespace ClinicApp.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPatient));
             this.panelPatient = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -42,18 +43,15 @@ namespace ClinicApp.Forms
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgPatientList = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientCNIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaritalStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ZakatAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KetAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClinicFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
             this.lblTotalPatients = new System.Windows.Forms.Label();
             this.tabAddPatient = new System.Windows.Forms.TabPage();
@@ -74,9 +72,11 @@ namespace ClinicApp.Forms
             this.txtClinicFee = new System.Windows.Forms.TextBox();
             this.txtZakatAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.searchButton = new System.Windows.Forms.PictureBox();
+            this.btpatientinfofetcher = new System.Windows.Forms.Button();
             this.txtPatientName = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtpatientsearch = new System.Windows.Forms.TextBox();
             this.rtPatientAddress = new System.Windows.Forms.RichTextBox();
             this.lblPatientID = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -107,6 +107,7 @@ namespace ClinicApp.Forms
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.errorProviderPForm = new System.Windows.Forms.ErrorProvider(this.components);
             this.panelPatient.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPatientList.SuspendLayout();
@@ -117,10 +118,11 @@ namespace ClinicApp.Forms
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.searchButton)).BeginInit();
             this.toolStrip2.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPForm)).BeginInit();
             this.SuspendLayout();
             // 
             // panelPatient
@@ -250,18 +252,15 @@ namespace ClinicApp.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgPatientList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgPatientList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
             this.PatientName,
             this.PatientCNIC,
             this.Gender,
-            this.MaritalStatus,
-            this.DOB,
             this.Contact,
-            this.City,
-            this.Country,
-            this.Address,
-            this.Edit,
-            this.Delete});
+            this.ZakatAmount,
+            this.KetAmount,
+            this.ClinicFee,
+            this.TotalAmount,
+            this.Date});
             this.dgPatientList.Location = new System.Drawing.Point(3, 43);
             this.dgPatientList.Name = "dgPatientList";
             this.dgPatientList.ReadOnly = true;
@@ -269,12 +268,6 @@ namespace ClinicApp.Forms
             this.dgPatientList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPatientList.Size = new System.Drawing.Size(1034, 312);
             this.dgPatientList.TabIndex = 4;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
             // 
             // PatientName
             // 
@@ -294,53 +287,41 @@ namespace ClinicApp.Forms
             this.Gender.Name = "Gender";
             this.Gender.ReadOnly = true;
             // 
-            // MaritalStatus
-            // 
-            this.MaritalStatus.HeaderText = "Marital Status";
-            this.MaritalStatus.Name = "MaritalStatus";
-            this.MaritalStatus.ReadOnly = true;
-            // 
-            // DOB
-            // 
-            this.DOB.HeaderText = "Birth Date";
-            this.DOB.Name = "DOB";
-            this.DOB.ReadOnly = true;
-            // 
             // Contact
             // 
             this.Contact.HeaderText = "Contact";
             this.Contact.Name = "Contact";
             this.Contact.ReadOnly = true;
             // 
-            // City
+            // ZakatAmount
             // 
-            this.City.HeaderText = "City";
-            this.City.Name = "City";
-            this.City.ReadOnly = true;
+            this.ZakatAmount.HeaderText = "Zakat Amount";
+            this.ZakatAmount.Name = "ZakatAmount";
+            this.ZakatAmount.ReadOnly = true;
             // 
-            // Country
+            // KetAmount
             // 
-            this.Country.HeaderText = "Country";
-            this.Country.Name = "Country";
-            this.Country.ReadOnly = true;
+            this.KetAmount.HeaderText = "Ket Amount";
+            this.KetAmount.Name = "KetAmount";
+            this.KetAmount.ReadOnly = true;
             // 
-            // Address
+            // ClinicFee
             // 
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
+            this.ClinicFee.HeaderText = "Clinic Fee";
+            this.ClinicFee.Name = "ClinicFee";
+            this.ClinicFee.ReadOnly = true;
             // 
-            // Edit
+            // TotalAmount
             // 
-            this.Edit.HeaderText = "";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
+            this.TotalAmount.HeaderText = "TotalAmount";
+            this.TotalAmount.Name = "TotalAmount";
+            this.TotalAmount.ReadOnly = true;
             // 
-            // Delete
+            // Date
             // 
-            this.Delete.HeaderText = "";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // panel12
             // 
@@ -415,7 +396,7 @@ namespace ClinicApp.Forms
             // 
             // txtKetAmount
             // 
-            this.txtKetAmount.Location = new System.Drawing.Point(341, 84);
+            this.txtKetAmount.Location = new System.Drawing.Point(413, 84);
             this.txtKetAmount.MaxLength = 49;
             this.txtKetAmount.Name = "txtKetAmount";
             this.txtKetAmount.Size = new System.Drawing.Size(107, 23);
@@ -425,7 +406,7 @@ namespace ClinicApp.Forms
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(246, 87);
+            this.label17.Location = new System.Drawing.Point(318, 87);
             this.label17.Name = "label17";
             this.label17.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label17.Size = new System.Drawing.Size(89, 17);
@@ -439,7 +420,7 @@ namespace ClinicApp.Forms
             "Self",
             "Clinic",
             "Zakat"});
-            this.cmbKet.Location = new System.Drawing.Point(341, 33);
+            this.cmbKet.Location = new System.Drawing.Point(413, 33);
             this.cmbKet.Name = "cmbKet";
             this.cmbKet.Size = new System.Drawing.Size(107, 24);
             this.cmbKet.TabIndex = 49;
@@ -447,7 +428,7 @@ namespace ClinicApp.Forms
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(246, 37);
+            this.label16.Location = new System.Drawing.Point(318, 37);
             this.label16.Name = "label16";
             this.label16.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label16.Size = new System.Drawing.Size(37, 17);
@@ -456,7 +437,7 @@ namespace ClinicApp.Forms
             // 
             // txtTotalAmount
             // 
-            this.txtTotalAmount.Location = new System.Drawing.Point(341, 109);
+            this.txtTotalAmount.Location = new System.Drawing.Point(413, 109);
             this.txtTotalAmount.MaxLength = 49;
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(107, 23);
@@ -466,7 +447,7 @@ namespace ClinicApp.Forms
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(246, 62);
+            this.label21.Location = new System.Drawing.Point(318, 62);
             this.label21.Name = "label21";
             this.label21.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label21.Size = new System.Drawing.Size(77, 17);
@@ -496,7 +477,7 @@ namespace ClinicApp.Forms
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(246, 112);
+            this.label22.Location = new System.Drawing.Point(318, 112);
             this.label22.Name = "label22";
             this.label22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label22.Size = new System.Drawing.Size(48, 17);
@@ -535,7 +516,7 @@ namespace ClinicApp.Forms
             // 
             // txtClinicFee
             // 
-            this.txtClinicFee.Location = new System.Drawing.Point(341, 59);
+            this.txtClinicFee.Location = new System.Drawing.Point(413, 59);
             this.txtClinicFee.MaxLength = 49;
             this.txtClinicFee.Name = "txtClinicFee";
             this.txtClinicFee.Size = new System.Drawing.Size(107, 23);
@@ -553,7 +534,10 @@ namespace ClinicApp.Forms
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Controls.Add(this.panel3);
+            this.groupBox1.Controls.Add(this.btpatientinfofetcher);
+            this.groupBox1.Controls.Add(this.txtPatientName);
+            this.groupBox1.Controls.Add(this.txtpatientsearch);
             this.groupBox1.Controls.Add(this.rtPatientAddress);
             this.groupBox1.Controls.Add(this.lblPatientID);
             this.groupBox1.Controls.Add(this.label15);
@@ -588,44 +572,59 @@ namespace ClinicApp.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient Personal Information";
             // 
-            // tableLayoutPanel1
+            // panel3
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.25806F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.74194F));
-            this.tableLayoutPanel1.Controls.Add(this.txtPatientName, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(117, 41);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(186, 27);
-            this.tableLayoutPanel1.TabIndex = 27;
+            this.panel3.Controls.Add(this.searchButton);
+            this.panel3.Location = new System.Drawing.Point(419, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(36, 23);
+            this.panel3.TabIndex = 29;
+            // 
+            // searchButton
+            // 
+            this.searchButton.BackgroundImage = global::ClinicApp.Properties.Resources.serachPatient;
+            this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.searchButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchButton.Location = new System.Drawing.Point(0, 0);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(36, 23);
+            this.searchButton.TabIndex = 4;
+            this.searchButton.TabStop = false;
+         //   this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // btpatientinfofetcher
+            // 
+            this.btpatientinfofetcher.Location = new System.Drawing.Point(338, 0);
+            this.btpatientinfofetcher.Name = "btpatientinfofetcher";
+            this.btpatientinfofetcher.Size = new System.Drawing.Size(75, 23);
+            this.btpatientinfofetcher.TabIndex = 29;
+            this.btpatientinfofetcher.Text = "Fetch";
+            this.btpatientinfofetcher.UseVisualStyleBackColor = true;
+            this.btpatientinfofetcher.Click += new System.EventHandler(this.btpatientinfofetcher_Click);
             // 
             // txtPatientName
             // 
-            this.txtPatientName.Location = new System.Drawing.Point(3, 3);
+            this.txtPatientName.Location = new System.Drawing.Point(120, 44);
             this.txtPatientName.MaxLength = 99;
             this.txtPatientName.Name = "txtPatientName";
             this.txtPatientName.Size = new System.Drawing.Size(146, 23);
             this.txtPatientName.TabIndex = 0;
-            this.txtPatientName.TextChanged += new System.EventHandler(this.txtPatientName_TextChanged);
             // 
-            // pictureBox1
+            // txtpatientsearch
             // 
-            this.pictureBox1.BackgroundImage = global::ClinicApp.Properties.Resources.serachPatient;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(155, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 21);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.txtpatientsearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtpatientsearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtpatientsearch.Location = new System.Drawing.Point(186, 0);
+            this.txtpatientsearch.MaxLength = 19;
+            this.txtpatientsearch.Name = "txtpatientsearch";
+            this.txtpatientsearch.Size = new System.Drawing.Size(146, 23);
+            this.txtpatientsearch.TabIndex = 28;
+            this.txtpatientsearch.TextChanged += new System.EventHandler(this.txtpatientsearch_TextChanged);
             // 
             // rtPatientAddress
             // 
             this.rtPatientAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rtPatientAddress.Location = new System.Drawing.Point(377, 95);
+            this.rtPatientAddress.Location = new System.Drawing.Point(389, 92);
             this.rtPatientAddress.Name = "rtPatientAddress";
             this.rtPatientAddress.Size = new System.Drawing.Size(641, 48);
             this.rtPatientAddress.TabIndex = 26;
@@ -654,7 +653,7 @@ namespace ClinicApp.Forms
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(306, 95);
+            this.label14.Location = new System.Drawing.Point(318, 92);
             this.label14.Name = "label14";
             this.label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label14.Size = new System.Drawing.Size(68, 17);
@@ -664,7 +663,7 @@ namespace ClinicApp.Forms
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(741, 73);
+            this.label12.Location = new System.Drawing.Point(753, 70);
             this.label12.Name = "label12";
             this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label12.Size = new System.Drawing.Size(139, 17);
@@ -674,7 +673,7 @@ namespace ClinicApp.Forms
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(536, 73);
+            this.label13.Location = new System.Drawing.Point(548, 70);
             this.label13.Name = "label13";
             this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label13.Size = new System.Drawing.Size(64, 17);
@@ -683,7 +682,7 @@ namespace ClinicApp.Forms
             // 
             // txtPatientEmergencyContatact
             // 
-            this.txtPatientEmergencyContatact.Location = new System.Drawing.Point(885, 70);
+            this.txtPatientEmergencyContatact.Location = new System.Drawing.Point(897, 67);
             this.txtPatientEmergencyContatact.MaxLength = 14;
             this.txtPatientEmergencyContatact.Name = "txtPatientEmergencyContatact";
             this.txtPatientEmergencyContatact.Size = new System.Drawing.Size(132, 23);
@@ -691,7 +690,7 @@ namespace ClinicApp.Forms
             // 
             // txtPatientContact
             // 
-            this.txtPatientContact.Location = new System.Drawing.Point(606, 70);
+            this.txtPatientContact.Location = new System.Drawing.Point(618, 67);
             this.txtPatientContact.MaxLength = 14;
             this.txtPatientContact.Name = "txtPatientContact";
             this.txtPatientContact.Size = new System.Drawing.Size(131, 23);
@@ -725,7 +724,7 @@ namespace ClinicApp.Forms
             "Male",
             "Female",
             "Other"});
-            this.cmbPatientGender.Location = new System.Drawing.Point(886, 43);
+            this.cmbPatientGender.Location = new System.Drawing.Point(898, 40);
             this.cmbPatientGender.Name = "cmbPatientGender";
             this.cmbPatientGender.Size = new System.Drawing.Size(131, 24);
             this.cmbPatientGender.TabIndex = 15;
@@ -733,7 +732,7 @@ namespace ClinicApp.Forms
             // dtPatientDOB
             // 
             this.dtPatientDOB.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtPatientDOB.Location = new System.Drawing.Point(606, 44);
+            this.dtPatientDOB.Location = new System.Drawing.Point(618, 41);
             this.dtPatientDOB.Name = "dtPatientDOB";
             this.dtPatientDOB.Size = new System.Drawing.Size(131, 23);
             this.dtPatientDOB.TabIndex = 14;
@@ -751,7 +750,7 @@ namespace ClinicApp.Forms
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(741, 47);
+            this.label7.Location = new System.Drawing.Point(753, 44);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label7.Size = new System.Drawing.Size(64, 17);
@@ -771,7 +770,7 @@ namespace ClinicApp.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(306, 73);
+            this.label4.Location = new System.Drawing.Point(318, 70);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label4.Size = new System.Drawing.Size(50, 17);
@@ -781,7 +780,7 @@ namespace ClinicApp.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(536, 47);
+            this.label3.Location = new System.Drawing.Point(548, 44);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(46, 17);
@@ -791,7 +790,7 @@ namespace ClinicApp.Forms
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(306, 47);
+            this.label9.Location = new System.Drawing.Point(318, 44);
             this.label9.Name = "label9";
             this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label9.Size = new System.Drawing.Size(47, 17);
@@ -818,7 +817,7 @@ namespace ClinicApp.Forms
             // 
             // txtPatientEmail
             // 
-            this.txtPatientEmail.Location = new System.Drawing.Point(377, 70);
+            this.txtPatientEmail.Location = new System.Drawing.Point(389, 67);
             this.txtPatientEmail.MaxLength = 49;
             this.txtPatientEmail.Name = "txtPatientEmail";
             this.txtPatientEmail.Size = new System.Drawing.Size(146, 23);
@@ -833,7 +832,7 @@ namespace ClinicApp.Forms
             // 
             // txtPatientNic
             // 
-            this.txtPatientNic.Location = new System.Drawing.Point(377, 44);
+            this.txtPatientNic.Location = new System.Drawing.Point(389, 41);
             this.txtPatientNic.MaxLength = 19;
             this.txtPatientNic.Name = "txtPatientNic";
             this.txtPatientNic.Size = new System.Drawing.Size(146, 23);
@@ -892,6 +891,7 @@ namespace ClinicApp.Forms
             this.tsbClear.Name = "tsbClear";
             this.tsbClear.Size = new System.Drawing.Size(43, 60);
             this.tsbClear.Text = "Clear";
+            this.tsbClear.Click += new System.EventHandler(this.tsbClear_Click);
             // 
             // tsbRefresh
             // 
@@ -928,6 +928,11 @@ namespace ClinicApp.Forms
             this.label8.TabIndex = 0;
             this.label8.Text = "Patient List";
             // 
+            // errorProviderPForm
+            // 
+            this.errorProviderPForm.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderPForm.ContainerControl = this;
+            // 
             // frmPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -952,13 +957,13 @@ namespace ClinicApp.Forms
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.searchButton)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPForm)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1017,30 +1022,30 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.TextBox txtPatientEmail;
         private System.Windows.Forms.TextBox txtPatientCity;
         private System.Windows.Forms.TextBox txtPatientNic;
-        private System.Windows.Forms.TextBox txtPatientName;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnSave;
         private System.Windows.Forms.ToolStripButton tsbCancel;
         private System.Windows.Forms.ToolStripButton tsbClear;
         private System.Windows.Forms.ToolStripButton tsbRefresh;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnDashFilter;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DateTimePicker dtEndDate;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dtStartDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientCNIC;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaritalStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DOB;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn City;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Country;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
-        private System.Windows.Forms.DataGridViewImageColumn Edit;
-        private System.Windows.Forms.DataGridViewImageColumn Delete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KetAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClinicFee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.TextBox txtpatientsearch;
+        private System.Windows.Forms.ErrorProvider errorProviderPForm;
+        private System.Windows.Forms.TextBox txtPatientName;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox searchButton;
+        private System.Windows.Forms.Button btpatientinfofetcher;
     }
 }

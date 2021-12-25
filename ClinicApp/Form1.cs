@@ -12,6 +12,7 @@ using ClinicApp.Forms;
 
 namespace ClinicApp
 {
+    
     public partial class Form1 : Form
     {
         #region Variables

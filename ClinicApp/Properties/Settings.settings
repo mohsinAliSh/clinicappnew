@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DBString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=DESKTOP-BDU0DIE\MSSQLSERVER01;Initial Catalog=ClinicDB;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=./;Initial Catalog=ClinicDB;Trusted_Connection=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

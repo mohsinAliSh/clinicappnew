@@ -1,12 +1,39 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using ClinicApp.Model;
 
 namespace ClinicApp.BLL
 {
     public partial class DBAccess
     {
+        public DataTable GetAllPatients()
+        {
+            DataTable patientsTable = new DataTable();
+            try
+            {
+                if (!CreateConnection())
+                    return null;
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"spGet_Patients";
+                cmd.Connection = connection;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet dataSet = new DataSet();
+                da.Fill(dataSet);
+                patientsTable=dataSet.Tables[0];
+                CloseConnection();
+                if (patientsTable.Rows.Count == 0 || patientsTable == null)
+                    return null;
+                return patientsTable;
+            }catch (Exception ex)
+            {
+                return null;
+            }
+
+
+        }
 
         public DataTable GetCurrentMonthPatients(DateTime month)
         {
@@ -19,7 +46,7 @@ namespace ClinicApp.BLL
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"sp_GetCurrentMonthPatient";
-                cmd.Parameters.AddWithValue("@month", month);
+               // cmd.Parameters.AddWithValue("@month", month);
                 cmd.Connection = connection;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet dataSet = new DataSet();
@@ -44,13 +71,15 @@ namespace ClinicApp.BLL
         {
             try
             {
+                
                 if (!CreateConnection())
                     return;
+       
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"sp_AddPatientRecord";
-                cmd.Parameters.AddWithValue("@pId", patient.patientId);
+                cmd.Parameters.AddWithValue("@pID", patient.patientId);
                 cmd.Parameters.AddWithValue("@pName", patient.pName);
                 cmd.Parameters.AddWithValue("@pCnic", patient.pCnic);
                 cmd.Parameters.AddWithValue("@pAddress", patient.pAddress);
@@ -65,7 +94,7 @@ namespace ClinicApp.BLL
                 cmd.Parameters.AddWithValue("@pActive", patient.pActive);
                 cmd.Parameters.AddWithValue("@pDateCreated", patient.pCreatedDate);
                 cmd.Parameters.AddWithValue("@pModifiedDate", patient.pModiefiedDate);
-              //  cmd.Parameters.AddWithValue("@EntryDate", feeEntryModel.Date);
+           //     cmd.Parameters.AddWithValue("@EntryDate", feeEntryModel.Date);
                 cmd.Parameters.AddWithValue("@ClinicalFee", feeEntryModel.ClinicFee);
                 cmd.Parameters.AddWithValue("@KetAmount", feeEntryModel.KetAmount);
                 cmd.Parameters.AddWithValue("@DonationAmount", feeEntryModel.ZakatAmount);
@@ -75,10 +104,11 @@ namespace ClinicApp.BLL
                 cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-
+                MessageBox.Show("success"); 
             }
             catch (Exception ex) {
               Console.WriteLine(ex.Message);
+                MessageBox.Show("error!");
                     }
 
         }
