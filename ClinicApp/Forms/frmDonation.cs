@@ -36,6 +36,8 @@ namespace ClinicApp.Forms
         }
         private void frm_DonatorInfo(object sender, EventArgs e)
         {
+            double donationcredit = 0;
+            double donationdebit = 0;
             DataTable dt = db.GetDonatorInfo();
 
             if (dt == null || dt.Rows.Count == 0)
@@ -43,13 +45,30 @@ namespace ClinicApp.Forms
 
             for (int row = 0; row < dt.Rows.Count; row++)
             {
+
                 dgDonationList.Rows.Add();
                 DataRow dataRow = dt.Rows[row];
                 dgDonationList.Rows[row].Cells["DName"].Value = Convert.ToString(dataRow["DonatorName"]);
-                dgDonationList.Rows[row].Cells["DAmount"].Value = Convert.ToString(dataRow["DonationAmount"]);
+                if(Convert.ToDouble(dataRow["DonationAmount"]) > 0)
+                {
+                    dgDonationList.Rows[row].Cells["DonationCredit"].Value = Convert.ToDouble(dataRow["DonationAmount"]);
+                    dgDonationList.Rows[row].Cells["DonationDebit"].Value = "-";
+                    donationcredit += Convert.ToDouble(dataRow["DonationAmount"]);
+
+                }
+                else 
+                {
+                    dgDonationList.Rows[row].Cells["DonationDebit"].Value = -1*Convert.ToDouble(dataRow["DonationAmount"]);
+                    dgDonationList.Rows[row].Cells["DonationCredit"].Value = "-";
+                    donationdebit += -1 * Convert.ToDouble(dataRow["DonationAmount"]);
+
+                }
                 dgDonationList.Rows[row].Cells["DRemarks"].Value = Convert.ToString(dataRow["Remarks"]);
                 dgDonationList.Rows[row].Cells["DDate"].Value = Convert.ToString(dataRow["DonationDate"]);
             }
+            lblDonationCreditSum.Text ="Total Donation Credit : " + Convert.ToString(donationcredit);
+            lblDonationDebitSum.Text = "Total Donation Debit : " + Convert.ToString(donationdebit);
+
 
         }
         private void tsbClear_Click(object sender, EventArgs e)
@@ -99,7 +118,6 @@ namespace ClinicApp.Forms
             donation.DonationAmount = Convert.ToInt32(txtDonationAmount.Text);
             donation.DonationRemarks = rtDonationRemark.Text;
             donation.DonationDate = Convert.ToDateTime(dtDonationDate.Text);
-            //    donation.DonationID=Convert.ToInt32(lblDonatorID.Text);
             if (lblDonatorID.Text == "New")
             {
                 donator.DonatorID = 0;
@@ -168,5 +186,9 @@ namespace ClinicApp.Forms
             txtDonatorSearch.AutoCompleteCustomSource = autoComplete;
         }
 
+        private void txtDonationAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }

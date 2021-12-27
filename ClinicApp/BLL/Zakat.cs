@@ -5,16 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-/*
- @ZakatAmount decimal,
-@ZakatDate datetime,
-@ZakaterRemarks varchar(200),
-@ZakaterType varchar(50),
-@ZakaterName varchar(200),
-@ZakaterNic varchar(20),
-@ZakaterAddress varchar(200),
+using System.Windows.Forms;
 
-*/
 
 namespace ClinicApp.BLL
 {
@@ -29,6 +21,7 @@ namespace ClinicApp.BLL
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"spAdd_Zakat";
+                cmd.Parameters.AddWithValue("@id", zakat.Id);
                 cmd.Parameters.AddWithValue("@ZakatAmount", zakat.ZakatAmount);
                 cmd.Parameters.AddWithValue("@ZakatDate",zakat.ZakatDate);
                 cmd.Parameters.AddWithValue("@ZakaterRemarks",zakat.ZakatRemarks);
@@ -39,6 +32,7 @@ namespace ClinicApp.BLL
                 cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                MessageBox.Show("Success");
 
             }
             catch (Exception)
@@ -72,6 +66,56 @@ namespace ClinicApp.BLL
             catch (Exception) {
                 return null;
             }
+        }
+        public DataTable AllZakaters()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if (!CreateConnection())
+                    return null;
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"spGetAllZakaters";
+                cmd.Connection = connection;
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataSet set = new DataSet();
+                sda.Fill(set);
+                dt = set.Tables[0];
+                CloseConnection();
+                if (dt.Rows.Count == 0 || dt == null)
+                    dt = null;
+                return dt;
+
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public string TotalZakatEntry()
+        {
+            try
+            {
+                if (!CreateConnection())
+                    return "0";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "Select sum(ZakatAmount) from ZakatEntry";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = connection;
+                string count =Convert.ToString( (decimal)cmd.ExecuteScalar());
+                SqlDataAdapter d = new SqlDataAdapter(cmd);
+                CloseConnection();
+                return count;
+
+            }
+            catch (Exception)
+            {
+                return "0";
+
+            }
+
         }
     }
 

@@ -15,10 +15,6 @@ namespace ClinicApp.BLL
 
         public static SqlConnection connection = null;
 
-        /// <summary>
-        /// Create Connection with database
-        /// </summary>
-        /// <returns></returns>
         public bool CreateConnection()
         {
             try
@@ -43,7 +39,7 @@ namespace ClinicApp.BLL
 
                 connection.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 connection.Close();
             }

@@ -23,16 +23,13 @@ namespace ClinicApp.Forms
 
         }
         DBAccess dBAccess = new DBAccess();
-        int sum = 0;
        
 
         public void LoadKetsQuantity(object sender, EventArgs e)
         {
-            sum = 0;
             string TotalKetsAvailible = dBAccess.GetKetsData();
               
                 totalKetsLabel.Text = TotalKetsAvailible;
-           
           
         }
     
@@ -44,10 +41,11 @@ namespace ClinicApp.Forms
             LoadKetsQuantity(sender,e);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+
+        private void NewKetsLabel_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar!='-';
         }
-     
+
     }
 }

@@ -13,7 +13,6 @@ namespace ClinicApp.BLL
     {
         public void AddDonator(Model.DonatorEntryModel donator,Model.DonationEntryModel donation)
         {
-           
             try
             {
                 if (!CreateConnection())
@@ -95,5 +94,29 @@ namespace ClinicApp.BLL
                 return null;
             }
         }
+        public int TotalDonationAmount()
+        {
+            try
+            {
+                if (!CreateConnection())
+                    return 0;
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "Select SUM(DonationAmount) from DonationEntry";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = connection;
+                int count = (int)cmd.ExecuteScalar();
+                SqlDataAdapter d = new SqlDataAdapter(cmd);
+                CloseConnection();
+                return count;
+
+            }
+            catch (Exception)
+            {
+                return 0;
+
+            }
+
+        }
+
     }
 }

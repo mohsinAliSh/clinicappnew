@@ -8,6 +8,7 @@ namespace ClinicApp.Model
 {
     public class ZakatModel
     {
+        public int Id { get; set; }
         public string ZakaterName { get; set; }
         public string ZakaterNic { get; set; }
         public string ZakaterAddress { get; set; }

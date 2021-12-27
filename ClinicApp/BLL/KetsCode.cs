@@ -22,6 +22,7 @@ namespace ClinicApp.BLL
                 cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+          
             }
 
            catch (Exception e) {

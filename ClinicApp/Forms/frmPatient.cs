@@ -31,6 +31,8 @@ namespace ClinicApp.Forms
 
         private void LoadCurrentMonthPatients(DateTime date)
         {
+            double zakatamount = 0;
+            double clinicamount = 0;
             DataTable data = dBAccess.GetCurrentMonthPatients(date);
 
             if (data == null || data.Rows.Count == 0)
@@ -40,20 +42,27 @@ namespace ClinicApp.Forms
             {
                 dgPatientList.Rows.Add();
                 DataRow dataRow = data.Rows[row];
+                zakatamount +=Convert.ToDouble( dataRow["DonationAmount"]);
+                clinicamount += Convert.ToDouble(dataRow["ClinicalFee"]);
+
                 dgPatientList.Rows[row].Cells["PatientName"].Value = Convert.ToString(dataRow["PatientName"]);
                 dgPatientList.Rows[row].Cells["PatientCNIC"].Value = Convert.ToString(dataRow["PNIC"]);
                 dgPatientList.Rows[row].Cells["Gender"].Value = Convert.ToString(dataRow["PGender"]);
                 dgPatientList.Rows[row].Cells["Contact"].Value = Convert.ToString(dataRow["PContact"]);
                 dgPatientList.Rows[row].Cells["ZakatAmount"].Value = Convert.ToString(dataRow["DonationAmount"]);
                 //dgPatientList.Rows[row].Cells["DOB"].Value =Convert.ToDateTime(dataRow["PDob"]).Date;
-                dgPatientList.Rows[row].Cells["KetAmount"].Value = Convert.ToString(dataRow["KetAmount"]);
+               // dgPatientList.Rows[row].Cells["KetAmount"].Value = Convert.ToString(dataRow["KetAmount"]);
                 dgPatientList.Rows[row].Cells["ClinicFee"].Value = Convert.ToString(dataRow["ClinicalFee"]);
                 dgPatientList.Rows[row].Cells["TotalAmount"].Value = Convert.ToString(dataRow["NetFee"]);
                 dgPatientList.Rows[row].Cells["Date"].Value = Convert.ToDateTime(dataRow["EntryDate"]);
 
+
             }
 
             lblTotalPatients.Text = "Total : " + data.Rows.Count;
+           lblzakatsum.Text ="Total Zakat Amount : " +  Convert.ToString(zakatamount);
+            lblclinicsum.Text = "Total Clinic Fee : " +  Convert.ToString(clinicamount);
+
         }
         
         public void test(object sender, KeyPressEventArgs e)
@@ -140,10 +149,9 @@ namespace ClinicApp.Forms
             int kettype = 0;
             if (cmbPaymentType.Text == "Self") feetype = 1;
             else if (cmbPaymentType.Text == "Zakat") feetype = 2;
-            else if (cmbPaymentType.Text == "Self+Zakt") feetype = 3;
+            else if (cmbPaymentType.Text == "Self+Zakat") feetype = 3;
             if (cmbKet.Text == "Self") kettype = 1;
             else if (cmbKet.Text == "Clinic") kettype = 2;
-            else if (cmbKet.Text == "Zakat") kettype = 3;
             feeEntryModel.ClinicFee = Convert.ToDouble(txtClinicFee.Text);
             feeEntryModel.FeeType = feetype;
             feeEntryModel.KetType = kettype;
@@ -182,7 +190,8 @@ namespace ClinicApp.Forms
             cmbPatientMerital.ResetText();
             cmbPaymentType.ResetText();
             cmbKet.ResetText();
-        }
+            txtClinicFee.Text = "0";
+            txtZakatAmount.Text = "0";    }
 
         private void tsbClear_Click(object sender, EventArgs e)
         {
@@ -252,15 +261,6 @@ namespace ClinicApp.Forms
 
         }
 
-        bool isSearchButtonVisible = false;
-        //private void searchButton_Click(object sender, EventArgs e)
-        //{
-        //    isSearchButtonVisible = !isSearchButtonVisible;
-        //    txtpatientsearch.Visible = isSearchButtonVisible;
-        //    btpatientinfofetcher.Visible = isSearchButtonVisible;
-
-        //}
-
         private void btpatientinfofetcher_Click(object sender, EventArgs e)
         {
             
@@ -275,5 +275,75 @@ namespace ClinicApp.Forms
             }
         }
 
+        private void CalculateSum()
+        {
+            try
+            {
+                
+                txtTotalAmount.Text = Convert.ToString
+                    ((Convert.ToInt32(txtZakatAmount.Text)) + (Convert.ToInt32(txtKetAmount.Text)) + (Convert.ToInt32(txtClinicFee.Text)));
+            }
+            catch (Exception)
+            {
+                txtTotalAmount.Text = "0";
+            }
+        }
+
+        private void txtZakatAmount_TextChanged(object sender, EventArgs e)
+        {
+            CalculateSum();
+        }
+
+        private void txtClinicFee_TextChanged(object sender, EventArgs e)
+        {
+            CalculateSum();
+        }
+
+        private void txtKetAmount_TextChanged(object sender, EventArgs e)
+        {
+            CalculateSum();
+        }
+
+        private void cmbPaymentType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbPaymentType.SelectedIndex == 2)
+            {
+                txtKetAmount.Text="0";
+                txtKetAmount.ReadOnly = true;
+
+            }
+            else
+            {
+                txtKetAmount.ReadOnly = false;
+            }
+            if (cmbPaymentType.SelectedIndex == 0)
+            {
+                txtZakatAmount.Text = "0";
+                txtZakatAmount.ReadOnly = true;
+            }
+            else
+            {
+                txtZakatAmount.ReadOnly = false;
+            }
+            if(cmbPaymentType.SelectedIndex == 1)
+            {
+                txtClinicFee.Text = "0";
+                txtClinicFee.ReadOnly = true;
+            }
+            else
+            {
+                txtClinicFee.ReadOnly= false;
+            }
+        }
+
+        private void txtClinicFee_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            test(sender, e);
+        }
+
+        private void txtKetAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            test(sender, e);
+        }
     }
 }

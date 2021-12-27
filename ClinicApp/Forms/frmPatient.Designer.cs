@@ -48,7 +48,6 @@ namespace ClinicApp.Forms
             this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ZakatAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KetAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClinicFee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +57,7 @@ namespace ClinicApp.Forms
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtKetAmount = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.lblKetAmount = new System.Windows.Forms.Label();
             this.cmbKet = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
@@ -72,8 +71,6 @@ namespace ClinicApp.Forms
             this.txtClinicFee = new System.Windows.Forms.TextBox();
             this.txtZakatAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.searchButton = new System.Windows.Forms.PictureBox();
             this.btpatientinfofetcher = new System.Windows.Forms.Button();
             this.txtPatientName = new System.Windows.Forms.TextBox();
             this.txtpatientsearch = new System.Windows.Forms.TextBox();
@@ -108,6 +105,8 @@ namespace ClinicApp.Forms
             this.panel11 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.errorProviderPForm = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblzakatsum = new System.Windows.Forms.Label();
+            this.lblclinicsum = new System.Windows.Forms.Label();
             this.panelPatient.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPatientList.SuspendLayout();
@@ -118,8 +117,6 @@ namespace ClinicApp.Forms
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.searchButton)).BeginInit();
             this.toolStrip2.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPForm)).BeginInit();
@@ -257,7 +254,6 @@ namespace ClinicApp.Forms
             this.Gender,
             this.Contact,
             this.ZakatAmount,
-            this.KetAmount,
             this.ClinicFee,
             this.TotalAmount,
             this.Date});
@@ -299,12 +295,6 @@ namespace ClinicApp.Forms
             this.ZakatAmount.Name = "ZakatAmount";
             this.ZakatAmount.ReadOnly = true;
             // 
-            // KetAmount
-            // 
-            this.KetAmount.HeaderText = "Ket Amount";
-            this.KetAmount.Name = "KetAmount";
-            this.KetAmount.ReadOnly = true;
-            // 
             // ClinicFee
             // 
             this.ClinicFee.HeaderText = "Clinic Fee";
@@ -325,6 +315,8 @@ namespace ClinicApp.Forms
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.lblclinicsum);
+            this.panel12.Controls.Add(this.lblzakatsum);
             this.panel12.Controls.Add(this.lblTotalPatients);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel12.Location = new System.Drawing.Point(3, 355);
@@ -370,7 +362,7 @@ namespace ClinicApp.Forms
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtKetAmount);
-            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.lblKetAmount);
             this.groupBox2.Controls.Add(this.cmbKet);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.txtTotalAmount);
@@ -402,24 +394,27 @@ namespace ClinicApp.Forms
             this.txtKetAmount.Size = new System.Drawing.Size(107, 23);
             this.txtKetAmount.TabIndex = 51;
             this.txtKetAmount.Text = "0";
+            this.txtKetAmount.Visible = false;
+            this.txtKetAmount.TextChanged += new System.EventHandler(this.txtKetAmount_TextChanged);
+            this.txtKetAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKetAmount_KeyPress);
             // 
-            // label17
+            // lblKetAmount
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(318, 87);
-            this.label17.Name = "label17";
-            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label17.Size = new System.Drawing.Size(89, 17);
-            this.label17.TabIndex = 50;
-            this.label17.Text = ": Ket Amount";
+            this.lblKetAmount.AutoSize = true;
+            this.lblKetAmount.Location = new System.Drawing.Point(318, 87);
+            this.lblKetAmount.Name = "lblKetAmount";
+            this.lblKetAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblKetAmount.Size = new System.Drawing.Size(89, 17);
+            this.lblKetAmount.TabIndex = 50;
+            this.lblKetAmount.Text = ": Ket Amount";
+            this.lblKetAmount.Visible = false;
             // 
             // cmbKet
             // 
             this.cmbKet.FormattingEnabled = true;
             this.cmbKet.Items.AddRange(new object[] {
             "Self",
-            "Clinic",
-            "Zakat"});
+            "Clinic"});
             this.cmbKet.Location = new System.Drawing.Point(413, 33);
             this.cmbKet.Name = "cmbKet";
             this.cmbKet.Size = new System.Drawing.Size(107, 24);
@@ -437,10 +432,12 @@ namespace ClinicApp.Forms
             // 
             // txtTotalAmount
             // 
-            this.txtTotalAmount.Location = new System.Drawing.Point(413, 109);
+            this.txtTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalAmount.Location = new System.Drawing.Point(413, 88);
             this.txtTotalAmount.MaxLength = 49;
             this.txtTotalAmount.Name = "txtTotalAmount";
-            this.txtTotalAmount.Size = new System.Drawing.Size(107, 23);
+            this.txtTotalAmount.ReadOnly = true;
+            this.txtTotalAmount.Size = new System.Drawing.Size(107, 26);
             this.txtTotalAmount.TabIndex = 47;
             this.txtTotalAmount.Text = "0";
             // 
@@ -465,6 +462,7 @@ namespace ClinicApp.Forms
             this.cmbPaymentType.Name = "cmbPaymentType";
             this.cmbPaymentType.Size = new System.Drawing.Size(107, 24);
             this.cmbPaymentType.TabIndex = 40;
+            this.cmbPaymentType.SelectedIndexChanged += new System.EventHandler(this.cmbPaymentType_SelectedIndexChanged);
             // 
             // dtFeeDate
             // 
@@ -477,10 +475,11 @@ namespace ClinicApp.Forms
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(318, 112);
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(328, 90);
             this.label22.Name = "label22";
             this.label22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label22.Size = new System.Drawing.Size(48, 17);
+            this.label22.Size = new System.Drawing.Size(59, 20);
             this.label22.TabIndex = 38;
             this.label22.Text = ": Total";
             // 
@@ -522,6 +521,8 @@ namespace ClinicApp.Forms
             this.txtClinicFee.Size = new System.Drawing.Size(107, 23);
             this.txtClinicFee.TabIndex = 31;
             this.txtClinicFee.Text = "0";
+            this.txtClinicFee.TextChanged += new System.EventHandler(this.txtClinicFee_TextChanged);
+            this.txtClinicFee.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClinicFee_KeyPress);
             // 
             // txtZakatAmount
             // 
@@ -530,11 +531,11 @@ namespace ClinicApp.Forms
             this.txtZakatAmount.Size = new System.Drawing.Size(107, 23);
             this.txtZakatAmount.TabIndex = 29;
             this.txtZakatAmount.Text = "0";
+            this.txtZakatAmount.TextChanged += new System.EventHandler(this.txtZakatAmount_TextChanged);
             this.txtZakatAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonationAmount_KeyPress);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Controls.Add(this.btpatientinfofetcher);
             this.groupBox1.Controls.Add(this.txtPatientName);
             this.groupBox1.Controls.Add(this.txtpatientsearch);
@@ -571,26 +572,6 @@ namespace ClinicApp.Forms
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient Personal Information";
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.searchButton);
-            this.panel3.Location = new System.Drawing.Point(419, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(36, 23);
-            this.panel3.TabIndex = 29;
-            // 
-            // searchButton
-            // 
-            this.searchButton.BackgroundImage = global::ClinicApp.Properties.Resources.serachPatient;
-            this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.searchButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchButton.Location = new System.Drawing.Point(0, 0);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(36, 23);
-            this.searchButton.TabIndex = 4;
-            this.searchButton.TabStop = false;
-         //   this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // btpatientinfofetcher
             // 
@@ -933,6 +914,26 @@ namespace ClinicApp.Forms
             this.errorProviderPForm.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderPForm.ContainerControl = this;
             // 
+            // lblzakatsum
+            // 
+            this.lblzakatsum.AutoSize = true;
+            this.lblzakatsum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblzakatsum.Location = new System.Drawing.Point(344, 9);
+            this.lblzakatsum.Name = "lblzakatsum";
+            this.lblzakatsum.Size = new System.Drawing.Size(55, 15);
+            this.lblzakatsum.TabIndex = 3;
+            this.lblzakatsum.Text = "label11";
+            // 
+            // lblclinicsum
+            // 
+            this.lblclinicsum.AutoSize = true;
+            this.lblclinicsum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblclinicsum.Location = new System.Drawing.Point(665, 9);
+            this.lblclinicsum.Name = "lblclinicsum";
+            this.lblclinicsum.Size = new System.Drawing.Size(55, 15);
+            this.lblclinicsum.TabIndex = 4;
+            this.lblclinicsum.Text = "label17";
+            // 
             // frmPatient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -957,8 +958,6 @@ namespace ClinicApp.Forms
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.searchButton)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.panel11.ResumeLayout(false);
@@ -985,7 +984,7 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtKetAmount;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lblKetAmount;
         private System.Windows.Forms.ComboBox cmbKet;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtTotalAmount;
@@ -1032,20 +1031,19 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.DateTimePicker dtEndDate;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dtStartDate;
+        private System.Windows.Forms.TextBox txtpatientsearch;
+        private System.Windows.Forms.ErrorProvider errorProviderPForm;
+        private System.Windows.Forms.TextBox txtPatientName;
+        private System.Windows.Forms.Button btpatientinfofetcher;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientCNIC;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZakatAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KetAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClinicFee;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.TextBox txtpatientsearch;
-        private System.Windows.Forms.ErrorProvider errorProviderPForm;
-        private System.Windows.Forms.TextBox txtPatientName;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox searchButton;
-        private System.Windows.Forms.Button btpatientinfofetcher;
+        private System.Windows.Forms.Label lblclinicsum;
+        private System.Windows.Forms.Label lblzakatsum;
     }
 }

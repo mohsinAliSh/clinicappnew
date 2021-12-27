@@ -1,7 +1,8 @@
-﻿using System;
+﻿using ClinicApp.Forms;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Windows.Forms;
 
 namespace ClinicApp.BLL
 {
@@ -50,13 +51,23 @@ namespace ClinicApp.BLL
                 cmd.Parameters.AddWithValue("@eCategory", expanse.expanseCatagory);
                 cmd.Parameters.AddWithValue("@eDascription", expanse.expanseDiscription);
                 cmd.Parameters.AddWithValue("@eAmount", expanse.expanseAmount);
-                cmd.Parameters.AddWithValue("@eDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("@eDate", expanse.expanseDate);
+                cmd.Parameters.AddWithValue("@eExpenseFrom", expanse.expenseFrom);
                 cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DialogResult rt = MessageBox.Show("Success", "",MessageBoxButtons.OK);
+                if (rt == DialogResult.OK)
+                {
+                    Form1.formExpense.Dispose();
+                    Form1.formExpense = new frmExpense();
+                    Form1.formExpense.Show();
+                }
 
             }
-            catch (Exception) { }
+            catch (Exception) {
+                MessageBox.Show("error");
+            }
 
         }
 

@@ -13,5 +13,6 @@ namespace ClinicApp.Model
         public string expanseDiscription { get; set; }
         public double expanseAmount { get; set; }
         public DateTime expanseDate { get; set; }
+        public int expenseFrom { get; set; }
     }
 }

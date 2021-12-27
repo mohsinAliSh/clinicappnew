@@ -22,12 +22,13 @@ namespace ClinicApp.BLL
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet dataSet = new DataSet();
                 da.Fill(dataSet);
-                patientsTable=dataSet.Tables[0];
+                patientsTable = dataSet.Tables[0];
                 CloseConnection();
                 if (patientsTable.Rows.Count == 0 || patientsTable == null)
                     return null;
                 return patientsTable;
-            }catch (Exception ex)
+            }
+            catch (Exception)
             {
                 return null;
             }
@@ -46,7 +47,7 @@ namespace ClinicApp.BLL
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"sp_GetCurrentMonthPatient";
-               // cmd.Parameters.AddWithValue("@month", month);
+                cmd.Parameters.AddWithValue("@month", month);
                 cmd.Connection = connection;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet dataSet = new DataSet();
@@ -59,6 +60,7 @@ namespace ClinicApp.BLL
                     table = null;
 
                 return table;
+
             }
             catch (Exception)
             {
@@ -67,14 +69,14 @@ namespace ClinicApp.BLL
         }
 
 
-        public void AddPatientData(PatientModel patient,FeeEntryModel feeEntryModel)
+        public void AddPatientData(PatientModel patient, FeeEntryModel feeEntryModel)
         {
             try
             {
-                
+
                 if (!CreateConnection())
                     return;
-       
+
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -94,7 +96,7 @@ namespace ClinicApp.BLL
                 cmd.Parameters.AddWithValue("@pActive", patient.pActive);
                 cmd.Parameters.AddWithValue("@pDateCreated", patient.pCreatedDate);
                 cmd.Parameters.AddWithValue("@pModifiedDate", patient.pModiefiedDate);
-           //     cmd.Parameters.AddWithValue("@EntryDate", feeEntryModel.Date);
+                cmd.Parameters.AddWithValue("@FeeEntryDate", feeEntryModel.Date);
                 cmd.Parameters.AddWithValue("@ClinicalFee", feeEntryModel.ClinicFee);
                 cmd.Parameters.AddWithValue("@KetAmount", feeEntryModel.KetAmount);
                 cmd.Parameters.AddWithValue("@DonationAmount", feeEntryModel.ZakatAmount);
@@ -104,29 +106,84 @@ namespace ClinicApp.BLL
                 cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                MessageBox.Show("success"); 
+             
+                MessageBox.Show("success");
             }
-            catch (Exception ex) {
-              Console.WriteLine(ex.Message);
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 MessageBox.Show("error!");
-                    }
+            }
 
         }
-        //public void AddFeeEntry(FeeEntryModel feeEntryModel) {
-        //    try {
-        //        if (!CreateConnection())
-        //            return;
-        //        SqlCommand cmd = new SqlCommand();
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.CommandText = @"spAddPatientFee";
+        public int TotalPatientsRegistered()
+        {
+            try
+            {
+                if (!CreateConnection())
+                    return 0;
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "Select Count(ID) from Patient";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = connection;
+                int count = (int)cmd.ExecuteScalar();
+                SqlDataAdapter d = new SqlDataAdapter(cmd);
+                CloseConnection();
+                return count;
 
-        //        cmd.Connection = connection;
-        //        int result = cmd.ExecuteNonQuery();
-        //        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            }
+            catch (Exception)
+            {
+                return 0;
 
-        //    }
-        //    catch(Exception ex) { }
-        //}
+            }
 
+        }
+        public string TotalPatientSessions()
+        {
+            try
+            {
+                if (!CreateConnection())
+                    return "0";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "Select Count(ID) from PatientFeeEntry";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = connection;
+                string count = Convert.ToString((int)cmd.ExecuteScalar());
+                SqlDataAdapter d = new SqlDataAdapter(cmd);
+                CloseConnection();
+                return count;
+
+            }
+            catch (Exception)
+            {
+                return "0";
+
+            }
+
+        }
+        public string TotalClinicFund()
+        {
+            try
+            {
+                if (!CreateConnection())
+                    return "0";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "Select sum(clinicFundAmount) from ClinicFund";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = connection;
+                string sum = Convert.ToString((decimal)cmd.ExecuteScalar());
+                SqlDataAdapter d = new SqlDataAdapter(cmd);
+                CloseConnection();
+                return sum;
+            }
+            catch (Exception)
+            {
+                return "0";
+
+            }
+
+
+        }
     }
 }

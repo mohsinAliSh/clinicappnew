@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmZakat));
             this.panel11 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -42,10 +43,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgZakatList = new System.Windows.Forms.DataGridView();
-            this.ZakaterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.ZakatEntry = new System.Windows.Forms.TabPage();
@@ -60,9 +57,9 @@
             this.label26 = new System.Windows.Forms.Label();
             this.txtZakatAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnZakaterFetch = new System.Windows.Forms.Button();
+            this.txtZakaterSearch = new System.Windows.Forms.TextBox();
             this.txtZakaterName = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rtZakaterAddress = new System.Windows.Forms.RichTextBox();
             this.lblZakaterID = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -75,6 +72,14 @@
             this.tsbCancel = new System.Windows.Forms.ToolStripButton();
             this.tsbClear = new System.Windows.Forms.ToolStripButton();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
+            this.errorProviderZakat = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ZakaterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totallbldgzakatdebit = new System.Windows.Forms.Label();
+            this.lbldgzakatcredit = new System.Windows.Forms.Label();
             this.panel11.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.zakaterEntry.SuspendLayout();
@@ -85,9 +90,8 @@
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderZakat)).BeginInit();
             this.SuspendLayout();
             // 
             // panel11
@@ -229,7 +233,8 @@
             this.dgZakatList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgZakatList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ZakaterName,
-            this.ZakatAmount,
+            this.ZakatCredit,
+            this.ZakatDebit,
             this.ZakatRemarks,
             this.ZakatDate});
             this.dgZakatList.Location = new System.Drawing.Point(3, 43);
@@ -240,32 +245,10 @@
             this.dgZakatList.Size = new System.Drawing.Size(632, 338);
             this.dgZakatList.TabIndex = 4;
             // 
-            // ZakaterName
-            // 
-            this.ZakaterName.HeaderText = "Name";
-            this.ZakaterName.Name = "ZakaterName";
-            this.ZakaterName.ReadOnly = true;
-            // 
-            // ZakatAmount
-            // 
-            this.ZakatAmount.HeaderText = "Zakat Amount";
-            this.ZakatAmount.Name = "ZakatAmount";
-            this.ZakatAmount.ReadOnly = true;
-            // 
-            // ZakatRemarks
-            // 
-            this.ZakatRemarks.HeaderText = "Zakat Remarks";
-            this.ZakatRemarks.Name = "ZakatRemarks";
-            this.ZakatRemarks.ReadOnly = true;
-            // 
-            // ZakatDate
-            // 
-            this.ZakatDate.HeaderText = "Date";
-            this.ZakatDate.Name = "ZakatDate";
-            this.ZakatDate.ReadOnly = true;
-            // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.lbldgzakatcredit);
+            this.panel12.Controls.Add(this.totallbldgzakatdebit);
             this.panel12.Controls.Add(this.label11);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel12.Location = new System.Drawing.Point(3, 378);
@@ -279,7 +262,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 16);
+            this.label11.Location = new System.Drawing.Point(9, 16);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 15);
             this.label11.TabIndex = 2;
@@ -407,10 +390,13 @@
             this.txtZakatAmount.Size = new System.Drawing.Size(209, 23);
             this.txtZakatAmount.TabIndex = 29;
             this.txtZakatAmount.Text = "0";
+            this.txtZakatAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtZakatAmount_KeyPress);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Controls.Add(this.btnZakaterFetch);
+            this.groupBox1.Controls.Add(this.txtZakaterSearch);
+            this.groupBox1.Controls.Add(this.txtZakaterName);
             this.groupBox1.Controls.Add(this.rtZakaterAddress);
             this.groupBox1.Controls.Add(this.lblZakaterID);
             this.groupBox1.Controls.Add(this.label15);
@@ -429,38 +415,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Zakater Personal Information";
             // 
-            // tableLayoutPanel1
+            // btnZakaterFetch
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.25806F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.74194F));
-            this.tableLayoutPanel1.Controls.Add(this.txtZakaterName, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(129, 41);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(217, 27);
-            this.tableLayoutPanel1.TabIndex = 27;
+            this.btnZakaterFetch.Location = new System.Drawing.Point(319, 0);
+            this.btnZakaterFetch.Name = "btnZakaterFetch";
+            this.btnZakaterFetch.Size = new System.Drawing.Size(75, 23);
+            this.btnZakaterFetch.TabIndex = 28;
+            this.btnZakaterFetch.Text = "Fetch";
+            this.btnZakaterFetch.UseVisualStyleBackColor = true;
+            this.btnZakaterFetch.Click += new System.EventHandler(this.btnZakaterFetch_Click);
+            // 
+            // txtZakaterSearch
+            // 
+            this.txtZakaterSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtZakaterSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtZakaterSearch.Location = new System.Drawing.Point(187, 0);
+            this.txtZakaterSearch.MaxLength = 99;
+            this.txtZakaterSearch.Name = "txtZakaterSearch";
+            this.txtZakaterSearch.Size = new System.Drawing.Size(113, 23);
+            this.txtZakaterSearch.TabIndex = 27;
+            this.txtZakaterSearch.TextChanged += new System.EventHandler(this.txtZakaterSearch_TextChanged);
             // 
             // txtZakaterName
             // 
-            this.txtZakaterName.Location = new System.Drawing.Point(3, 3);
+            this.txtZakaterName.Location = new System.Drawing.Point(128, 44);
             this.txtZakaterName.MaxLength = 99;
             this.txtZakaterName.Name = "txtZakaterName";
             this.txtZakaterName.Size = new System.Drawing.Size(172, 23);
             this.txtZakaterName.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::ClinicApp.Properties.Resources.serachPatient;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(181, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(33, 21);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // rtZakaterAddress
             // 
@@ -582,6 +564,7 @@
             this.tsbClear.Name = "tsbClear";
             this.tsbClear.Size = new System.Drawing.Size(43, 60);
             this.tsbClear.Text = "Clear";
+            this.tsbClear.Click += new System.EventHandler(this.tsbClear_Click);
             // 
             // tsbRefresh
             // 
@@ -597,6 +580,65 @@
             this.tsbRefresh.ToolTipText = "Refresh";
             this.tsbRefresh.Visible = false;
             // 
+            // errorProviderZakat
+            // 
+            this.errorProviderZakat.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderZakat.ContainerControl = this;
+            // 
+            // ZakaterName
+            // 
+            this.ZakaterName.HeaderText = "Name";
+            this.ZakaterName.Name = "ZakaterName";
+            this.ZakaterName.ReadOnly = true;
+            // 
+            // ZakatCredit
+            // 
+            this.ZakatCredit.HeaderText = "Zakat Credit";
+            this.ZakatCredit.Name = "ZakatCredit";
+            this.ZakatCredit.ReadOnly = true;
+            // 
+            // ZakatDebit
+            // 
+            this.ZakatDebit.HeaderText = "Zakat Debit";
+            this.ZakatDebit.Name = "ZakatDebit";
+            this.ZakatDebit.ReadOnly = true;
+            // 
+            // ZakatRemarks
+            // 
+            this.ZakatRemarks.HeaderText = "Zakat Remarks";
+            this.ZakatRemarks.Name = "ZakatRemarks";
+            this.ZakatRemarks.ReadOnly = true;
+            // 
+            // ZakatDate
+            // 
+            this.ZakatDate.HeaderText = "Date";
+            this.ZakatDate.Name = "ZakatDate";
+            this.ZakatDate.ReadOnly = true;
+            // 
+            // totallbldgzakatdebit
+            // 
+            this.totallbldgzakatdebit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.totallbldgzakatdebit.AutoSize = true;
+            this.totallbldgzakatdebit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totallbldgzakatdebit.Location = new System.Drawing.Point(373, 16);
+            this.totallbldgzakatdebit.Name = "totallbldgzakatdebit";
+            this.totallbldgzakatdebit.Size = new System.Drawing.Size(75, 15);
+            this.totallbldgzakatdebit.TabIndex = 3;
+            this.totallbldgzakatdebit.Text = "Total : 100";
+            // 
+            // lbldgzakatcredit
+            // 
+            this.lbldgzakatcredit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbldgzakatcredit.AutoSize = true;
+            this.lbldgzakatcredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldgzakatcredit.Location = new System.Drawing.Point(169, 16);
+            this.lbldgzakatcredit.Name = "lbldgzakatcredit";
+            this.lbldgzakatcredit.Size = new System.Drawing.Size(75, 15);
+            this.lbldgzakatcredit.TabIndex = 4;
+            this.lbldgzakatcredit.Text = "Total : 100";
+            // 
             // frmZakat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -605,6 +647,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel11);
             this.Name = "frmZakat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmZakat";
             this.Load += new System.EventHandler(this.frm_ZakatInfo);
             this.panel11.ResumeLayout(false);
@@ -622,11 +665,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderZakat)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -660,9 +701,6 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox txtZakatAmount;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox txtZakaterName;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox rtZakaterAddress;
         private System.Windows.Forms.Label lblZakaterID;
         private System.Windows.Forms.Label label15;
@@ -675,9 +713,16 @@
         private System.Windows.Forms.ToolStripButton tsbCancel;
         private System.Windows.Forms.ToolStripButton tsbClear;
         private System.Windows.Forms.ToolStripButton tsbRefresh;
+        private System.Windows.Forms.Button btnZakaterFetch;
+        private System.Windows.Forms.TextBox txtZakaterSearch;
+        private System.Windows.Forms.TextBox txtZakaterName;
+        private System.Windows.Forms.ErrorProvider errorProviderZakat;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZakaterName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatCredit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatDebit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZakatRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn ZakatDate;
+        private System.Windows.Forms.Label lbldgzakatcredit;
+        private System.Windows.Forms.Label totallbldgzakatdebit;
     }
 }

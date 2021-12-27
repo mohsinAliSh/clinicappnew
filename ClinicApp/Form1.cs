@@ -20,20 +20,34 @@ namespace ClinicApp
        public static frmPatient formPatient;
        public static frmDonation formDonation;
        public static frmExpense formExpense;
-        public static KetForm ketform;
-        public static KetForm kf;
-        public static frmZakat formZakat;
+       public static KetForm ketform;
+       public static KetForm kf;
+       public static frmZakat formZakat;
+       public static frmTransferFunds frmtransferfunds;
+
+
 
         #endregion
         public Form1()
         {
             InitializeComponent();
+            displayData();
             
          }
 
         DBAccess db = new DBAccess();
 
-        
+        private void displayData()
+        {
+            lblDonationAmount.Text ="Rs : " + Convert.ToString(db.TotalDonationAmount());
+            lblTotalDialysisSessions.Text = db.TotalPatientSessions();
+            lblTotalPatients.Text =Convert.ToString( db.TotalPatientsRegistered());
+            lblZakatAmount.Text="Rs : " + db.TotalZakatEntry();
+            totalKitsNumberDisplayLabel.Text = db.GetKetsData();
+            lblClinicFundAmount.Text = "Rs : " + db.TotalClinicFund();
+
+          
+        }
         
         private void btnPatientView_Click(object sender, EventArgs e)
         {
@@ -44,10 +58,6 @@ namespace ClinicApp
             }
             formPatient.Show();
               formPatient.BringToFront();
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -83,10 +93,6 @@ namespace ClinicApp
 
         }
 
-       void totalkits(object sender, EventArgs e)
-        {
-            totalKitsNumberDisplayLabel.Text = db.GetKetsData();
-        }
         private void Zakat_Click(object sender, EventArgs e)
         {
             if(formZakat==null|| formZakat.IsDisposed)
@@ -98,6 +104,23 @@ namespace ClinicApp
             formZakat.BringToFront();
 
         }
+
+        private void btnTransferFund_Click(object sender, EventArgs e)
+        {
+            if (frmtransferfunds == null || frmtransferfunds.IsDisposed)
+            {
+                frmtransferfunds = new frmTransferFunds();
+                frmtransferfunds.Show();
+            }
+            frmtransferfunds.Show();
+            frmtransferfunds.BringToFront();
+        }
+
+        private void btnDashboardView_Click(object sender, EventArgs e)
+        {
+            displayData();
+        }
+
     }
     
 }

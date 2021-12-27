@@ -20,20 +20,7 @@ namespace ClinicApp.Forms
         }
         DBAccess dBAccess = new DBAccess();
 
-        private void label9_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void txtExpenseAmount_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            
-        }
         private void frm_expensedata(object sender, EventArgs e)
         {
             DataTable dt = dBAccess.GetExpenseData();
@@ -43,31 +30,104 @@ namespace ClinicApp.Forms
 
             for (int row = 0; row < dt.Rows.Count; row++)
             {
+                List<string> expenseFrom=new List<string>();
                 dgExpenseList.Rows.Add();
                 DataRow dataRow = dt.Rows[row];
-                dgExpenseList.Rows[row].Cells["ExpenseId"].Value = Convert.ToString(dataRow["ID"]);
                 dgExpenseList.Rows[row].Cells["ExpenseAmount"].Value = Convert.ToString(dataRow["ExpenseAmount"]);
                 dgExpenseList.Rows[row].Cells["ExpenseCategory"].Value = Convert.ToString(dataRow["ExpenseCategory"]);
                 dgExpenseList.Rows[row].Cells["ExpenseDescription"].Value = Convert.ToString(dataRow["ExpenseDescription"]);
                 dgExpenseList.Rows[row].Cells["ExpenseDate"].Value = Convert.ToString(dataRow["ExpenseDate"]);
-                //dgDonationList.Rows[row].Cells["DDate"].Value = Convert.ToString(dataRow["DataModified"]);
+                dgExpenseList.Rows[row].Cells["ExpenseFrom"].Value = Convert.ToString(dataRow["ExpenseFrom"]);
             }
 
         }
 
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            ExpenseEntryModel expense = new ExpenseEntryModel();
-            expense.expanseAmount = double.Parse(txtExpenseAmount.Text);
-            expense.expanseCatagory = cmbExpenseCategory.Text;
-            expense.expanseDiscription = rtExpenseDescription.Text;
-            dBAccess.AddExpanse(expense);
+            if (CoustomValidating())
+            {
+                MessageBox.Show("Enter Data!");
+            }
+            else
+            {
+                int expenseFromID=0;
+                ExpenseEntryModel expense = new ExpenseEntryModel();
+                expense.expanseAmount = double.Parse(txtExpenseAmount.Text);
+                expense.expanseCatagory = cmbExpenseCategory.Text;
+                expense.expanseDiscription = rtExpenseDescription.Text;
+                expense.expanseDate =Convert.ToDateTime(dateTimePicker1.Text);
+                if(cmbExpenseFrom.Text=="Clinic Fund")
+                {
+                    expenseFromID = 1;
+                }
+                if(cmbExpenseFrom.Text=="Donation Fund")
+                {
+                    expenseFromID = 2;
+                }
+                expense.expenseFrom = expenseFromID;
+                dBAccess.AddExpanse(expense);
+                AssignDefaultValues();
+            }
         }
-      
+        private bool CoustomValidating()
+        {
+            int i = 0;
+
+            if (string.IsNullOrWhiteSpace(cmbExpenseCategory.Text))
+            {
+                errorProviderExpense.SetError(cmbExpenseCategory, "please fill required field");
+                i++;
+            }
+            if (string.IsNullOrWhiteSpace(cmbExpenseFrom.Text))
+            {
+                errorProviderExpense.SetError(cmbExpenseFrom, "please fill required field");
+                i++;
+            }
+            if (string.IsNullOrWhiteSpace(txtExpenseAmount.Text) || txtExpenseAmount.Text == "0")
+            {
+                errorProviderExpense.SetError(txtExpenseAmount, "please fill required field");
+                i++;
+
+            }
+            {
+
+
+            }
+            if (i > 0)
+            {
+                return true;
+            }
+            return false;
+
+        }
+
+        private void txtExpenseAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+        private void AssignDefaultValues()
+        {
+            txtExpenseAmount.Clear();
+            cmbExpenseCategory.ResetText();
+            cmbExpenseFrom.ResetText();
+            rtExpenseDescription.Clear();
+        }
+        
+        private void tabClick()
+        {
+
+           Form1.formExpense.Dispose();
+                Form1.formExpense = new frmExpense();
+                Form1.formExpense.Show();
+            
+       //     Form1.formExpense.BringToFront();
+        }
+
+        private void tsbClear_Click(object sender, EventArgs e)
+        {
+            AssignDefaultValues
+                ();
+        }
     }
 }

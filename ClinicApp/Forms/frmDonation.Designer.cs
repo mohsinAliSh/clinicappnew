@@ -35,17 +35,9 @@ namespace ClinicApp.Forms
             this.tabPatientList = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDashFilter = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgDonationList = new System.Windows.Forms.DataGridView();
-            this.DName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.tabAddDonation = new System.Windows.Forms.TabPage();
@@ -60,6 +52,8 @@ namespace ClinicApp.Forms
             this.label26 = new System.Windows.Forms.Label();
             this.txtDonationAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDonatorFetch = new System.Windows.Forms.Button();
+            this.txtDonatorSearch = new System.Windows.Forms.TextBox();
             this.txtDonator = new System.Windows.Forms.TextBox();
             this.rtDonatorAddress = new System.Windows.Forms.RichTextBox();
             this.lblDonatorID = new System.Windows.Forms.Label();
@@ -69,10 +63,6 @@ namespace ClinicApp.Forms
             this.label10 = new System.Windows.Forms.Label();
             this.txtDonatorNic = new System.Windows.Forms.TextBox();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.btnSave = new System.Windows.Forms.ToolStripButton();
-            this.tsbCancel = new System.Windows.Forms.ToolStripButton();
-            this.tsbClear = new System.Windows.Forms.ToolStripButton();
-            this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             this.panelPatient = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -84,9 +74,18 @@ namespace ClinicApp.Forms
             this.PatientCNIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDonatorSearch = new System.Windows.Forms.TextBox();
-            this.btnDonatorFetch = new System.Windows.Forms.Button();
             this.errorProviderDonation = new System.Windows.Forms.ErrorProvider(this.components);
+            this.DName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonationCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonationDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancel = new System.Windows.Forms.ToolStripButton();
+            this.tsbClear = new System.Windows.Forms.ToolStripButton();
+            this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
+            this.lblDonationCreditSum = new System.Windows.Forms.Label();
+            this.lblDonationDebitSum = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPatientList.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -131,12 +130,8 @@ namespace ClinicApp.Forms
             // panel1
             // 
             this.panel1.Controls.Add(this.btnDashFilter);
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.dtEndDate);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.dtStartDate);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -146,30 +141,12 @@ namespace ClinicApp.Forms
             // btnDashFilter
             // 
             this.btnDashFilter.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDashFilter.Location = new System.Drawing.Point(413, 6);
+            this.btnDashFilter.Location = new System.Drawing.Point(192, 7);
             this.btnDashFilter.Name = "btnDashFilter";
             this.btnDashFilter.Size = new System.Drawing.Size(82, 24);
             this.btnDashFilter.TabIndex = 9;
             this.btnDashFilter.Text = "Filter";
             this.btnDashFilter.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(213, 9);
-            this.label18.Name = "label18";
-            this.label18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label18.Size = new System.Drawing.Size(75, 17);
-            this.label18.TabIndex = 8;
-            this.label18.Text = ": End Date";
-            // 
-            // dtEndDate
-            // 
-            this.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtEndDate.Location = new System.Drawing.Point(292, 6);
-            this.dtEndDate.Name = "dtEndDate";
-            this.dtEndDate.Size = new System.Drawing.Size(118, 23);
-            this.dtEndDate.TabIndex = 7;
             // 
             // label19
             // 
@@ -177,38 +154,17 @@ namespace ClinicApp.Forms
             this.label19.Location = new System.Drawing.Point(7, 9);
             this.label19.Name = "label19";
             this.label19.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label19.Size = new System.Drawing.Size(80, 17);
+            this.label19.Size = new System.Drawing.Size(55, 17);
             this.label19.TabIndex = 6;
-            this.label19.Text = ": Start Date";
+            this.label19.Text = ": Month";
             // 
             // dtStartDate
             // 
             this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtStartDate.Location = new System.Drawing.Point(91, 6);
+            this.dtStartDate.Location = new System.Drawing.Point(68, 7);
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.Size = new System.Drawing.Size(118, 23);
             this.dtStartDate.TabIndex = 5;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(479, 8);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 21);
-            this.textBox2.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(424, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Search ";
             // 
             // dgDonationList
             // 
@@ -220,7 +176,8 @@ namespace ClinicApp.Forms
             this.dgDonationList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgDonationList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DName,
-            this.DAmount,
+            this.DonationCredit,
+            this.DonationDebit,
             this.DRemarks,
             this.DDate});
             this.dgDonationList.Location = new System.Drawing.Point(3, 43);
@@ -231,32 +188,10 @@ namespace ClinicApp.Forms
             this.dgDonationList.Size = new System.Drawing.Size(632, 338);
             this.dgDonationList.TabIndex = 4;
             // 
-            // DName
-            // 
-            this.DName.HeaderText = "Name";
-            this.DName.Name = "DName";
-            this.DName.ReadOnly = true;
-            // 
-            // DAmount
-            // 
-            this.DAmount.HeaderText = "Donation Amount";
-            this.DAmount.Name = "DAmount";
-            this.DAmount.ReadOnly = true;
-            // 
-            // DRemarks
-            // 
-            this.DRemarks.HeaderText = "Remarks";
-            this.DRemarks.Name = "DRemarks";
-            this.DRemarks.ReadOnly = true;
-            // 
-            // DDate
-            // 
-            this.DDate.HeaderText = "Donation Date";
-            this.DDate.Name = "DDate";
-            this.DDate.ReadOnly = true;
-            // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.lblDonationDebitSum);
+            this.panel12.Controls.Add(this.lblDonationCreditSum);
             this.panel12.Controls.Add(this.label11);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel12.Location = new System.Drawing.Point(3, 378);
@@ -397,6 +332,7 @@ namespace ClinicApp.Forms
             this.txtDonationAmount.Size = new System.Drawing.Size(209, 23);
             this.txtDonationAmount.TabIndex = 29;
             this.txtDonationAmount.Text = "0";
+            this.txtDonationAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonationAmount_KeyPress);
             // 
             // groupBox1
             // 
@@ -420,6 +356,27 @@ namespace ClinicApp.Forms
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Donator Personal Information";
+            // 
+            // btnDonatorFetch
+            // 
+            this.btnDonatorFetch.Location = new System.Drawing.Point(398, 0);
+            this.btnDonatorFetch.Name = "btnDonatorFetch";
+            this.btnDonatorFetch.Size = new System.Drawing.Size(75, 23);
+            this.btnDonatorFetch.TabIndex = 29;
+            this.btnDonatorFetch.Text = "Fetch";
+            this.btnDonatorFetch.UseVisualStyleBackColor = true;
+            this.btnDonatorFetch.Click += new System.EventHandler(this.btnDonatorFetch_Click);
+            // 
+            // txtDonatorSearch
+            // 
+            this.txtDonatorSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtDonatorSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtDonatorSearch.Location = new System.Drawing.Point(198, 0);
+            this.txtDonatorSearch.MaxLength = 99;
+            this.txtDonatorSearch.Name = "txtDonatorSearch";
+            this.txtDonatorSearch.Size = new System.Drawing.Size(172, 23);
+            this.txtDonatorSearch.TabIndex = 28;
+            this.txtDonatorSearch.TextChanged += new System.EventHandler(this.txtDonatorSearch_TextChanged);
             // 
             // txtDonator
             // 
@@ -512,59 +469,6 @@ namespace ClinicApp.Forms
             this.toolStrip2.TabIndex = 260;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // btnSave
-            // 
-            this.btnSave.AutoSize = false;
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnSave.ImageTransparentColor = System.Drawing.Color.Fuchsia;
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(43, 57);
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // tsbCancel
-            // 
-            this.tsbCancel.AutoSize = false;
-            this.tsbCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsbCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancel.Image")));
-            this.tsbCancel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbCancel.ImageTransparentColor = System.Drawing.Color.Fuchsia;
-            this.tsbCancel.Name = "tsbCancel";
-            this.tsbCancel.Size = new System.Drawing.Size(43, 60);
-            this.tsbCancel.Text = "Close";
-            this.tsbCancel.Visible = false;
-            // 
-            // tsbClear
-            // 
-            this.tsbClear.AutoSize = false;
-            this.tsbClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsbClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbClear.Image = ((System.Drawing.Image)(resources.GetObject("tsbClear.Image")));
-            this.tsbClear.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbClear.ImageTransparentColor = System.Drawing.Color.Fuchsia;
-            this.tsbClear.Name = "tsbClear";
-            this.tsbClear.Size = new System.Drawing.Size(43, 60);
-            this.tsbClear.Text = "Clear";
-            this.tsbClear.Click += new System.EventHandler(this.tsbClear_Click);
-            // 
-            // tsbRefresh
-            // 
-            this.tsbRefresh.AutoSize = false;
-            this.tsbRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tsbRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Image")));
-            this.tsbRefresh.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbRefresh.ImageTransparentColor = System.Drawing.Color.Fuchsia;
-            this.tsbRefresh.Name = "tsbRefresh";
-            this.tsbRefresh.Size = new System.Drawing.Size(55, 65);
-            this.tsbRefresh.Text = "Refresh";
-            this.tsbRefresh.ToolTipText = "Refresh";
-            this.tsbRefresh.Visible = false;
-            // 
             // panelPatient
             // 
             this.panelPatient.Controls.Add(this.tabControl1);
@@ -644,31 +548,117 @@ namespace ClinicApp.Forms
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             // 
-            // txtDonatorSearch
-            // 
-            this.txtDonatorSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtDonatorSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtDonatorSearch.Location = new System.Drawing.Point(198, 0);
-            this.txtDonatorSearch.MaxLength = 99;
-            this.txtDonatorSearch.Name = "txtDonatorSearch";
-            this.txtDonatorSearch.Size = new System.Drawing.Size(172, 23);
-            this.txtDonatorSearch.TabIndex = 28;
-            this.txtDonatorSearch.TextChanged += new System.EventHandler(this.txtDonatorSearch_TextChanged);
-            // 
-            // btnDonatorFetch
-            // 
-            this.btnDonatorFetch.Location = new System.Drawing.Point(398, 0);
-            this.btnDonatorFetch.Name = "btnDonatorFetch";
-            this.btnDonatorFetch.Size = new System.Drawing.Size(75, 23);
-            this.btnDonatorFetch.TabIndex = 29;
-            this.btnDonatorFetch.Text = "Fetch";
-            this.btnDonatorFetch.UseVisualStyleBackColor = true;
-            this.btnDonatorFetch.Click += new System.EventHandler(this.btnDonatorFetch_Click);
-            // 
             // errorProviderDonation
             // 
             this.errorProviderDonation.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderDonation.ContainerControl = this;
+            // 
+            // DName
+            // 
+            this.DName.HeaderText = "Name";
+            this.DName.Name = "DName";
+            this.DName.ReadOnly = true;
+            // 
+            // DonationCredit
+            // 
+            this.DonationCredit.HeaderText = "Donation Credit";
+            this.DonationCredit.Name = "DonationCredit";
+            this.DonationCredit.ReadOnly = true;
+            // 
+            // DonationDebit
+            // 
+            this.DonationDebit.HeaderText = "Donation Debit";
+            this.DonationDebit.Name = "DonationDebit";
+            this.DonationDebit.ReadOnly = true;
+            // 
+            // DRemarks
+            // 
+            this.DRemarks.HeaderText = "Remarks";
+            this.DRemarks.Name = "DRemarks";
+            this.DRemarks.ReadOnly = true;
+            // 
+            // DDate
+            // 
+            this.DDate.HeaderText = "Donation Date";
+            this.DDate.Name = "DDate";
+            this.DDate.ReadOnly = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.AutoSize = false;
+            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSave.ImageTransparentColor = System.Drawing.Color.Fuchsia;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(43, 57);
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // tsbCancel
+            // 
+            this.tsbCancel.AutoSize = false;
+            this.tsbCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsbCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancel.Image")));
+            this.tsbCancel.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbCancel.ImageTransparentColor = System.Drawing.Color.Fuchsia;
+            this.tsbCancel.Name = "tsbCancel";
+            this.tsbCancel.Size = new System.Drawing.Size(43, 60);
+            this.tsbCancel.Text = "Close";
+            this.tsbCancel.Visible = false;
+            // 
+            // tsbClear
+            // 
+            this.tsbClear.AutoSize = false;
+            this.tsbClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsbClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbClear.Image = ((System.Drawing.Image)(resources.GetObject("tsbClear.Image")));
+            this.tsbClear.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbClear.ImageTransparentColor = System.Drawing.Color.Fuchsia;
+            this.tsbClear.Name = "tsbClear";
+            this.tsbClear.Size = new System.Drawing.Size(43, 60);
+            this.tsbClear.Text = "Clear";
+            this.tsbClear.Click += new System.EventHandler(this.tsbClear_Click);
+            // 
+            // tsbRefresh
+            // 
+            this.tsbRefresh.AutoSize = false;
+            this.tsbRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tsbRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRefresh.Image = ((System.Drawing.Image)(resources.GetObject("tsbRefresh.Image")));
+            this.tsbRefresh.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRefresh.ImageTransparentColor = System.Drawing.Color.Fuchsia;
+            this.tsbRefresh.Name = "tsbRefresh";
+            this.tsbRefresh.Size = new System.Drawing.Size(55, 65);
+            this.tsbRefresh.Text = "Refresh";
+            this.tsbRefresh.ToolTipText = "Refresh";
+            this.tsbRefresh.Visible = false;
+            // 
+            // lblDonationCreditSum
+            // 
+            this.lblDonationCreditSum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDonationCreditSum.AutoSize = true;
+            this.lblDonationCreditSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDonationCreditSum.Location = new System.Drawing.Point(134, 16);
+            this.lblDonationCreditSum.Name = "lblDonationCreditSum";
+            this.lblDonationCreditSum.Size = new System.Drawing.Size(75, 15);
+            this.lblDonationCreditSum.TabIndex = 3;
+            this.lblDonationCreditSum.Text = "Total : 100";
+            // 
+            // lblDonationDebitSum
+            // 
+            this.lblDonationDebitSum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDonationDebitSum.AutoSize = true;
+            this.lblDonationDebitSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDonationDebitSum.Location = new System.Drawing.Point(406, 16);
+            this.lblDonationDebitSum.Name = "lblDonationDebitSum";
+            this.lblDonationDebitSum.Size = new System.Drawing.Size(75, 15);
+            this.lblDonationDebitSum.TabIndex = 4;
+            this.lblDonationDebitSum.Text = "Total : 100";
             // 
             // frmDonation
             // 
@@ -679,7 +669,6 @@ namespace ClinicApp.Forms
             this.Name = "frmDonation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmDonation";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_DonatorInfo);
             this.tabControl1.ResumeLayout(false);
             this.tabPatientList.ResumeLayout(false);
@@ -710,12 +699,8 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.TabPage tabPatientList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDashFilter;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DateTimePicker dtEndDate;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dtStartDate;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgDonationList;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label11;
@@ -755,12 +740,15 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientCNIC;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DRemarks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DDate;
         private System.Windows.Forms.Button btnDonatorFetch;
         private System.Windows.Forms.TextBox txtDonatorSearch;
         private System.Windows.Forms.ErrorProvider errorProviderDonation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DonationCredit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DonationDebit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DRemarks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DDate;
+        private System.Windows.Forms.Label lblDonationDebitSum;
+        private System.Windows.Forms.Label lblDonationCreditSum;
     }
 }

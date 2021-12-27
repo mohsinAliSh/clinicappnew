@@ -53,6 +53,7 @@
     <Compile Include="BLL\ExpenseCode.cs" />
     <Compile Include="BLL\KetsCode.cs" />
     <Compile Include="BLL\PatientCode.cs" />
+    <Compile Include="BLL\TransferFundCode.cs" />
     <Compile Include="BLL\Zakat.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -77,6 +78,12 @@
     </Compile>
     <Compile Include="Forms\frmPatient.Designer.cs">
       <DependentUpon>frmPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTransferFunds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTransferFunds.Designer.cs">
+      <DependentUpon>frmTransferFunds.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmZakat.cs">
       <SubType>Form</SubType>
@@ -109,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPatient.resx">
       <DependentUpon>frmPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTransferFunds.resx">
+      <DependentUpon>frmTransferFunds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmZakat.resx">
       <DependentUpon>frmZakat.cs</DependentUpon>

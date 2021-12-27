@@ -71,3 +71,4 @@ C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Debug\Clin
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Debug\ClinicApp.exe
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Debug\ClinicApp.pdb
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Debug\ClinicApp.Forms.frmZakat.resources
+C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Debug\ClinicApp.Forms.frmTransferFunds.resources
