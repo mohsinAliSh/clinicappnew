@@ -42,9 +42,9 @@
             this.KetQuantityLabel.Location = new System.Drawing.Point(12, 89);
             this.KetQuantityLabel.Name = "KetQuantityLabel";
             this.KetQuantityLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.KetQuantityLabel.Size = new System.Drawing.Size(181, 37);
+            this.KetQuantityLabel.Size = new System.Drawing.Size(171, 37);
             this.KetQuantityLabel.TabIndex = 27;
-            this.KetQuantityLabel.Text = ": New Kets";
+            this.KetQuantityLabel.Text = ": New Kits";
             // 
             // NewKetsLabel
             // 
@@ -86,9 +86,9 @@
             this.label2.Location = new System.Drawing.Point(194, 229);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(191, 37);
+            this.label2.Size = new System.Drawing.Size(181, 37);
             this.label2.TabIndex = 30;
-            this.label2.Text = ": Total Kets";
+            this.label2.Text = ": Total Kits";
             // 
             // KetForm
             // 

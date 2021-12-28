@@ -36,7 +36,7 @@ namespace ClinicApp.BLL
             }
             catch (Exception) { }
         }
-        public DataTable GetDonatorInfo()
+        public DataTable GetDonatorInfo(DateTime month)
         {
             DataTable table = new DataTable();
             try
@@ -47,6 +47,7 @@ namespace ClinicApp.BLL
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"spGetDonationInfo";
+                cmd.Parameters.AddWithValue("@month", month);
                 cmd.Connection = connection;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet dataSet = new DataSet();

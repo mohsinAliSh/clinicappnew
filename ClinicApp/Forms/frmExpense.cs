@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicApp.Model;
 using ClinicApp.BLL;
+using System.Threading;
 
 namespace ClinicApp.Forms
 {
@@ -23,14 +24,23 @@ namespace ClinicApp.Forms
 
         private void frm_expensedata(object sender, EventArgs e)
         {
-            DataTable dt = dBAccess.GetExpenseData();
+            GetCurrentMonthExpense(DateTime.Now.Date);
+
+        }
+
+        private void GetCurrentMonthExpense(DateTime date)
+        {
+            dgExpenseList.Rows.Clear();
+            int expenseamount = 0;
+            lblTotalAmount.Text = "Total Amount : 0";
+            DataTable dt = dBAccess.GetExpenseData(date);
 
             if (dt == null || dt.Rows.Count == 0)
                 return;
 
             for (int row = 0; row < dt.Rows.Count; row++)
             {
-                List<string> expenseFrom=new List<string>();
+                List<string> expenseFrom = new List<string>();
                 dgExpenseList.Rows.Add();
                 DataRow dataRow = dt.Rows[row];
                 dgExpenseList.Rows[row].Cells["ExpenseAmount"].Value = Convert.ToString(dataRow["ExpenseAmount"]);
@@ -38,10 +48,10 @@ namespace ClinicApp.Forms
                 dgExpenseList.Rows[row].Cells["ExpenseDescription"].Value = Convert.ToString(dataRow["ExpenseDescription"]);
                 dgExpenseList.Rows[row].Cells["ExpenseDate"].Value = Convert.ToString(dataRow["ExpenseDate"]);
                 dgExpenseList.Rows[row].Cells["ExpenseFrom"].Value = Convert.ToString(dataRow["ExpenseFrom"]);
+                expenseamount+= Convert.ToInt32(dataRow["ExpenseAmount"]);
             }
-
+            lblTotalAmount.Text = "Total Amount : " + expenseamount;
         }
-
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
@@ -68,6 +78,9 @@ namespace ClinicApp.Forms
                 expense.expenseFrom = expenseFromID;
                 dBAccess.AddExpanse(expense);
                 AssignDefaultValues();
+                GetCurrentMonthExpense(DateTime.Now.Date);
+
+               
             }
         }
         private bool CoustomValidating()
@@ -128,6 +141,12 @@ namespace ClinicApp.Forms
         {
             AssignDefaultValues
                 ();
+        }
+
+        private void btnDashFilter_Click(object sender, EventArgs e)
+        {
+            GetCurrentMonthExpense(dtStartDate.Value);
+            
         }
     }
 }

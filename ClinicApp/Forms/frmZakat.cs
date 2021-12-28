@@ -49,23 +49,33 @@ namespace ClinicApp.Forms
                 }
                 db.AddZakat(zakat);
             AssignDefaultValues();
+                
+                GetCurrentMonthZakat(DateTime.Now.Date);
             }
         }
     
         private void frm_ZakatInfo(object sender, EventArgs e)
         {
+            GetCurrentMonthZakat(DateTime.Now.Date);
+
+        }
+        private void GetCurrentMonthZakat(DateTime date)
+        {
+            dgZakatList.Rows.Clear();
             double totalzakatcredit = 0;
             double totalzakatDebit = 0;
-            DataTable dataTable = db.GetZakatInfo();
+            lbldgzakatcredit.Text = "Total Credit :  0";
+            totallbldgzakatdebit.Text = "Total Debit :  0";
+            DataTable dataTable = db.GetZakatInfo(date);
             if (dataTable == null || dataTable.Rows.Count == 0)
                 return;
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                
+
                 dgZakatList.Rows.Add();
                 DataRow dataRow = dataTable.Rows[i];
-                dgZakatList.Rows[i].Cells["ZakaterName"].Value =dataRow["ZakaterName"];
-                if (Convert.ToDouble( dataRow["ZakatAmount"] )> 0)
+                dgZakatList.Rows[i].Cells["ZakaterName"].Value = dataRow["ZakaterName"];
+                if (Convert.ToDouble(dataRow["ZakatAmount"]) > 0)
                 {
                     dgZakatList.Rows[i].Cells["ZakatCredit"].Value = dataRow["ZakatAmount"];
                     dgZakatList.Rows[i].Cells["ZakatDebit"].Value = "-";
@@ -74,17 +84,17 @@ namespace ClinicApp.Forms
                 }
                 else
                 {
-                    dgZakatList.Rows[i].Cells["ZakatDebit"].Value = -1*Convert.ToDouble( dataRow["ZakatAmount"]);
+                    dgZakatList.Rows[i].Cells["ZakatDebit"].Value = -1 * Convert.ToDouble(dataRow["ZakatAmount"]);
                     dgZakatList.Rows[i].Cells["ZakatCredit"].Value = "-";
-                    totalzakatDebit += (-1*Convert.ToDouble(dataRow["ZakatAmount"]));
+                    totalzakatDebit += (-1 * Convert.ToDouble(dataRow["ZakatAmount"]));
 
                 }
-              //  dgZakatList.Rows[i].Cells["ZakatAmount"].Value = dataRow["ZakatAmount"];
+                //  dgZakatList.Rows[i].Cells["ZakatAmount"].Value = dataRow["ZakatAmount"];
                 dgZakatList.Rows[i].Cells["ZakatRemarks"].Value = dataRow["ZakaterRemarks"];
                 dgZakatList.Rows[i].Cells["ZakatDate"].Value = dataRow["ZakatDate"];
             }
-            lbldgzakatcredit.Text ="Total Credit : " + Convert.ToString(totalzakatcredit);
-            totallbldgzakatdebit.Text ="Total Debit :" + Convert.ToString(totalzakatDebit);
+            lbldgzakatcredit.Text = "Total Credit : " + Convert.ToString(totalzakatcredit);
+            totallbldgzakatdebit.Text = "Total Debit :" + Convert.ToString(totalzakatDebit);
         }
 
         private void dtZakatDate_ValueChanged(object sender, EventArgs e)
@@ -188,6 +198,11 @@ namespace ClinicApp.Forms
         private void txtZakatAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void btnDashFilter_Click(object sender, EventArgs e)
+        {
+            GetCurrentMonthZakat(dtStartDate.Value);
         }
     }
 }

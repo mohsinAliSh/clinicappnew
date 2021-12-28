@@ -31,14 +31,23 @@ namespace ClinicApp.Forms
             else
             {
                 SaveDonationEntryData();
+                LoadCurrentMonth(DateTime.Now.Date);
             }
 
         }
         private void frm_DonatorInfo(object sender, EventArgs e)
         {
+            LoadCurrentMonth(DateTime.Now.Date);
+        }
+        private void LoadCurrentMonth(DateTime date)
+        {
+            dgDonationList.Rows.Clear();
             double donationcredit = 0;
             double donationdebit = 0;
-            DataTable dt = db.GetDonatorInfo();
+            lblDonationCreditSum.Text = "Total Donation Credit :  0";
+            lblDonationDebitSum.Text = "Total Donation Credit :  0";
+            dgDonationList.Rows.Clear();
+            DataTable dt = db.GetDonatorInfo(date);
 
             if (dt == null || dt.Rows.Count == 0)
                 return;
@@ -49,16 +58,16 @@ namespace ClinicApp.Forms
                 dgDonationList.Rows.Add();
                 DataRow dataRow = dt.Rows[row];
                 dgDonationList.Rows[row].Cells["DName"].Value = Convert.ToString(dataRow["DonatorName"]);
-                if(Convert.ToDouble(dataRow["DonationAmount"]) > 0)
+                if (Convert.ToDouble(dataRow["DonationAmount"]) > 0)
                 {
                     dgDonationList.Rows[row].Cells["DonationCredit"].Value = Convert.ToDouble(dataRow["DonationAmount"]);
                     dgDonationList.Rows[row].Cells["DonationDebit"].Value = "-";
                     donationcredit += Convert.ToDouble(dataRow["DonationAmount"]);
 
                 }
-                else 
+                else
                 {
-                    dgDonationList.Rows[row].Cells["DonationDebit"].Value = -1*Convert.ToDouble(dataRow["DonationAmount"]);
+                    dgDonationList.Rows[row].Cells["DonationDebit"].Value = -1 * Convert.ToDouble(dataRow["DonationAmount"]);
                     dgDonationList.Rows[row].Cells["DonationCredit"].Value = "-";
                     donationdebit += -1 * Convert.ToDouble(dataRow["DonationAmount"]);
 
@@ -66,8 +75,9 @@ namespace ClinicApp.Forms
                 dgDonationList.Rows[row].Cells["DRemarks"].Value = Convert.ToString(dataRow["Remarks"]);
                 dgDonationList.Rows[row].Cells["DDate"].Value = Convert.ToString(dataRow["DonationDate"]);
             }
-            lblDonationCreditSum.Text ="Total Donation Credit : " + Convert.ToString(donationcredit);
+            lblDonationCreditSum.Text = "Total Donation Credit : " + Convert.ToString(donationcredit);
             lblDonationDebitSum.Text = "Total Donation Debit : " + Convert.ToString(donationdebit);
+
 
 
         }
@@ -189,6 +199,11 @@ namespace ClinicApp.Forms
         private void txtDonationAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void btnDashFilter_Click(object sender, EventArgs e)
+        {
+            LoadCurrentMonth(dtStartDate.Value);
         }
     }
 }

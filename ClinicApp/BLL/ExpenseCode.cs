@@ -2,13 +2,14 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClinicApp.BLL
 {
     public partial class DBAccess
     {
-        public DataTable GetExpenseData()
+        public DataTable GetExpenseData(DateTime month)
         {
             DataTable table = new DataTable();
             try
@@ -19,12 +20,11 @@ namespace ClinicApp.BLL
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"spGet_expanse";
-                //cmd.Parameters.AddWithValue("@month", month);
+                cmd.Parameters.AddWithValue("@month", month);
                 cmd.Connection = connection;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet dataSet = new DataSet();
                 da.Fill(dataSet);
-
                 table = dataSet.Tables[0];
                 CloseConnection();
 
@@ -54,16 +54,9 @@ namespace ClinicApp.BLL
                 cmd.Parameters.AddWithValue("@eDate", expanse.expanseDate);
                 cmd.Parameters.AddWithValue("@eExpenseFrom", expanse.expenseFrom);
                 cmd.Connection = connection;
-                int result = cmd.ExecuteNonQuery();
+                int result =cmd.ExecuteNonQuery();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DialogResult rt = MessageBox.Show("Success", "",MessageBoxButtons.OK);
-                if (rt == DialogResult.OK)
-                {
-                    Form1.formExpense.Dispose();
-                    Form1.formExpense = new frmExpense();
-                    Form1.formExpense.Show();
-                }
-
+                MessageBox.Show("success");
             }
             catch (Exception) {
                 MessageBox.Show("error");

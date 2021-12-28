@@ -20,6 +20,8 @@ namespace ClinicApp.Forms
             InitializeComponent();
             patientnamesuggestions();
             SearchPatientNames();
+            tabControl1.SelectedIndex = 1;
+
         }
 
         public List<PatientModel> patientdata = new List<PatientModel>();
@@ -31,15 +33,20 @@ namespace ClinicApp.Forms
 
         private void LoadCurrentMonthPatients(DateTime date)
         {
+            dgPatientList.Rows.Clear();
             double zakatamount = 0;
             double clinicamount = 0;
+            lblTotalPatients.Text = "Total : 0";
+            lblzakatsum.Text = "Total Zakat Amount :  0";
+            lblclinicsum.Text = "Total Clinic Fee :  0";
             DataTable data = dBAccess.GetCurrentMonthPatients(date);
-
             if (data == null || data.Rows.Count == 0)
                 return;
 
             for (int row = 0; row < data.Rows.Count; row++)
             {
+
+             
                 dgPatientList.Rows.Add();
                 DataRow dataRow = data.Rows[row];
                 zakatamount +=Convert.ToDouble( dataRow["DonationAmount"]);
@@ -56,8 +63,9 @@ namespace ClinicApp.Forms
                 dgPatientList.Rows[row].Cells["TotalAmount"].Value = Convert.ToString(dataRow["NetFee"]);
                 dgPatientList.Rows[row].Cells["Date"].Value = Convert.ToDateTime(dataRow["EntryDate"]);
 
-
+            
             }
+            
 
             lblTotalPatients.Text = "Total : " + data.Rows.Count;
            lblzakatsum.Text ="Total Zakat Amount : " +  Convert.ToString(zakatamount);
@@ -156,7 +164,7 @@ namespace ClinicApp.Forms
             feeEntryModel.FeeType = feetype;
             feeEntryModel.KetType = kettype;
             feeEntryModel.ZakatAmount = Convert.ToDouble(txtZakatAmount.Text);
-            feeEntryModel.Date = Convert.ToDateTime(dtFeeDate.Text);
+            feeEntryModel.Date = Convert.ToDateTime(dtFeeDate.Value);
             feeEntryModel.Total = Convert.ToDouble(txtTotalAmount.Text);
             feeEntryModel.KetAmount = Convert.ToDouble(txtKetAmount.Text);
 
@@ -171,7 +179,9 @@ namespace ClinicApp.Forms
 
             dBAccess.AddPatientData(p, feeEntryModel);
             AssignDefaultValues();
-            
+            LoadCurrentMonthPatients(DateTime.Now.Date);
+
+
         }
         
         private void AssignDefaultValues()
@@ -191,7 +201,10 @@ namespace ClinicApp.Forms
             cmbPaymentType.ResetText();
             cmbKet.ResetText();
             txtClinicFee.Text = "0";
-            txtZakatAmount.Text = "0";    }
+            txtZakatAmount.Text = "0";
+            txtClinicFee.ReadOnly = false;
+            txtZakatAmount.ReadOnly = false;
+        }
 
         private void tsbClear_Click(object sender, EventArgs e)
         {
@@ -213,6 +226,8 @@ namespace ClinicApp.Forms
                 patientdata.ForEach(r => {
                     if (r.pName == txtpatientsearch.Text)
                     {
+                        cmbPatientGender.ResetText();
+                        cmbPatientMerital.ResetText();
                         cmbPatientGender.SelectedText = r.pGender;
                         cmbPatientMerital.SelectedText = r.pMaritalStatus;
                         txtPatientName.Text = r.pName;
@@ -253,6 +268,37 @@ namespace ClinicApp.Forms
                     i++;
                 }  
             }
+            if (cmbPaymentType.Text =="Self")
+            {
+                if (txtClinicFee.Text == "0")
+                {
+                    errorProviderPForm.SetError(txtClinicFee, "please fill required field");
+                    i++;
+                }
+            }
+            if(cmbPaymentType.Text == "Zakat")
+            {
+                if (txtZakatAmount.Text == "0")
+                {
+                    errorProviderPForm.SetError(txtZakatAmount, "please fill required field");
+                    i++;
+                }
+
+            }
+            if (cmbPaymentType.Text == "Self+Zakat")
+            {
+                if (txtClinicFee.Text == "0")
+                {
+                    errorProviderPForm.SetError(txtClinicFee, "please fill required field");
+                    i++;
+                }
+                if (txtZakatAmount.Text == "0")
+                {
+                    errorProviderPForm.SetError(txtZakatAmount, "please fill required field");
+                    i++;
+                }
+
+            }
             if (i > 0)
             {
                 return true;
@@ -274,7 +320,6 @@ namespace ClinicApp.Forms
                 AssignDefaultValues();
             }
         }
-
         private void CalculateSum()
         {
             try
@@ -344,6 +389,11 @@ namespace ClinicApp.Forms
         private void txtKetAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
             test(sender, e);
+        }
+
+        private void btnDashFilter_Click(object sender, EventArgs e)
+        {
+            LoadCurrentMonthPatients(dtStartDate.Value);
         }
     }
 }

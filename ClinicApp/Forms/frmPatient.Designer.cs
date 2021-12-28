@@ -36,12 +36,8 @@ namespace ClinicApp.Forms
             this.tabPatientList = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDashFilter = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgPatientList = new System.Windows.Forms.DataGridView();
             this.PatientName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientCNIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +48,8 @@ namespace ClinicApp.Forms
             this.TotalAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.lblclinicsum = new System.Windows.Forms.Label();
+            this.lblzakatsum = new System.Windows.Forms.Label();
             this.lblTotalPatients = new System.Windows.Forms.Label();
             this.tabAddPatient = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -105,8 +103,8 @@ namespace ClinicApp.Forms
             this.panel11 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.errorProviderPForm = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblzakatsum = new System.Windows.Forms.Label();
-            this.lblclinicsum = new System.Windows.Forms.Label();
+            this.frmPatientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.frmPatientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panelPatient.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPatientList.SuspendLayout();
@@ -120,6 +118,8 @@ namespace ClinicApp.Forms
             this.toolStrip2.SuspendLayout();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPForm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frmPatientBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frmPatientBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelPatient
@@ -161,12 +161,8 @@ namespace ClinicApp.Forms
             // panel1
             // 
             this.panel1.Controls.Add(this.btnDashFilter);
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.dtEndDate);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.dtStartDate);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -176,30 +172,13 @@ namespace ClinicApp.Forms
             // btnDashFilter
             // 
             this.btnDashFilter.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDashFilter.Location = new System.Drawing.Point(417, 6);
+            this.btnDashFilter.Location = new System.Drawing.Point(230, 7);
             this.btnDashFilter.Name = "btnDashFilter";
             this.btnDashFilter.Size = new System.Drawing.Size(82, 24);
             this.btnDashFilter.TabIndex = 9;
             this.btnDashFilter.Text = "Filter";
             this.btnDashFilter.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(217, 9);
-            this.label18.Name = "label18";
-            this.label18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label18.Size = new System.Drawing.Size(75, 17);
-            this.label18.TabIndex = 8;
-            this.label18.Text = ": End Date";
-            // 
-            // dtEndDate
-            // 
-            this.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtEndDate.Location = new System.Drawing.Point(296, 6);
-            this.dtEndDate.Name = "dtEndDate";
-            this.dtEndDate.Size = new System.Drawing.Size(118, 23);
-            this.dtEndDate.TabIndex = 7;
+            this.btnDashFilter.Click += new System.EventHandler(this.btnDashFilter_Click);
             // 
             // label19
             // 
@@ -207,38 +186,18 @@ namespace ClinicApp.Forms
             this.label19.Location = new System.Drawing.Point(11, 9);
             this.label19.Name = "label19";
             this.label19.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label19.Size = new System.Drawing.Size(80, 17);
+            this.label19.Size = new System.Drawing.Size(89, 17);
             this.label19.TabIndex = 6;
-            this.label19.Text = ": Start Date";
+            this.label19.Text = ": Select Date";
             // 
             // dtStartDate
             // 
-            this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtStartDate.Location = new System.Drawing.Point(95, 6);
+            this.dtStartDate.CustomFormat = "MMM  yyyy";
+            this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtStartDate.Location = new System.Drawing.Point(106, 7);
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.Size = new System.Drawing.Size(118, 23);
             this.dtStartDate.TabIndex = 5;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(838, 6);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 21);
-            this.textBox2.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(770, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Search ";
             // 
             // dgPatientList
             // 
@@ -323,6 +282,26 @@ namespace ClinicApp.Forms
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(1034, 34);
             this.panel12.TabIndex = 3;
+            // 
+            // lblclinicsum
+            // 
+            this.lblclinicsum.AutoSize = true;
+            this.lblclinicsum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblclinicsum.Location = new System.Drawing.Point(665, 9);
+            this.lblclinicsum.Name = "lblclinicsum";
+            this.lblclinicsum.Size = new System.Drawing.Size(55, 15);
+            this.lblclinicsum.TabIndex = 4;
+            this.lblclinicsum.Text = "label17";
+            // 
+            // lblzakatsum
+            // 
+            this.lblzakatsum.AutoSize = true;
+            this.lblzakatsum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblzakatsum.Location = new System.Drawing.Point(344, 9);
+            this.lblzakatsum.Name = "lblzakatsum";
+            this.lblzakatsum.Size = new System.Drawing.Size(55, 15);
+            this.lblzakatsum.TabIndex = 3;
+            this.lblzakatsum.Text = "label11";
             // 
             // lblTotalPatients
             // 
@@ -914,25 +893,13 @@ namespace ClinicApp.Forms
             this.errorProviderPForm.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderPForm.ContainerControl = this;
             // 
-            // lblzakatsum
+            // frmPatientBindingSource
             // 
-            this.lblzakatsum.AutoSize = true;
-            this.lblzakatsum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblzakatsum.Location = new System.Drawing.Point(344, 9);
-            this.lblzakatsum.Name = "lblzakatsum";
-            this.lblzakatsum.Size = new System.Drawing.Size(55, 15);
-            this.lblzakatsum.TabIndex = 3;
-            this.lblzakatsum.Text = "label11";
+            this.frmPatientBindingSource.DataSource = typeof(ClinicApp.Forms.frmPatient);
             // 
-            // lblclinicsum
+            // frmPatientBindingSource1
             // 
-            this.lblclinicsum.AutoSize = true;
-            this.lblclinicsum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblclinicsum.Location = new System.Drawing.Point(665, 9);
-            this.lblclinicsum.Name = "lblclinicsum";
-            this.lblclinicsum.Size = new System.Drawing.Size(55, 15);
-            this.lblclinicsum.TabIndex = 4;
-            this.lblclinicsum.Text = "label17";
+            this.frmPatientBindingSource1.DataSource = typeof(ClinicApp.Forms.frmPatient);
             // 
             // frmPatient
             // 
@@ -963,6 +930,8 @@ namespace ClinicApp.Forms
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPForm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frmPatientBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.frmPatientBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -973,8 +942,6 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPatientList;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgPatientList;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label lblTotalPatients;
@@ -1027,8 +994,6 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.ToolStripButton tsbClear;
         private System.Windows.Forms.ToolStripButton tsbRefresh;
         private System.Windows.Forms.Button btnDashFilter;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DateTimePicker dtEndDate;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dtStartDate;
         private System.Windows.Forms.TextBox txtpatientsearch;
@@ -1045,5 +1010,7 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.Label lblclinicsum;
         private System.Windows.Forms.Label lblzakatsum;
+        private System.Windows.Forms.BindingSource frmPatientBindingSource;
+        private System.Windows.Forms.BindingSource frmPatientBindingSource1;
     }
 }

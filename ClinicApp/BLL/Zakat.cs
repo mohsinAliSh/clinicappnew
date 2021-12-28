@@ -41,7 +41,7 @@ namespace ClinicApp.BLL
             }
         }
     
-        public DataTable GetZakatInfo()
+        public DataTable GetZakatInfo(DateTime month)
         {
             DataTable dt = new DataTable();
             try
@@ -51,6 +51,7 @@ namespace ClinicApp.BLL
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType=CommandType.StoredProcedure;
                 cmd.CommandText = @"spGet_Zakat";
+                cmd.Parameters.AddWithValue("@month", month);
                 cmd.Connection = connection;
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataSet set = new DataSet();

@@ -36,14 +36,17 @@
             this.zakaterEntry = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDashFilter = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.dtEndDate = new System.Windows.Forms.DateTimePicker();
             this.label19 = new System.Windows.Forms.Label();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgZakatList = new System.Windows.Forms.DataGridView();
+            this.ZakaterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.lbldgzakatcredit = new System.Windows.Forms.Label();
+            this.totallbldgzakatdebit = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.ZakatEntry = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -73,13 +76,6 @@
             this.tsbClear = new System.Windows.Forms.ToolStripButton();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             this.errorProviderZakat = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ZakaterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totallbldgzakatdebit = new System.Windows.Forms.Label();
-            this.lbldgzakatcredit = new System.Windows.Forms.Label();
             this.panel11.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.zakaterEntry.SuspendLayout();
@@ -144,12 +140,8 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnDashFilter);
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.dtEndDate);
             this.panel1.Controls.Add(this.label19);
             this.panel1.Controls.Add(this.dtStartDate);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -159,30 +151,13 @@
             // btnDashFilter
             // 
             this.btnDashFilter.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDashFilter.Location = new System.Drawing.Point(413, 6);
+            this.btnDashFilter.Location = new System.Drawing.Point(224, 5);
             this.btnDashFilter.Name = "btnDashFilter";
             this.btnDashFilter.Size = new System.Drawing.Size(82, 24);
             this.btnDashFilter.TabIndex = 9;
             this.btnDashFilter.Text = "Filter";
             this.btnDashFilter.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(213, 9);
-            this.label18.Name = "label18";
-            this.label18.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label18.Size = new System.Drawing.Size(75, 17);
-            this.label18.TabIndex = 8;
-            this.label18.Text = ": End Date";
-            // 
-            // dtEndDate
-            // 
-            this.dtEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtEndDate.Location = new System.Drawing.Point(292, 6);
-            this.dtEndDate.Name = "dtEndDate";
-            this.dtEndDate.Size = new System.Drawing.Size(118, 23);
-            this.dtEndDate.TabIndex = 7;
+            this.btnDashFilter.Click += new System.EventHandler(this.btnDashFilter_Click);
             // 
             // label19
             // 
@@ -196,32 +171,12 @@
             // 
             // dtStartDate
             // 
-            this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtStartDate.Location = new System.Drawing.Point(91, 6);
+            this.dtStartDate.CustomFormat = "MMM  yyyy";
+            this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtStartDate.Location = new System.Drawing.Point(93, 6);
             this.dtStartDate.Name = "dtStartDate";
-            this.dtStartDate.Size = new System.Drawing.Size(118, 23);
+            this.dtStartDate.Size = new System.Drawing.Size(124, 23);
             this.dtStartDate.TabIndex = 5;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(479, 8);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 21);
-            this.textBox2.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(424, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Search ";
             // 
             // dgZakatList
             // 
@@ -245,6 +200,36 @@
             this.dgZakatList.Size = new System.Drawing.Size(632, 338);
             this.dgZakatList.TabIndex = 4;
             // 
+            // ZakaterName
+            // 
+            this.ZakaterName.HeaderText = "Name";
+            this.ZakaterName.Name = "ZakaterName";
+            this.ZakaterName.ReadOnly = true;
+            // 
+            // ZakatCredit
+            // 
+            this.ZakatCredit.HeaderText = "Zakat Credit";
+            this.ZakatCredit.Name = "ZakatCredit";
+            this.ZakatCredit.ReadOnly = true;
+            // 
+            // ZakatDebit
+            // 
+            this.ZakatDebit.HeaderText = "Zakat Debit";
+            this.ZakatDebit.Name = "ZakatDebit";
+            this.ZakatDebit.ReadOnly = true;
+            // 
+            // ZakatRemarks
+            // 
+            this.ZakatRemarks.HeaderText = "Zakat Remarks";
+            this.ZakatRemarks.Name = "ZakatRemarks";
+            this.ZakatRemarks.ReadOnly = true;
+            // 
+            // ZakatDate
+            // 
+            this.ZakatDate.HeaderText = "Date";
+            this.ZakatDate.Name = "ZakatDate";
+            this.ZakatDate.ReadOnly = true;
+            // 
             // panel12
             // 
             this.panel12.Controls.Add(this.lbldgzakatcredit);
@@ -255,6 +240,30 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(632, 43);
             this.panel12.TabIndex = 3;
+            // 
+            // lbldgzakatcredit
+            // 
+            this.lbldgzakatcredit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbldgzakatcredit.AutoSize = true;
+            this.lbldgzakatcredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldgzakatcredit.Location = new System.Drawing.Point(169, 16);
+            this.lbldgzakatcredit.Name = "lbldgzakatcredit";
+            this.lbldgzakatcredit.Size = new System.Drawing.Size(75, 15);
+            this.lbldgzakatcredit.TabIndex = 4;
+            this.lbldgzakatcredit.Text = "Total : 100";
+            // 
+            // totallbldgzakatdebit
+            // 
+            this.totallbldgzakatdebit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.totallbldgzakatdebit.AutoSize = true;
+            this.totallbldgzakatdebit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totallbldgzakatdebit.Location = new System.Drawing.Point(373, 16);
+            this.totallbldgzakatdebit.Name = "totallbldgzakatdebit";
+            this.totallbldgzakatdebit.Size = new System.Drawing.Size(75, 15);
+            this.totallbldgzakatdebit.TabIndex = 3;
+            this.totallbldgzakatdebit.Text = "Total : 100";
             // 
             // label11
             // 
@@ -585,60 +594,6 @@
             this.errorProviderZakat.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderZakat.ContainerControl = this;
             // 
-            // ZakaterName
-            // 
-            this.ZakaterName.HeaderText = "Name";
-            this.ZakaterName.Name = "ZakaterName";
-            this.ZakaterName.ReadOnly = true;
-            // 
-            // ZakatCredit
-            // 
-            this.ZakatCredit.HeaderText = "Zakat Credit";
-            this.ZakatCredit.Name = "ZakatCredit";
-            this.ZakatCredit.ReadOnly = true;
-            // 
-            // ZakatDebit
-            // 
-            this.ZakatDebit.HeaderText = "Zakat Debit";
-            this.ZakatDebit.Name = "ZakatDebit";
-            this.ZakatDebit.ReadOnly = true;
-            // 
-            // ZakatRemarks
-            // 
-            this.ZakatRemarks.HeaderText = "Zakat Remarks";
-            this.ZakatRemarks.Name = "ZakatRemarks";
-            this.ZakatRemarks.ReadOnly = true;
-            // 
-            // ZakatDate
-            // 
-            this.ZakatDate.HeaderText = "Date";
-            this.ZakatDate.Name = "ZakatDate";
-            this.ZakatDate.ReadOnly = true;
-            // 
-            // totallbldgzakatdebit
-            // 
-            this.totallbldgzakatdebit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.totallbldgzakatdebit.AutoSize = true;
-            this.totallbldgzakatdebit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totallbldgzakatdebit.Location = new System.Drawing.Point(373, 16);
-            this.totallbldgzakatdebit.Name = "totallbldgzakatdebit";
-            this.totallbldgzakatdebit.Size = new System.Drawing.Size(75, 15);
-            this.totallbldgzakatdebit.TabIndex = 3;
-            this.totallbldgzakatdebit.Text = "Total : 100";
-            // 
-            // lbldgzakatcredit
-            // 
-            this.lbldgzakatcredit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbldgzakatcredit.AutoSize = true;
-            this.lbldgzakatcredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldgzakatcredit.Location = new System.Drawing.Point(169, 16);
-            this.lbldgzakatcredit.Name = "lbldgzakatcredit";
-            this.lbldgzakatcredit.Size = new System.Drawing.Size(75, 15);
-            this.lbldgzakatcredit.TabIndex = 4;
-            this.lbldgzakatcredit.Text = "Total : 100";
-            // 
             // frmZakat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,13 +634,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage zakaterEntry;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnDashFilter;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.DateTimePicker dtEndDate;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dtStartDate;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgZakatList;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label11;
@@ -724,5 +674,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ZakatDate;
         private System.Windows.Forms.Label lbldgzakatcredit;
         private System.Windows.Forms.Label totallbldgzakatdebit;
+        private System.Windows.Forms.Button btnDashFilter;
     }
 }

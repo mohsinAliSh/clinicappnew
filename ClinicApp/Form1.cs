@@ -53,6 +53,7 @@ namespace ClinicApp
         {
             if (formPatient == null || formPatient.IsDisposed)
             {
+                displayData();
                 formPatient = new frmPatient();
                 formPatient.Show();
             }
@@ -64,6 +65,7 @@ namespace ClinicApp
         {
             if (formDonation == null || formDonation.IsDisposed)
             {
+                displayData();
                 formDonation = new frmDonation();
                 formDonation.Show();
             }
@@ -74,7 +76,7 @@ namespace ClinicApp
         private void button4_Click(object sender, EventArgs e)
         {
             if (formExpense == null || formExpense.IsDisposed)
-            {
+            {    displayData();
                 formExpense = new frmExpense();
                 formExpense.Show();
             }
@@ -86,6 +88,7 @@ namespace ClinicApp
         {
             if (ketform == null || ketform.IsDisposed)
             {
+                displayData();
                 ketform = new KetForm();
                 ketform.Show();
             }
@@ -97,6 +100,7 @@ namespace ClinicApp
         {
             if(formZakat==null|| formZakat.IsDisposed)
             {
+                displayData();
                 formZakat=new frmZakat();
                 formZakat.Show();
 
@@ -109,16 +113,21 @@ namespace ClinicApp
         {
             if (frmtransferfunds == null || frmtransferfunds.IsDisposed)
             {
+                displayData();
                 frmtransferfunds = new frmTransferFunds();
                 frmtransferfunds.Show();
             }
-            frmtransferfunds.Show();
             frmtransferfunds.BringToFront();
         }
 
+
         private void btnDashboardView_Click(object sender, EventArgs e)
         {
+
             displayData();
+
+
+
         }
 
     }

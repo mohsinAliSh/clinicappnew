@@ -78,6 +78,7 @@ namespace ClinicApp.Forms
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.ExEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.errorProviderExpense = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabExpense.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -145,12 +146,13 @@ namespace ClinicApp.Forms
             // btnDashFilter
             // 
             this.btnDashFilter.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnDashFilter.Location = new System.Drawing.Point(186, 6);
+            this.btnDashFilter.Location = new System.Drawing.Point(235, 7);
             this.btnDashFilter.Name = "btnDashFilter";
             this.btnDashFilter.Size = new System.Drawing.Size(82, 24);
             this.btnDashFilter.TabIndex = 9;
             this.btnDashFilter.Text = "Filter";
             this.btnDashFilter.UseVisualStyleBackColor = true;
+            this.btnDashFilter.Click += new System.EventHandler(this.btnDashFilter_Click);
             // 
             // label19
             // 
@@ -158,15 +160,15 @@ namespace ClinicApp.Forms
             this.label19.Location = new System.Drawing.Point(7, 9);
             this.label19.Name = "label19";
             this.label19.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label19.Size = new System.Drawing.Size(55, 17);
+            this.label19.Size = new System.Drawing.Size(89, 17);
             this.label19.TabIndex = 6;
-            this.label19.Text = ": Month";
+            this.label19.Text = ": Select Date";
             // 
             // dtStartDate
             // 
             this.dtStartDate.CustomFormat = "MMM, yyyy";
             this.dtStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtStartDate.Location = new System.Drawing.Point(63, 6);
+            this.dtStartDate.Location = new System.Drawing.Point(102, 8);
             this.dtStartDate.Name = "dtStartDate";
             this.dtStartDate.Size = new System.Drawing.Size(118, 23);
             this.dtStartDate.TabIndex = 5;
@@ -225,6 +227,7 @@ namespace ClinicApp.Forms
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.lblTotalAmount);
             this.panel12.Controls.Add(this.label11);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel12.Location = new System.Drawing.Point(3, 370);
@@ -560,6 +563,18 @@ namespace ClinicApp.Forms
             // 
             this.errorProviderExpense.ContainerControl = this;
             // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAmount.Location = new System.Drawing.Point(262, 15);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(75, 15);
+            this.lblTotalAmount.TabIndex = 3;
+            this.lblTotalAmount.Text = "Total : 100";
+            // 
             // frmExpense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -642,5 +657,6 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpenseDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpenseDescription;
         private System.Windows.Forms.ErrorProvider errorProviderExpense;
+        private System.Windows.Forms.Label lblTotalAmount;
     }
 }
