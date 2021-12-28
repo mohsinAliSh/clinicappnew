@@ -46,7 +46,6 @@ namespace ClinicApp.Forms
             this.panel12 = new System.Windows.Forms.Panel();
             this.lblDonationDebitSum = new System.Windows.Forms.Label();
             this.lblDonationCreditSum = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabAddDonation = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -224,7 +223,6 @@ namespace ClinicApp.Forms
             // 
             this.panel12.Controls.Add(this.lblDonationDebitSum);
             this.panel12.Controls.Add(this.lblDonationCreditSum);
-            this.panel12.Controls.Add(this.label11);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel12.Location = new System.Drawing.Point(3, 378);
             this.panel12.Name = "panel12";
@@ -254,18 +252,6 @@ namespace ClinicApp.Forms
             this.lblDonationCreditSum.Size = new System.Drawing.Size(75, 15);
             this.lblDonationCreditSum.TabIndex = 3;
             this.lblDonationCreditSum.Text = "Total : 100";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 16);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 15);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Total : 100";
             // 
             // tabAddDonation
             // 
@@ -705,7 +691,6 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.DateTimePicker dtStartDate;
         private System.Windows.Forms.DataGridView dgDonationList;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TabPage tabAddDonation;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;

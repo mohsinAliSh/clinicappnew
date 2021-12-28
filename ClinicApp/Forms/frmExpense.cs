@@ -47,8 +47,16 @@ namespace ClinicApp.Forms
                 dgExpenseList.Rows[row].Cells["ExpenseCategory"].Value = Convert.ToString(dataRow["ExpenseCategory"]);
                 dgExpenseList.Rows[row].Cells["ExpenseDescription"].Value = Convert.ToString(dataRow["ExpenseDescription"]);
                 dgExpenseList.Rows[row].Cells["ExpenseDate"].Value = Convert.ToString(dataRow["ExpenseDate"]);
-                dgExpenseList.Rows[row].Cells["ExpenseFrom"].Value = Convert.ToString(dataRow["ExpenseFrom"]);
-                expenseamount+= Convert.ToInt32(dataRow["ExpenseAmount"]);
+                if(Convert.ToInt32(dataRow["ExpenseFrom"]) == 1)
+                {
+                    dgExpenseList.Rows[row].Cells["ExpenseFrom"].Value = "Clinic Fund";
+                }
+                else
+                {
+                    dgExpenseList.Rows[row].Cells["ExpenseFrom"].Value = "Donation Fund";
+
+                }
+                expenseamount += Convert.ToInt32(dataRow["ExpenseAmount"]);
             }
             lblTotalAmount.Text = "Total Amount : " + expenseamount;
         }

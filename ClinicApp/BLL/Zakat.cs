@@ -105,7 +105,7 @@ namespace ClinicApp.BLL
                 cmd.CommandText = "Select sum(ZakatAmount) from ZakatEntry";
                 cmd.CommandType = CommandType.Text;
                 cmd.Connection = connection;
-                string count =Convert.ToString( (decimal)cmd.ExecuteScalar());
+                string count =Convert.ToString(Convert.ToInt32( (decimal)cmd.ExecuteScalar()));
                 SqlDataAdapter d = new SqlDataAdapter(cmd);
                 CloseConnection();
                 return count;

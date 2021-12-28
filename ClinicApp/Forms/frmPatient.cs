@@ -170,11 +170,11 @@ namespace ClinicApp.Forms
 
             if (lblPatientID.Text == "New")
             {
-                feeEntryModel.PatientID = 0;
+                p.patientId = 0;
             }
             else
             {
-                feeEntryModel.PatientID = Convert.ToInt32(lblPatientID.Text);
+                p.patientId = Convert.ToInt32(lblPatientID.Text);
             }
 
             dBAccess.AddPatientData(p, feeEntryModel);

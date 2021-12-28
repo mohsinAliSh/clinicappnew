@@ -46,7 +46,6 @@ namespace ClinicApp.Forms
             this.ExpenseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpenseDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabAddExpense = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -228,24 +227,11 @@ namespace ClinicApp.Forms
             // panel12
             // 
             this.panel12.Controls.Add(this.lblTotalAmount);
-            this.panel12.Controls.Add(this.label11);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel12.Location = new System.Drawing.Point(3, 370);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(632, 51);
             this.panel12.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 15);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 15);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Total : 100";
             // 
             // tabAddExpense
             // 
@@ -620,7 +606,6 @@ namespace ClinicApp.Forms
         private System.Windows.Forms.DateTimePicker dtStartDate;
         private System.Windows.Forms.DataGridView dgExpenseList;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TabPage tabAddExpense;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
