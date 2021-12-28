@@ -29,15 +29,15 @@ namespace ClinicApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.lblClinicFundAmount = new System.Windows.Forms.Label();
@@ -338,9 +338,9 @@ namespace ClinicApp
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(6, 41);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(149, 20);
+            this.label9.Size = new System.Drawing.Size(117, 20);
             this.label9.TabIndex = 4;
-            this.label9.Text = "Donation Amount";
+            this.label9.Text = "Bank Amount";
             // 
             // panelDashboard
             // 
@@ -374,19 +374,19 @@ namespace ClinicApp
             // dashExpenseChart
             // 
             this.dashExpenseChart.BackColor = System.Drawing.Color.Gainsboro;
-            chartArea7.Name = "ChartArea1";
-            this.dashExpenseChart.ChartAreas.Add(chartArea7);
+            chartArea1.Name = "ChartArea1";
+            this.dashExpenseChart.ChartAreas.Add(chartArea1);
             this.dashExpenseChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend7.Name = "Legend1";
-            this.dashExpenseChart.Legends.Add(legend7);
+            legend1.Name = "Legend1";
+            this.dashExpenseChart.Legends.Add(legend1);
             this.dashExpenseChart.Location = new System.Drawing.Point(277, 0);
             this.dashExpenseChart.Margin = new System.Windows.Forms.Padding(0);
             this.dashExpenseChart.Name = "dashExpenseChart";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.dashExpenseChart.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.dashExpenseChart.Series.Add(series1);
             this.dashExpenseChart.Size = new System.Drawing.Size(277, 174);
             this.dashExpenseChart.TabIndex = 1;
             this.dashExpenseChart.Text = "chart2";
@@ -394,19 +394,19 @@ namespace ClinicApp
             // dashDonationChart
             // 
             this.dashDonationChart.BackColor = System.Drawing.Color.Gainsboro;
-            chartArea8.Name = "ChartArea1";
-            this.dashDonationChart.ChartAreas.Add(chartArea8);
+            chartArea2.Name = "ChartArea1";
+            this.dashDonationChart.ChartAreas.Add(chartArea2);
             this.dashDonationChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend8.Name = "Legend1";
-            this.dashDonationChart.Legends.Add(legend8);
+            legend2.Name = "Legend1";
+            this.dashDonationChart.Legends.Add(legend2);
             this.dashDonationChart.Location = new System.Drawing.Point(0, 0);
             this.dashDonationChart.Margin = new System.Windows.Forms.Padding(0);
             this.dashDonationChart.Name = "dashDonationChart";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.dashDonationChart.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.dashDonationChart.Series.Add(series2);
             this.dashDonationChart.Size = new System.Drawing.Size(277, 174);
             this.dashDonationChart.TabIndex = 0;
             this.dashDonationChart.Text = "chart2";
@@ -433,24 +433,24 @@ namespace ClinicApp
             // dashChartPatient
             // 
             this.dashChartPatient.BackColor = System.Drawing.Color.Gainsboro;
-            chartArea9.Name = "ChartArea1";
-            this.dashChartPatient.ChartAreas.Add(chartArea9);
+            chartArea3.Name = "ChartArea1";
+            this.dashChartPatient.ChartAreas.Add(chartArea3);
             this.dashChartPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend9.Name = "Legend1";
-            this.dashChartPatient.Legends.Add(legend9);
+            legend3.Name = "Legend1";
+            this.dashChartPatient.Legends.Add(legend3);
             this.dashChartPatient.Location = new System.Drawing.Point(0, 0);
             this.dashChartPatient.Margin = new System.Windows.Forms.Padding(0);
             this.dashChartPatient.Name = "dashChartPatient";
-            series9.BackImageTransparentColor = System.Drawing.Color.Gainsboro;
-            series9.BackSecondaryColor = System.Drawing.Color.Gainsboro;
-            series9.BorderColor = System.Drawing.Color.Gainsboro;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series9.LabelBorderWidth = 5;
-            series9.LabelToolTip = "Patient Chart";
-            series9.Legend = "Legend1";
-            series9.Name = "Series1";
-            this.dashChartPatient.Series.Add(series9);
+            series3.BackImageTransparentColor = System.Drawing.Color.Gainsboro;
+            series3.BackSecondaryColor = System.Drawing.Color.Gainsboro;
+            series3.BorderColor = System.Drawing.Color.Gainsboro;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.LabelBorderWidth = 5;
+            series3.LabelToolTip = "Patient Chart";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.dashChartPatient.Series.Add(series3);
             this.dashChartPatient.Size = new System.Drawing.Size(831, 266);
             this.dashChartPatient.TabIndex = 0;
             this.dashChartPatient.Text = "chart1";
@@ -604,7 +604,7 @@ namespace ClinicApp
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(182, 52);
             this.button3.TabIndex = 1;
-            this.button3.Text = "Donation";
+            this.button3.Text = "Bank";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);

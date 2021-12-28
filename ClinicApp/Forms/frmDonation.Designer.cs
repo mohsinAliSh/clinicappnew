@@ -32,7 +32,7 @@ namespace ClinicApp.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDonation));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPatientList = new System.Windows.Forms.TabPage();
+            this.donationList = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDashFilter = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
@@ -86,7 +86,7 @@ namespace ClinicApp.Forms
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProviderDonation = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
-            this.tabPatientList.SuspendLayout();
+            this.donationList.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDonationList)).BeginInit();
             this.panel12.SuspendLayout();
@@ -102,7 +102,7 @@ namespace ClinicApp.Forms
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPatientList);
+            this.tabControl1.Controls.Add(this.donationList);
             this.tabControl1.Controls.Add(this.tabAddDonation);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 42);
@@ -111,20 +111,20 @@ namespace ClinicApp.Forms
             this.tabControl1.Size = new System.Drawing.Size(646, 450);
             this.tabControl1.TabIndex = 1;
             // 
-            // tabPatientList
+            // donationList
             // 
-            this.tabPatientList.Controls.Add(this.panel1);
-            this.tabPatientList.Controls.Add(this.dgDonationList);
-            this.tabPatientList.Controls.Add(this.panel12);
-            this.tabPatientList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPatientList.Location = new System.Drawing.Point(4, 22);
-            this.tabPatientList.Name = "tabPatientList";
-            this.tabPatientList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPatientList.Size = new System.Drawing.Size(638, 424);
-            this.tabPatientList.TabIndex = 0;
-            this.tabPatientList.Text = "Donations";
-            this.tabPatientList.ToolTipText = "Available Donations";
-            this.tabPatientList.UseVisualStyleBackColor = true;
+            this.donationList.Controls.Add(this.panel1);
+            this.donationList.Controls.Add(this.dgDonationList);
+            this.donationList.Controls.Add(this.panel12);
+            this.donationList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.donationList.Location = new System.Drawing.Point(4, 22);
+            this.donationList.Name = "donationList";
+            this.donationList.Padding = new System.Windows.Forms.Padding(3);
+            this.donationList.Size = new System.Drawing.Size(638, 424);
+            this.donationList.TabIndex = 0;
+            this.donationList.Text = "Bank Funds";
+            this.donationList.ToolTipText = "Available Donations";
+            this.donationList.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -262,7 +262,7 @@ namespace ClinicApp.Forms
             this.tabAddDonation.Padding = new System.Windows.Forms.Padding(3);
             this.tabAddDonation.Size = new System.Drawing.Size(638, 424);
             this.tabAddDonation.TabIndex = 1;
-            this.tabAddDonation.Text = "Donation Entry";
+            this.tabAddDonation.Text = "Bank Entry";
             this.tabAddDonation.ToolTipText = "Donation Entry";
             this.tabAddDonation.UseVisualStyleBackColor = true;
             // 
@@ -320,10 +320,8 @@ namespace ClinicApp.Forms
             // 
             this.cmbDonatorType.FormattingEnabled = true;
             this.cmbDonatorType.Items.AddRange(new object[] {
-            "Person",
-            "Welfare Trust",
-            "Government",
-            "Other"});
+            "Clinic Fund",
+            "Bank Fund"});
             this.cmbDonatorType.Location = new System.Drawing.Point(128, 32);
             this.cmbDonatorType.Name = "cmbDonatorType";
             this.cmbDonatorType.Size = new System.Drawing.Size(209, 24);
@@ -340,17 +338,17 @@ namespace ClinicApp.Forms
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(24, 35);
+            this.label23.Location = new System.Drawing.Point(13, 35);
             this.label23.Name = "label23";
             this.label23.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label23.Size = new System.Drawing.Size(103, 17);
+            this.label23.Size = new System.Drawing.Size(109, 17);
             this.label23.TabIndex = 37;
-            this.label23.Text = ": Donator Type";
+            this.label23.Text = ": Donation Type";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(2, 61);
+            this.label24.Location = new System.Drawing.Point(-4, 61);
             this.label24.Name = "label24";
             this.label24.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label24.Size = new System.Drawing.Size(125, 17);
@@ -591,9 +589,9 @@ namespace ClinicApp.Forms
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(6, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 24);
+            this.label8.Size = new System.Drawing.Size(102, 24);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Donation";
+            this.label8.Text = "Bank Fund";
             // 
             // Delete
             // 
@@ -659,7 +657,7 @@ namespace ClinicApp.Forms
             this.Text = "frmDonation";
             this.Load += new System.EventHandler(this.frm_DonatorInfo);
             this.tabControl1.ResumeLayout(false);
-            this.tabPatientList.ResumeLayout(false);
+            this.donationList.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDonationList)).EndInit();
@@ -684,7 +682,7 @@ namespace ClinicApp.Forms
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPatientList;
+        private System.Windows.Forms.TabPage donationList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnDashFilter;
         private System.Windows.Forms.Label label19;

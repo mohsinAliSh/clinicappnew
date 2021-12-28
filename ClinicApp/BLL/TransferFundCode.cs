@@ -31,5 +31,27 @@ namespace ClinicApp.BLL
                 MessageBox.Show("error");
             }
         }
+        public void TransferFundsToClinic(int amount)
+        {
+            try
+            {
+                if (!CreateConnection())
+                    return;
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = @"spTransferBankToClinic";
+                cmd.Parameters.AddWithValue("@Amount", amount);
+                cmd.Connection = connection;
+                int resut = cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                MessageBox.Show("Transfer Successfull");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("error");
+            }
+
+        }
     }
 }
