@@ -39,11 +39,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
             this.dgZakatList = new System.Windows.Forms.DataGridView();
-            this.ZakaterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ZakatDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
             this.lbldgzakatcredit = new System.Windows.Forms.Label();
             this.totallbldgzakatdebit = new System.Windows.Forms.Label();
@@ -75,6 +70,16 @@
             this.tsbClear = new System.Windows.Forms.ToolStripButton();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             this.errorProviderZakat = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ZakaterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatDebit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClinicZakat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZakatDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transferFund = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnZakatTransfer = new System.Windows.Forms.Button();
+            this.lblClinicZakatTotal = new System.Windows.Forms.Label();
             this.panel11.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.zakaterEntry.SuspendLayout();
@@ -87,6 +92,7 @@
             this.groupBox1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderZakat)).BeginInit();
+            this.transferFund.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel11
@@ -114,6 +120,7 @@
             // 
             this.tabControl1.Controls.Add(this.zakaterEntry);
             this.tabControl1.Controls.Add(this.ZakatEntry);
+            this.tabControl1.Controls.Add(this.transferFund);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 42);
             this.tabControl1.Name = "tabControl1";
@@ -189,6 +196,7 @@
             this.ZakaterName,
             this.ZakatCredit,
             this.ZakatDebit,
+            this.ClinicZakat,
             this.ZakatRemarks,
             this.ZakatDate});
             this.dgZakatList.Location = new System.Drawing.Point(3, 43);
@@ -199,38 +207,9 @@
             this.dgZakatList.Size = new System.Drawing.Size(632, 338);
             this.dgZakatList.TabIndex = 4;
             // 
-            // ZakaterName
-            // 
-            this.ZakaterName.HeaderText = "Name";
-            this.ZakaterName.Name = "ZakaterName";
-            this.ZakaterName.ReadOnly = true;
-            // 
-            // ZakatCredit
-            // 
-            this.ZakatCredit.HeaderText = "Zakat Credit";
-            this.ZakatCredit.Name = "ZakatCredit";
-            this.ZakatCredit.ReadOnly = true;
-            // 
-            // ZakatDebit
-            // 
-            this.ZakatDebit.HeaderText = "Zakat Debit";
-            this.ZakatDebit.Name = "ZakatDebit";
-            this.ZakatDebit.ReadOnly = true;
-            // 
-            // ZakatRemarks
-            // 
-            this.ZakatRemarks.HeaderText = "Zakat Remarks";
-            this.ZakatRemarks.Name = "ZakatRemarks";
-            this.ZakatRemarks.ReadOnly = true;
-            // 
-            // ZakatDate
-            // 
-            this.ZakatDate.HeaderText = "Date";
-            this.ZakatDate.Name = "ZakatDate";
-            this.ZakatDate.ReadOnly = true;
-            // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.lblClinicZakatTotal);
             this.panel12.Controls.Add(this.lbldgzakatcredit);
             this.panel12.Controls.Add(this.totallbldgzakatdebit);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -245,7 +224,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbldgzakatcredit.AutoSize = true;
             this.lbldgzakatcredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbldgzakatcredit.Location = new System.Drawing.Point(169, 16);
+            this.lbldgzakatcredit.Location = new System.Drawing.Point(34, 16);
             this.lbldgzakatcredit.Name = "lbldgzakatcredit";
             this.lbldgzakatcredit.Size = new System.Drawing.Size(75, 15);
             this.lbldgzakatcredit.TabIndex = 4;
@@ -257,7 +236,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.totallbldgzakatdebit.AutoSize = true;
             this.totallbldgzakatdebit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totallbldgzakatdebit.Location = new System.Drawing.Point(373, 16);
+            this.totallbldgzakatdebit.Location = new System.Drawing.Point(221, 16);
             this.totallbldgzakatdebit.Name = "totallbldgzakatdebit";
             this.totallbldgzakatdebit.Size = new System.Drawing.Size(75, 15);
             this.totallbldgzakatdebit.TabIndex = 3;
@@ -330,10 +309,8 @@
             // 
             this.cmbZakaterType.FormattingEnabled = true;
             this.cmbZakaterType.Items.AddRange(new object[] {
-            "Person",
-            "Welfare Trust",
-            "Government",
-            "Other"});
+            "Bank Zakat",
+            "Clinic Zakat"});
             this.cmbZakaterType.Location = new System.Drawing.Point(128, 32);
             this.cmbZakaterType.Name = "cmbZakaterType";
             this.cmbZakaterType.Size = new System.Drawing.Size(209, 24);
@@ -580,6 +557,88 @@
             this.errorProviderZakat.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderZakat.ContainerControl = this;
             // 
+            // ZakaterName
+            // 
+            this.ZakaterName.HeaderText = "Name";
+            this.ZakaterName.Name = "ZakaterName";
+            this.ZakaterName.ReadOnly = true;
+            // 
+            // ZakatCredit
+            // 
+            this.ZakatCredit.HeaderText = "Zakat Credit";
+            this.ZakatCredit.Name = "ZakatCredit";
+            this.ZakatCredit.ReadOnly = true;
+            // 
+            // ZakatDebit
+            // 
+            this.ZakatDebit.HeaderText = "Zakat Debit";
+            this.ZakatDebit.Name = "ZakatDebit";
+            this.ZakatDebit.ReadOnly = true;
+            // 
+            // ClinicZakat
+            // 
+            this.ClinicZakat.HeaderText = "Clinic Zakat";
+            this.ClinicZakat.Name = "ClinicZakat";
+            this.ClinicZakat.ReadOnly = true;
+            // 
+            // ZakatRemarks
+            // 
+            this.ZakatRemarks.HeaderText = "Zakat Remarks";
+            this.ZakatRemarks.Name = "ZakatRemarks";
+            this.ZakatRemarks.ReadOnly = true;
+            // 
+            // ZakatDate
+            // 
+            this.ZakatDate.HeaderText = "Date";
+            this.ZakatDate.Name = "ZakatDate";
+            this.ZakatDate.ReadOnly = true;
+            // 
+            // transferFund
+            // 
+            this.transferFund.Controls.Add(this.label1);
+            this.transferFund.Controls.Add(this.btnZakatTransfer);
+            this.transferFund.Location = new System.Drawing.Point(4, 22);
+            this.transferFund.Name = "transferFund";
+            this.transferFund.Padding = new System.Windows.Forms.Padding(3);
+            this.transferFund.Size = new System.Drawing.Size(638, 424);
+            this.transferFund.TabIndex = 2;
+            this.transferFund.Text = "Transfer Fund";
+            this.transferFund.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(142, 84);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(353, 55);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Transfer  Fund";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnZakatTransfer
+            // 
+            this.btnZakatTransfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZakatTransfer.Location = new System.Drawing.Point(229, 182);
+            this.btnZakatTransfer.Name = "btnZakatTransfer";
+            this.btnZakatTransfer.Size = new System.Drawing.Size(158, 39);
+            this.btnZakatTransfer.TabIndex = 12;
+            this.btnZakatTransfer.Text = "Transfer";
+            this.btnZakatTransfer.UseVisualStyleBackColor = true;
+            this.btnZakatTransfer.Click += new System.EventHandler(this.btnZakatTransfer_Click);
+            // 
+            // lblClinicZakatTotal
+            // 
+            this.lblClinicZakatTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblClinicZakatTotal.AutoSize = true;
+            this.lblClinicZakatTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClinicZakatTotal.Location = new System.Drawing.Point(417, 16);
+            this.lblClinicZakatTotal.Name = "lblClinicZakatTotal";
+            this.lblClinicZakatTotal.Size = new System.Drawing.Size(75, 15);
+            this.lblClinicZakatTotal.TabIndex = 5;
+            this.lblClinicZakatTotal.Text = "Total : 100";
+            // 
             // frmZakat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -609,6 +668,8 @@
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderZakat)).EndInit();
+            this.transferFund.ResumeLayout(false);
+            this.transferFund.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -652,13 +713,18 @@
         private System.Windows.Forms.TextBox txtZakaterSearch;
         private System.Windows.Forms.TextBox txtZakaterName;
         private System.Windows.Forms.ErrorProvider errorProviderZakat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZakaterName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatCredit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatDebit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatRemarks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatDate;
         private System.Windows.Forms.Label lbldgzakatcredit;
         private System.Windows.Forms.Label totallbldgzakatdebit;
         private System.Windows.Forms.Button btnDashFilter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZakaterName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatCredit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatDebit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClinicZakat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatRemarks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ZakatDate;
+        private System.Windows.Forms.TabPage transferFund;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnZakatTransfer;
+        private System.Windows.Forms.Label lblClinicZakatTotal;
     }
 }

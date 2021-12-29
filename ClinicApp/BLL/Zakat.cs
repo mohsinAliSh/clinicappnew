@@ -118,6 +118,27 @@ namespace ClinicApp.BLL
             }
 
         }
+        public void TransferClinicZakatToBankZakat()
+        {
+            try
+            {
+                if (!CreateConnection())
+                    return;
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "UPDATE ZakatEntry SET ZakaterType = 'Bank Zakat' WHERE ZakaterType = 'Clinic Zakat'";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = connection;
+                int result = cmd.ExecuteNonQuery();
+                SqlDataAdapter d = new SqlDataAdapter(cmd);
+                CloseConnection();
+                MessageBox.Show("success");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("error");
+
+            }
+        }
     }
 
 }

@@ -64,6 +64,7 @@ namespace ClinicApp.Forms
             dgZakatList.Rows.Clear();
             double totalzakatcredit = 0;
             double totalzakatDebit = 0;
+            double totalcliniczakat = 0;
             lbldgzakatcredit.Text = "Total Credit :  0";
             totallbldgzakatdebit.Text = "Total Debit :  0";
             DataTable dataTable = db.GetZakatInfo(date);
@@ -75,24 +76,40 @@ namespace ClinicApp.Forms
                 dgZakatList.Rows.Add();
                 DataRow dataRow = dataTable.Rows[i];
                 dgZakatList.Rows[i].Cells["ZakaterName"].Value = dataRow["ZakaterName"];
-                if (Convert.ToDouble(dataRow["ZakatAmount"]) > 0)
-                {
-                    dgZakatList.Rows[i].Cells["ZakatCredit"].Value = dataRow["ZakatAmount"];
-                    dgZakatList.Rows[i].Cells["ZakatDebit"].Value = "-";
-                    totalzakatcredit += Convert.ToDouble(dataRow["ZakatAmount"]);
 
-                }
-                else
+                if (Convert.ToString(dataRow["ZakaterType"]) == "Clinic Zakat")
                 {
-                    dgZakatList.Rows[i].Cells["ZakatDebit"].Value = -1 * Convert.ToDouble(dataRow["ZakatAmount"]);
+                    dgZakatList.Rows[i].Cells["ClinicZakat"].Value = dataRow["ZakatAmount"];
                     dgZakatList.Rows[i].Cells["ZakatCredit"].Value = "-";
-                    totalzakatDebit += (-1 * Convert.ToDouble(dataRow["ZakatAmount"]));
-
+                    dgZakatList.Rows[i].Cells["ZakatDebit"].Value = "-";
+                    totalcliniczakat += Convert.ToDouble(dataRow["ZakatAmount"]);
                 }
-                //  dgZakatList.Rows[i].Cells["ZakatAmount"].Value = dataRow["ZakatAmount"];
-                dgZakatList.Rows[i].Cells["ZakatRemarks"].Value = dataRow["ZakaterRemarks"];
+                else { 
+                    if (Convert.ToDouble(dataRow["ZakatAmount"]) > 0)
+                    {
+                        dgZakatList.Rows[i].Cells["ZakatCredit"].Value = dataRow["ZakatAmount"];
+                        dgZakatList.Rows[i].Cells["ZakatDebit"].Value = "-";
+                        totalzakatcredit += Convert.ToDouble(dataRow["ZakatAmount"]);
+                        dgZakatList.Rows[i].Cells["ClinicZakat"].Value = "-";
+
+
+                    }
+                    else
+                    {
+                        dgZakatList.Rows[i].Cells["ZakatDebit"].Value = -1 * Convert.ToDouble(dataRow["ZakatAmount"]);
+                        dgZakatList.Rows[i].Cells["ZakatCredit"].Value = "-";
+                        totalzakatDebit += (-1 * Convert.ToDouble(dataRow["ZakatAmount"]));
+                        dgZakatList.Rows[i].Cells["ClinicZakat"].Value = "-";
+
+
+                    }
+                }
+                if (Convert.ToString(dataRow["ZakaterType"]) == "Bank Zakat")
+                    //  dgZakatList.Rows[i].Cells["ZakatAmount"].Value = dataRow["ZakatAmount"];
+                    dgZakatList.Rows[i].Cells["ZakatRemarks"].Value = dataRow["ZakaterRemarks"];
                 dgZakatList.Rows[i].Cells["ZakatDate"].Value = dataRow["ZakatDate"];
             }
+            lblClinicZakatTotal.Text ="Total Clinic Zakat : " + Convert.ToString(totalcliniczakat);
             lbldgzakatcredit.Text = "Total Credit : " + Convert.ToString(totalzakatcredit);
             totallbldgzakatdebit.Text = "Total Debit :" + Convert.ToString(totalzakatDebit);
         }
@@ -203,6 +220,22 @@ namespace ClinicApp.Forms
         private void btnDashFilter_Click(object sender, EventArgs e)
         {
             GetCurrentMonthZakat(dtStartDate.Value);
+        }
+
+        private void btnZakatTransfer_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are You Sure", "", buttons: MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                db.TransferClinicZakatToBankZakat();
+                GetCurrentMonthZakat(DateTime.Now.Date);
+
+            }
+            else
+            {
+                return;
+            }
+
         }
     }
 }

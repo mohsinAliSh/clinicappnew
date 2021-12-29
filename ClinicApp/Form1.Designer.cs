@@ -72,6 +72,7 @@ namespace ClinicApp
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dashLinePanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnDashboardView = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -85,7 +86,6 @@ namespace ClinicApp
             this.Zakat = new System.Windows.Forms.Button();
             this.KetsButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -531,13 +531,27 @@ namespace ClinicApp
             this.label3.TabIndex = 2;
             this.label3.Text = "Welcome to Clinic Dashboard";
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Silver;
+            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(163, 26);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Clinical System";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnDashboardView);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 61);
+            this.panel2.Location = new System.Drawing.Point(3, 52);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 52);
+            this.panel2.Size = new System.Drawing.Size(182, 43);
             this.panel2.TabIndex = 4;
             // 
             // btnDashboardView
@@ -550,7 +564,7 @@ namespace ClinicApp
             this.btnDashboardView.ForeColor = System.Drawing.Color.Silver;
             this.btnDashboardView.Location = new System.Drawing.Point(0, 0);
             this.btnDashboardView.Name = "btnDashboardView";
-            this.btnDashboardView.Size = new System.Drawing.Size(182, 52);
+            this.btnDashboardView.Size = new System.Drawing.Size(182, 43);
             this.btnDashboardView.TabIndex = 0;
             this.btnDashboardView.Text = "Dashboard";
             this.btnDashboardView.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -561,9 +575,9 @@ namespace ClinicApp
             // 
             this.panel3.Controls.Add(this.btnPatientView);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 119);
+            this.panel3.Location = new System.Drawing.Point(3, 101);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 52);
+            this.panel3.Size = new System.Drawing.Size(182, 43);
             this.panel3.TabIndex = 5;
             // 
             // btnPatientView
@@ -576,7 +590,7 @@ namespace ClinicApp
             this.btnPatientView.ForeColor = System.Drawing.Color.Silver;
             this.btnPatientView.Location = new System.Drawing.Point(0, 0);
             this.btnPatientView.Name = "btnPatientView";
-            this.btnPatientView.Size = new System.Drawing.Size(182, 52);
+            this.btnPatientView.Size = new System.Drawing.Size(182, 43);
             this.btnPatientView.TabIndex = 1;
             this.btnPatientView.Text = "Patients";
             this.btnPatientView.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -587,9 +601,9 @@ namespace ClinicApp
             // 
             this.panel4.Controls.Add(this.button3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 177);
+            this.panel4.Location = new System.Drawing.Point(3, 150);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(182, 52);
+            this.panel4.Size = new System.Drawing.Size(182, 43);
             this.panel4.TabIndex = 6;
             // 
             // button3
@@ -602,7 +616,7 @@ namespace ClinicApp
             this.button3.ForeColor = System.Drawing.Color.Silver;
             this.button3.Location = new System.Drawing.Point(0, 0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(182, 52);
+            this.button3.Size = new System.Drawing.Size(182, 43);
             this.button3.TabIndex = 1;
             this.button3.Text = "Bank";
             this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -613,9 +627,9 @@ namespace ClinicApp
             // 
             this.panel5.Controls.Add(this.button4);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 235);
+            this.panel5.Location = new System.Drawing.Point(3, 199);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(182, 52);
+            this.panel5.Size = new System.Drawing.Size(182, 43);
             this.panel5.TabIndex = 7;
             // 
             // button4
@@ -628,7 +642,7 @@ namespace ClinicApp
             this.button4.ForeColor = System.Drawing.Color.Silver;
             this.button4.Location = new System.Drawing.Point(0, 0);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(182, 52);
+            this.button4.Size = new System.Drawing.Size(182, 43);
             this.button4.TabIndex = 1;
             this.button4.Text = "Expense";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -652,15 +666,16 @@ namespace ClinicApp
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27397F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.80822F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.641975F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.641975F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.641975F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.641975F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.641975F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.641975F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.641975F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.641975F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.8642F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(188, 567);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -672,9 +687,9 @@ namespace ClinicApp
             this.btnTransferFund.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransferFund.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransferFund.ForeColor = System.Drawing.Color.Silver;
-            this.btnTransferFund.Location = new System.Drawing.Point(3, 409);
+            this.btnTransferFund.Location = new System.Drawing.Point(3, 346);
             this.btnTransferFund.Name = "btnTransferFund";
-            this.btnTransferFund.Size = new System.Drawing.Size(182, 52);
+            this.btnTransferFund.Size = new System.Drawing.Size(182, 43);
             this.btnTransferFund.TabIndex = 10;
             this.btnTransferFund.Text = "Transfer Fund";
             this.btnTransferFund.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -689,9 +704,9 @@ namespace ClinicApp
             this.Zakat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Zakat.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Zakat.ForeColor = System.Drawing.Color.Silver;
-            this.Zakat.Location = new System.Drawing.Point(3, 351);
+            this.Zakat.Location = new System.Drawing.Point(3, 297);
             this.Zakat.Name = "Zakat";
-            this.Zakat.Size = new System.Drawing.Size(182, 52);
+            this.Zakat.Size = new System.Drawing.Size(182, 43);
             this.Zakat.TabIndex = 9;
             this.Zakat.Text = "Zakat";
             this.Zakat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -706,9 +721,9 @@ namespace ClinicApp
             this.KetsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.KetsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KetsButton.ForeColor = System.Drawing.Color.Silver;
-            this.KetsButton.Location = new System.Drawing.Point(3, 293);
+            this.KetsButton.Location = new System.Drawing.Point(3, 248);
             this.KetsButton.Name = "KetsButton";
-            this.KetsButton.Size = new System.Drawing.Size(182, 52);
+            this.KetsButton.Size = new System.Drawing.Size(182, 43);
             this.KetsButton.TabIndex = 8;
             this.KetsButton.Text = "Kits";
             this.KetsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -721,22 +736,8 @@ namespace ClinicApp
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(182, 49);
+            this.panel1.Size = new System.Drawing.Size(182, 39);
             this.panel1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(4, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 26);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Clinical System";
             // 
             // Form1
             // 

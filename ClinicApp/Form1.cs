@@ -55,10 +55,16 @@ namespace ClinicApp
             {
                 displayData();
                 formPatient = new frmPatient();
+                formPatient.FormClosed += delegate { formPatient = null; };
                 formPatient.Show();
+
             }
-            formPatient.Show();
-              formPatient.BringToFront();
+            else
+            {
+                formPatient.WindowState = FormWindowState.Maximized;
+                formPatient.Focus();
+            }
+            formPatient.BringToFront();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -67,9 +73,16 @@ namespace ClinicApp
             {
                 displayData();
                 formDonation = new frmDonation();
+                formDonation.FormClosed += delegate { formDonation = null; };
                 formDonation.Show();
+
             }
-            
+            else
+            {
+                formDonation.WindowState = FormWindowState.Normal;
+                formDonation.Focus();
+            }
+
             formDonation.BringToFront();
         }
 
@@ -78,9 +91,16 @@ namespace ClinicApp
             if (formExpense == null || formExpense.IsDisposed)
             {    displayData();
                 formExpense = new frmExpense();
+                formExpense.FormClosed += delegate { formExpense = null; };
                 formExpense.Show();
+
             }
-              formExpense.BringToFront();
+            else
+            {
+                formExpense.WindowState = FormWindowState.Normal;
+                formExpense.Focus();
+            }
+            formExpense.BringToFront();
         }
 
 
@@ -90,7 +110,14 @@ namespace ClinicApp
             {
                 displayData();
                 ketform = new KetForm();
+                ketform.FormClosed += delegate { ketform = null; };
                 ketform.Show();
+
+            }
+            else
+            {
+                ketform.WindowState = FormWindowState.Normal;
+                ketform.Focus();
             }
             ketform.BringToFront();
 
@@ -102,9 +129,16 @@ namespace ClinicApp
             {
                 displayData();
                 formZakat=new frmZakat();
+                formZakat.FormClosed += delegate { formZakat = null; };
                 formZakat.Show();
 
             }
+            else
+            {
+                formZakat.WindowState = FormWindowState.Normal;
+                formZakat.Focus();
+            }
+
             formZakat.BringToFront();
 
         }
@@ -115,7 +149,14 @@ namespace ClinicApp
             {
                 displayData();
                 frmtransferfunds = new frmTransferFunds();
+                frmtransferfunds.FormClosed += delegate { frmtransferfunds = null; };
                 frmtransferfunds.Show();
+            }
+            else
+            {
+                frmtransferfunds.WindowState = FormWindowState.Normal;
+
+                frmtransferfunds.Focus();
             }
             frmtransferfunds.BringToFront();
         }
@@ -123,13 +164,10 @@ namespace ClinicApp
 
         private void btnDashboardView_Click(object sender, EventArgs e)
         {
-
             displayData();
 
-
-
         }
-
     }
+    
     
 }
