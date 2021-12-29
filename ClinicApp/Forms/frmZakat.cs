@@ -19,6 +19,7 @@ namespace ClinicApp.Forms
             InitializeComponent();
             ZakaterTableData();
             SearchZakaterNames();
+            AssignDefaultValues();
 
         }
         DBAccess db = new DBAccess();
@@ -142,7 +143,7 @@ namespace ClinicApp.Forms
             cmbZakaterType.ResetText();
             rtZakaterAddress.Clear();
             rtZakatRemark.Clear();
-            cmbZakaterType.ResetText();
+            cmbZakaterType.Text="Bank Zakat";
         }
         private bool CoustomValidating()
         {

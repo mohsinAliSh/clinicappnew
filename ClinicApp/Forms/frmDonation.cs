@@ -19,6 +19,7 @@ namespace ClinicApp.Forms
             InitializeComponent();
             DonatorTableData();
             SearchDonatorNames();
+            AssignDefaultValues();
         }
         DBAccess db = new DBAccess();
         List<DonatorEntryModel> donatorEntry = new List<DonatorEntryModel>();
@@ -148,6 +149,7 @@ namespace ClinicApp.Forms
             cmbDonatorType.ResetText();
             txtDonationAmount.Clear();
             rtDonationRemark.Clear();
+            cmbDonatorType.Text = "Bank Fund";
 
         }
         private void FetchDonatorData()
