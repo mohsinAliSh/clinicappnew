@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KetForm));
             this.KetQuantityLabel = new System.Windows.Forms.Label();
             this.NewKetsLabel = new System.Windows.Forms.TextBox();
             this.KetsAddButton = new System.Windows.Forms.Button();
@@ -100,6 +101,7 @@
             this.Controls.Add(this.KetsAddButton);
             this.Controls.Add(this.KetQuantityLabel);
             this.Controls.Add(this.NewKetsLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "KetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KetForm";

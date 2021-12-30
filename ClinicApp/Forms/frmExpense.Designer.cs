@@ -46,6 +46,7 @@ namespace ClinicApp.Forms
             this.ExpenseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpenseDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.tabAddExpense = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -77,7 +78,6 @@ namespace ClinicApp.Forms
             this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.ExEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.errorProviderExpense = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabExpense.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -232,6 +232,18 @@ namespace ClinicApp.Forms
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(632, 51);
             this.panel12.TabIndex = 3;
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAmount.Location = new System.Drawing.Point(262, 15);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(75, 15);
+            this.lblTotalAmount.TabIndex = 3;
+            this.lblTotalAmount.Text = "Total : 100";
             // 
             // tabAddExpense
             // 
@@ -549,18 +561,6 @@ namespace ClinicApp.Forms
             // 
             this.errorProviderExpense.ContainerControl = this;
             // 
-            // lblTotalAmount
-            // 
-            this.lblTotalAmount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAmount.Location = new System.Drawing.Point(262, 15);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(75, 15);
-            this.lblTotalAmount.TabIndex = 3;
-            this.lblTotalAmount.Text = "Total : 100";
-            // 
             // frmExpense
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -568,6 +568,7 @@ namespace ClinicApp.Forms
             this.ClientSize = new System.Drawing.Size(646, 492);
             this.Controls.Add(this.panelPatient);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmExpense";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTransferFunds));
             this.label1 = new System.Windows.Forms.Label();
             this.txtAmountTransfer = new System.Windows.Forms.TextBox();
             this.btnTransfer = new System.Windows.Forms.Button();
@@ -117,6 +118,7 @@
             this.Controls.Add(this.btnTransfer);
             this.Controls.Add(this.txtAmountTransfer);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTransferFunds";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTransferFunds";
