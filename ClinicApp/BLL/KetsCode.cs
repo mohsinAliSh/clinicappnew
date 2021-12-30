@@ -13,15 +13,18 @@ namespace ClinicApp.BLL
         {
             try
             {
-                if (!CreateConnection())
-                    return;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"spAddKets";
-                cmd.Parameters.AddWithValue("@addKets", quantity);
-                cmd.Connection = connection;
-                int result = cmd.ExecuteNonQuery();
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                using(SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"spAddKets";
+                    cmd.Parameters.AddWithValue("@addKets", quantity);
+                    int result = cmd.ExecuteNonQuery();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                }
+                
+                
           
             }
 
@@ -36,41 +39,39 @@ namespace ClinicApp.BLL
             DataTable table = new DataTable();
             try
             {
-                if (!CreateConnection())
-                    return null;
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"spGetKets";
-                //cmd.Parameters.AddWithValue("@month", month);
-                cmd.Connection = connection;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet dataSet = new DataSet();
-                da.Fill(dataSet);
-
-                table = dataSet.Tables[0];
-                CloseConnection();
-                int sum=0;
-                if (table.Rows.Count == 0 || table == null)
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
                 {
-                    table = null;
-                    return "0";
-                }
-                else
-                {
-                    for (int row = 0; row < table.Rows.Count; row++)
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"spGetKets";
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    da.Fill(dataSet);
+
+                    table = dataSet.Tables[0];
+                    int sum = 0;
+                    if (table.Rows.Count == 0 || table == null)
                     {
-
-
-                        DataRow dataRow = table.Rows[row];
-                        sum += Convert.ToInt32(dataRow["ketsQuantity"]);
-
+                        table = null;
+                        return "0";
                     }
-                 
+                    else
+                    {
+                        for (int row = 0; row < table.Rows.Count; row++)
+                        {
 
+
+                            DataRow dataRow = table.Rows[row];
+                            sum += Convert.ToInt32(dataRow["ketsQuantity"]);
+
+                        }
+
+                        return sum.ToString();
+                    }
                 }
 
-              return sum.ToString();    
+                  
             }
             catch (Exception)
             {

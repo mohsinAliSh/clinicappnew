@@ -15,24 +15,26 @@ namespace ClinicApp.BLL
         {
             try
             {
-                if (!CreateConnection())
-                    return;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"sp_AddDonator";
-                cmd.Parameters.AddWithValue("@dId",donator.DonatorID);
-                cmd.Parameters.AddWithValue("@DonatorNic", donator.DonatorCnic);
-                cmd.Parameters.AddWithValue("@DonatorName", donator.DonatorName);
-                cmd.Parameters.AddWithValue("@DonatorAddress", donator.DonatorAddress);
-                cmd.Parameters.AddWithValue("@DonationAmount", donation.DonationAmount);
-                cmd.Parameters.AddWithValue("@DonatorType", donation.DonatorType);
-                cmd.Parameters.AddWithValue("@DonationDate",donation.DonationDate);
-                cmd.Parameters.AddWithValue("@DonationRemarks", donation.DonationRemarks);
-                cmd.Connection = connection;
-                int result = cmd.ExecuteNonQuery();
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                MessageBox.Show("success");
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"sp_AddDonator";
+                    cmd.Parameters.AddWithValue("@dId", donator.DonatorID);
+                    cmd.Parameters.AddWithValue("@DonatorNic", donator.DonatorCnic);
+                    cmd.Parameters.AddWithValue("@DonatorName", donator.DonatorName);
+                    cmd.Parameters.AddWithValue("@DonatorAddress", donator.DonatorAddress);
+                    cmd.Parameters.AddWithValue("@DonationAmount", donation.DonationAmount);
+                    cmd.Parameters.AddWithValue("@DonatorType", donation.DonatorType);
+                    cmd.Parameters.AddWithValue("@DonationDate", donation.DonationDate);
+                    cmd.Parameters.AddWithValue("@DonationRemarks", donation.DonationRemarks);
+                    //     cmd.Connection = connection;
+                    int result = cmd.ExecuteNonQuery();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    MessageBox.Show("success");
 
+                }
             }
             catch (Exception) { }
         }
@@ -41,25 +43,25 @@ namespace ClinicApp.BLL
             DataTable table = new DataTable();
             try
             {
-                if (!CreateConnection())
-                    return null;
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"spGetDonationInfo";
+                    cmd.Parameters.AddWithValue("@month", month);
+                    //   cmd.Connection = connection;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    da.Fill(dataSet);
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"spGetDonationInfo";
-                cmd.Parameters.AddWithValue("@month", month);
-                cmd.Connection = connection;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet dataSet = new DataSet();
-                da.Fill(dataSet);
+                    table = dataSet.Tables[0];
 
-                table = dataSet.Tables[0];
-                CloseConnection();
+                    if (table.Rows.Count == 0 || table == null)
+                        table = null;
 
-                if (table.Rows.Count == 0 || table == null)
-                    table = null;
-
-                return table;
+                    return table;
+                }
             }
             catch (Exception)
             {
@@ -71,24 +73,25 @@ namespace ClinicApp.BLL
             DataTable table = new DataTable();
             try
             {
-                if (!CreateConnection())
-                    return null;
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"spGet_Donator";
+                    //    cmd.Connection = connection;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    da.Fill(dataSet);
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"spGet_Donator";
-                cmd.Connection = connection;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet dataSet = new DataSet();
-                da.Fill(dataSet);
+                    table = dataSet.Tables[0];
 
-                table = dataSet.Tables[0];
-                CloseConnection();
 
-                if (table.Rows.Count == 0 || table == null)
-                    table = null;
+                    if (table.Rows.Count == 0 || table == null)
+                        table = null;
 
-                return table;
+                    return table;
+                }
             }
             catch (Exception)
             {
@@ -99,17 +102,19 @@ namespace ClinicApp.BLL
         {
             try
             {
-                if (!CreateConnection())
-                    return 0;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "Select SUM(DonationAmount) from DonationEntry";
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = connection;
-                int count = (int)cmd.ExecuteScalar();
-                SqlDataAdapter d = new SqlDataAdapter(cmd);
-                CloseConnection();
-                return count;
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandText = "Select SUM(DonationAmount) from DonationEntry";
+                    cmd.CommandType = CommandType.Text;
+                    //    cmd.Connection = connection;
+                    int count = (int)cmd.ExecuteScalar();
+                    SqlDataAdapter d = new SqlDataAdapter(cmd);
+                    //      CloseConnection();
+                    return count;
 
+                }
             }
             catch (Exception)
             {

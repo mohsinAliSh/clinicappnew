@@ -16,23 +16,26 @@ namespace ClinicApp.BLL
         {
             try
             {
-                if (!CreateConnection())
-                    return;
-                SqlCommand cmd = new SqlCommand();
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+
+                connection.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = @"spAdd_Zakat";
                 cmd.Parameters.AddWithValue("@id", zakat.Id);
                 cmd.Parameters.AddWithValue("@ZakatAmount", zakat.ZakatAmount);
-                cmd.Parameters.AddWithValue("@ZakatDate",zakat.ZakatDate);
-                cmd.Parameters.AddWithValue("@ZakaterRemarks",zakat.ZakatRemarks);
+                cmd.Parameters.AddWithValue("@ZakatDate", zakat.ZakatDate);
+                cmd.Parameters.AddWithValue("@ZakaterRemarks", zakat.ZakatRemarks);
                 cmd.Parameters.AddWithValue("@ZakaterType", zakat.ZakaterType);
                 cmd.Parameters.AddWithValue("@ZakaterName", zakat.ZakaterName);
-                cmd.Parameters.AddWithValue("@ZakaterNic",zakat.ZakaterNic);
+                cmd.Parameters.AddWithValue("@ZakaterNic", zakat.ZakaterNic);
                 cmd.Parameters.AddWithValue("@ZakaterAddress", zakat.ZakaterAddress);
-                cmd.Connection = connection;
+                //     cmd.Connection = connection;
                 int result = cmd.ExecuteNonQuery();
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 MessageBox.Show("Success");
+                }
 
             }
             catch (Exception)
@@ -46,23 +49,24 @@ namespace ClinicApp.BLL
             DataTable dt = new DataTable();
             try
             {
-                if (!CreateConnection())
-                    return null;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType=CommandType.StoredProcedure;
-                cmd.CommandText = @"spGet_Zakat";
-                cmd.Parameters.AddWithValue("@month", month);
-                cmd.Connection = connection;
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                DataSet set = new DataSet();
-                sda.Fill(set);
-                dt=set.Tables[0];
-                CloseConnection();
-                if (dt.Rows.Count == 0 || dt == null)
-                    dt = null;
-                return dt;
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"spGet_Zakat";
+                    cmd.Parameters.AddWithValue("@month", month);
+                    //     cmd.Connection = connection;
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    DataSet set = new DataSet();
+                    sda.Fill(set);
+                    dt = set.Tables[0];
+                    //  CloseConnection();
+                    if (dt.Rows.Count == 0 || dt == null)
+                        dt = null;
+                    return dt;
 
-
+                }
             }
             catch (Exception) {
                 return null;
@@ -73,22 +77,23 @@ namespace ClinicApp.BLL
             DataTable dt = new DataTable();
             try
             {
-                if (!CreateConnection())
-                    return null;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"spGetAllZakaters";
-                cmd.Connection = connection;
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                DataSet set = new DataSet();
-                sda.Fill(set);
-                dt = set.Tables[0];
-                CloseConnection();
-                if (dt.Rows.Count == 0 || dt == null)
-                    dt = null;
-                return dt;
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"spGetAllZakaters";
+                    //     cmd.Connection = connection;
+                    SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                    DataSet set = new DataSet();
+                    sda.Fill(set);
+                    dt = set.Tables[0];
+                    //   CloseConnection();
+                    if (dt.Rows.Count == 0 || dt == null)
+                        dt = null;
+                    return dt;
 
-
+                }
             }
             catch (Exception)
             {
@@ -99,17 +104,19 @@ namespace ClinicApp.BLL
         {
             try
             {
-                if (!CreateConnection())
-                    return "0";
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "Select sum(ZakatAmount) from ZakatEntry";
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = connection;
-                string count =Convert.ToString(Convert.ToInt32( (decimal)cmd.ExecuteScalar()));
-                SqlDataAdapter d = new SqlDataAdapter(cmd);
-                CloseConnection();
-                return count;
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandText = "Select sum(ZakatAmount) from ZakatEntry";
+                    cmd.CommandType = CommandType.Text;
+                    //     cmd.Connection = connection;
+                    string count = Convert.ToString(Convert.ToInt32((decimal)cmd.ExecuteScalar()));
+                    SqlDataAdapter d = new SqlDataAdapter(cmd);
+                    //   CloseConnection();
+                    return count;
 
+                }
             }
             catch (Exception)
             {
@@ -122,16 +129,18 @@ namespace ClinicApp.BLL
         {
             try
             {
-                if (!CreateConnection())
-                    return;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "UPDATE ZakatEntry SET ZakaterType = 'Bank Zakat' WHERE ZakaterType = 'Clinic Zakat'";
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = connection;
-                int result = cmd.ExecuteNonQuery();
-                SqlDataAdapter d = new SqlDataAdapter(cmd);
-                CloseConnection();
-                MessageBox.Show("success");
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandText = "UPDATE ZakatEntry SET ZakaterType = 'Bank Zakat' WHERE ZakaterType = 'Clinic Zakat'";
+                    cmd.CommandType = CommandType.Text;
+                    //   cmd.Connection = connection;
+                    int result = cmd.ExecuteNonQuery();
+                    SqlDataAdapter d = new SqlDataAdapter(cmd);
+                    //  CloseConnection();
+                    MessageBox.Show("success");
+                }
             }
             catch (Exception)
             {

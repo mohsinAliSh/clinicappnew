@@ -14,24 +14,25 @@ namespace ClinicApp.BLL
             DataTable table = new DataTable();
             try
             {
-                if (!CreateConnection())
-                    return null;
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"spGet_expanse";
+                    cmd.Parameters.AddWithValue("@month", month);
+                    //  cmd.Connection = connection;
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    da.Fill(dataSet);
+                    table = dataSet.Tables[0];
+                    //   CloseConnection();
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"spGet_expanse";
-                cmd.Parameters.AddWithValue("@month", month);
-                cmd.Connection = connection;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataSet dataSet = new DataSet();
-                da.Fill(dataSet);
-                table = dataSet.Tables[0];
-                CloseConnection();
+                    if (table.Rows.Count == 0 || table == null)
+                        table = null;
 
-                if (table.Rows.Count == 0 || table == null)
-                    table = null;
-
-                return table;
+                    return table;
+                }
             }
             catch (Exception)
             {
@@ -43,22 +44,25 @@ namespace ClinicApp.BLL
         {
             try
             {
-                if (!CreateConnection())
-                    return;
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = @"sp_AddExpense";
-                cmd.Parameters.AddWithValue("@eCategory", expanse.expanseCatagory);
-                cmd.Parameters.AddWithValue("@eDascription", expanse.expanseDiscription);
-                cmd.Parameters.AddWithValue("@eAmount", expanse.expanseAmount);
-                cmd.Parameters.AddWithValue("@eDate", expanse.expanseDate);
-                cmd.Parameters.AddWithValue("@eExpenseFrom", expanse.expenseFrom);
-                cmd.Connection = connection;
-                int result =cmd.ExecuteNonQuery();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                MessageBox.Show("success");
+                using (SqlConnection connection = new SqlConnection(GetConnection()))
+                using (SqlCommand cmd = connection.CreateCommand())
+                {
+                    connection.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = @"sp_AddExpense";
+                    cmd.Parameters.AddWithValue("@eCategory", expanse.expanseCatagory);
+                    cmd.Parameters.AddWithValue("@eDascription", expanse.expanseDiscription);
+                    cmd.Parameters.AddWithValue("@eAmount", expanse.expanseAmount);
+                    cmd.Parameters.AddWithValue("@eDate", expanse.expanseDate);
+                    cmd.Parameters.AddWithValue("@eExpenseFrom", expanse.expenseFrom);
+                    //    cmd.Connection = connection;
+                    int result = cmd.ExecuteNonQuery();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    MessageBox.Show("success");
+                }
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 MessageBox.Show("error");
             }
 
