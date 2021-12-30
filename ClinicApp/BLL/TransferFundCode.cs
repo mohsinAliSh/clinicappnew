@@ -23,6 +23,7 @@ namespace ClinicApp.BLL
                 cmd.Connection = connection;
                 int resut = cmd.ExecuteNonQuery();
                 SqlDataAdapter da=new SqlDataAdapter(cmd);
+                connection.Close();
                 MessageBox.Show("Transfer Successfull");
 
             }
@@ -44,6 +45,7 @@ namespace ClinicApp.BLL
                 cmd.Connection = connection;
                 int resut = cmd.ExecuteNonQuery();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
+                CloseConnection();
                 MessageBox.Show("Transfer Successfull");
 
             }

@@ -25,7 +25,8 @@ namespace ClinicApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=./;Initial Catalog=ClinicDB;Trusted_Connection=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\ClinicDB.mdf;" +
+            "Integrated Security=True")]
         public string DBString {
             get {
                 return ((string)(this["DBString"]));

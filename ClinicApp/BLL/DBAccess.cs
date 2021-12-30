@@ -47,11 +47,11 @@ namespace ClinicApp.BLL
 
 
 
-        ~DBAccess()
-        {
-            if (connection != null)
-                connection.Close();
-        }
+        //~DBAccess()
+        //{
+        //    if (connection != null)
+        //        connection.Close();
+        //}
 
     }
 }

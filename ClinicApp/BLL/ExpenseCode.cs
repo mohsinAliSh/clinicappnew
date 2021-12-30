@@ -23,11 +23,10 @@ namespace ClinicApp.BLL
                 cmd.Parameters.AddWithValue("@month", month);
                 cmd.Connection = connection;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
+                CloseConnection();
                 DataSet dataSet = new DataSet();
                 da.Fill(dataSet);
                 table = dataSet.Tables[0];
-                CloseConnection();
-
                 if (table.Rows.Count == 0 || table == null)
                     table = null;
 
