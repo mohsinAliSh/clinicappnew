@@ -395,5 +395,6 @@ namespace ClinicApp.Forms
         {
             LoadCurrentMonthPatients(dtStartDate.Value);
         }
+
     }
 }

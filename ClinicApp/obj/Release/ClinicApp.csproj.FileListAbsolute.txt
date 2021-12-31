@@ -1,4 +1,8 @@
+C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicDB.mdf
+C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicDB_log.ldf
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicApp.exe.config
+C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicApp.exe.manifest
+C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicApp.application
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicApp.exe
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicApp.pdb
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\System.Configuration.ConfigurationManager.dll
@@ -20,13 +24,9 @@ C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\Cl
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.Properties.Resources.resources
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.csproj.GenerateResource.cache
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.csproj.CoreCompileInputs.cache
-C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.csproj.CopyComplete
-C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.exe
-C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.pdb
-C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicDB.mdf
-C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicDB_log.ldf
-C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicApp.exe.manifest
-C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\bin\Release\ClinicApp.application
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.TrustInfo.xml
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.exe.manifest
 C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.application
+C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.csproj.CopyComplete
+C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.exe
+C:\Users\mohsin\Desktop\Shortcuts\Projects\clinicappnew\ClinicApp\obj\Release\ClinicApp.pdb

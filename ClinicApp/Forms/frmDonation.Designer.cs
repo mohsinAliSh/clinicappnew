@@ -395,7 +395,7 @@ namespace ClinicApp.Forms
             this.groupBox1.Size = new System.Drawing.Size(632, 143);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Donator Personal Information";
+            this.groupBox1.Text = "Donor Personal Information";
             // 
             // btnDonatorFetch
             // 
@@ -448,12 +448,12 @@ namespace ClinicApp.Forms
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(41, 21);
+            this.label15.Location = new System.Drawing.Point(53, 21);
             this.label15.Name = "label15";
             this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label15.Size = new System.Drawing.Size(84, 17);
+            this.label15.Size = new System.Drawing.Size(72, 17);
             this.label15.TabIndex = 24;
-            this.label15.Text = ": Donator ID";
+            this.label15.Text = ": Donor ID";
             // 
             // label14
             // 

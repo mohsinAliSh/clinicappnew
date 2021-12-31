@@ -207,5 +207,6 @@ namespace ClinicApp.Forms
         {
             LoadCurrentMonth(dtStartDate.Value);
         }
+
     }
 }

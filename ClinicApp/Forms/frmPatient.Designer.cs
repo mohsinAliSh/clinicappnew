@@ -405,9 +405,9 @@ namespace ClinicApp.Forms
             this.label16.Location = new System.Drawing.Point(318, 37);
             this.label16.Name = "label16";
             this.label16.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label16.Size = new System.Drawing.Size(37, 17);
+            this.label16.Size = new System.Drawing.Size(32, 17);
             this.label16.TabIndex = 48;
-            this.label16.Text = ": Ket";
+            this.label16.Text = ": Kit";
             // 
             // txtTotalAmount
             // 
