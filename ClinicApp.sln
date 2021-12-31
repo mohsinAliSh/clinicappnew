@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicApp", "ClinicApp\ClinicApp.csproj", "{21B976F3-0F81-42A6-8FEF-EC85B8F03596}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ApnaDialysis", "..\..\..\New folder\ApnaDialysis\ApnaDialysis.vdproj", "{787CB615-3A9D-434C-BAD6-236F154DC101}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupForClinicApp", "SetupForClinicApp\SetupForClinicApp.vdproj", "{129563D3-5958-46E8-865B-DA0AD50A7873}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,10 @@ Global
 		{21B976F3-0F81-42A6-8FEF-EC85B8F03596}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21B976F3-0F81-42A6-8FEF-EC85B8F03596}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21B976F3-0F81-42A6-8FEF-EC85B8F03596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{787CB615-3A9D-434C-BAD6-236F154DC101}.Debug|Any CPU.ActiveCfg = Debug
+		{787CB615-3A9D-434C-BAD6-236F154DC101}.Release|Any CPU.ActiveCfg = Release
+		{129563D3-5958-46E8-865B-DA0AD50A7873}.Debug|Any CPU.ActiveCfg = Debug
+		{129563D3-5958-46E8-865B-DA0AD50A7873}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
